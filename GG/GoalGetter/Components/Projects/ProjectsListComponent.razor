@@ -11,10 +11,10 @@
 }
 
 @code {
-	private List<Project> projects = new List<Project>();
+	private List<Project> projects;
 
 	[Parameter]
-	public string searchTerm { get; set; } = string.Empty;
+	public string searchTerm { get; set; }
 
 	protected override async Task OnParametersSetAsync()
 	{

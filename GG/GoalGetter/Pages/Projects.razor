@@ -5,7 +5,7 @@
 </h1>
 
 <button><img />new Project</button>
-<Searchbar />
+<Searchbar OnSearchterm="OnTermSearch" />
 
 @*Hier kommen die Karten für jeder Projekt*@
 <ProjectsListComponent searchTerm="searchterm"/>
@@ -14,7 +14,7 @@
 @code{
 	private string searchterm = "";
 
-	private void OnInventorySearch(string searchterm)
+	private void OnTermSearch(string searchterm)
 	{
 		this.searchterm = searchterm;
 	}
