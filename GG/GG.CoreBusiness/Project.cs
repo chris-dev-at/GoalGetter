@@ -4,6 +4,10 @@ namespace GG.CoreBusiness
 {
     public class Project
     {
+        public string Id { get; set; }
+
+        public List<ProjectTask> Tasks { get; set; }
+
         public float Budget { get; set; }
 
         public Team assignedTeam { get; set; }
