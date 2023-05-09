@@ -1,5 +1,22 @@
-﻿<h3>ProjectsListComponent</h3>
+﻿@*Hier kommen die Karten für jeder Projekt*@
+
+
+@if (projects != null)
+{
+	@foreach (var project in projects)
+	{
+		<ProjectsListItemComponent project="@project"/>
+	}
+}
 
 @code {
+	private List<Project> projects = new List<Project>();
 
+	[Parameter]
+	public string searchTerm { get; set; } = string.Empty;
+
+	//protected override async Task OnParametersSetAsync()
+	//{
+	//	//listInventories = (await ViewInventoriesByNameUseCase.ExecuteAsync(this.searchTerm)).ToList();
+	//}
 }

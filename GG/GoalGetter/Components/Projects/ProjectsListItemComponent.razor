@@ -1,5 +1,14 @@
-﻿<h3>ProjectsListItemComponent</h3>
-
+﻿<div>
+	<h2>@project.Name</h2>
+	<hr />
+	<h3>@project.Description</h3>
+	<p>@project.status</p>
+	@foreach (var teamMember in project.assignedTeam.members)
+	{
+		<div><img src="@teamMember.AvatarPath" /></div>
+	}
+</div>
 @code {
-
+	[Parameter]
+	public Project project{ get; set; }
 }
