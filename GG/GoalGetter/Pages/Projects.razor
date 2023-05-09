@@ -1,27 +1,37 @@
 ﻿@page "/projects"
-@inject NavigationManager NavigationManager
 
 <h1>
 	Projects
 </h1>
 
-<button type="button" class="btn btn-primary" @onclick="AddProject">Add Inventory</button>
-<Searchbar OnSearchterm="OnItemSearch" />
-<br/>
+<button><img />new Project</button>
+<Searchbar />
 
-<ProjectsListComponent searchterm="@searchterm"/>
+@*Hier kommen die Karten für jeder Projekt*@
+@if (projects != null)
+{
+	@foreach (var project in projects)
+	{
+		<div>
+			<h2>@project.Name</h2>
+			<hr />
+			<h3>@project.Description</h3>
+			<p>@project.status</p>
+			@foreach (var teamMember in project.assignedTeam.members)
+			{
+				<div><img src="@teamMember.AvatarPath" /></div>
+			}
+		</div>
+	}
+}
 
 
 @code{
+	private List<Project> projects = null;
 	private string searchterm = "";
 
-	private void OnItemSearch(string searchterm)
+	private void OnInventorySearch(string searchterm)
 	{
 		this.searchterm = searchterm;
-	}
-
-	private void AddProject()
-	{
-		NavigationManager.NavigateTo("/addproject");
 	}
 }

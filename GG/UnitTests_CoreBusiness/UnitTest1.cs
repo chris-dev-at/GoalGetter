@@ -62,7 +62,7 @@ namespace UnitTests_CoreBusiness
                 Id = RandomString(),
                 Firstname = "Mulham",
                 Lastname = "Taylouni",
-                Address = "AT, Gmünd 3950, Schremserstraße 51",
+                Address = "AT, Gmünd 3950, Schremserstraße 69",
                 AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
                 Email = "contact@taylouni.me"
             });
@@ -72,7 +72,7 @@ namespace UnitTests_CoreBusiness
                 Id = RandomString(),
                 Firstname = "Christian",
                 Lastname = "Wiesinger",
-                Address = "AT, Rappottenstein 3911, Marbach am Walde 79",
+                Address = "AT, Rappottenstein 3911, Burgunderweg 109",
                 AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
                 Email = "contact@taylouni.me"
             });
