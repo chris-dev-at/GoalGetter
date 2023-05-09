@@ -1,0 +1,12 @@
+C:\Users\mulha\github\GoalGetter\GG\GG.CoreBusiness\bin\Debug\net6.0\GG.CoreBusiness.deps.json
+C:\Users\mulha\github\GoalGetter\GG\GG.CoreBusiness\bin\Debug\net6.0\GG.CoreBusiness.dll
+C:\Users\mulha\github\GoalGetter\GG\GG.CoreBusiness\bin\Debug\net6.0\GG.CoreBusiness.pdb
+C:\Users\mulha\github\GoalGetter\GG\GG.CoreBusiness\obj\Debug\net6.0\GG.CoreBusiness.csproj.AssemblyReference.cache
+C:\Users\mulha\github\GoalGetter\GG\GG.CoreBusiness\obj\Debug\net6.0\GG.CoreBusiness.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mulha\github\GoalGetter\GG\GG.CoreBusiness\obj\Debug\net6.0\GG.CoreBusiness.AssemblyInfoInputs.cache
+C:\Users\mulha\github\GoalGetter\GG\GG.CoreBusiness\obj\Debug\net6.0\GG.CoreBusiness.AssemblyInfo.cs
+C:\Users\mulha\github\GoalGetter\GG\GG.CoreBusiness\obj\Debug\net6.0\GG.CoreBusiness.csproj.CoreCompileInputs.cache
+C:\Users\mulha\github\GoalGetter\GG\GG.CoreBusiness\obj\Debug\net6.0\GG.CoreBusiness.dll
+C:\Users\mulha\github\GoalGetter\GG\GG.CoreBusiness\obj\Debug\net6.0\refint\GG.CoreBusiness.dll
+C:\Users\mulha\github\GoalGetter\GG\GG.CoreBusiness\obj\Debug\net6.0\GG.CoreBusiness.pdb
+C:\Users\mulha\github\GoalGetter\GG\GG.CoreBusiness\obj\Debug\net6.0\ref\GG.CoreBusiness.dll

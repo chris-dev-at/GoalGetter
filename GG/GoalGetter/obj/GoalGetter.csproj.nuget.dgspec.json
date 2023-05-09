@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj": {}
+    "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj": {
+    "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj",
-        "projectName": "GoalGetter",
-        "projectPath": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj",
-        "packagesPath": "C:\\Users\\Clemens\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GoalGetter\\obj\\",
+        "projectUniqueName": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj",
+        "projectName": "GG.CoreBusiness",
+        "projectPath": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj",
+        "packagesPath": "C:\\Users\\mulha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GG.CoreBusiness\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Clemens\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\mulha\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,6 +28,71 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "MudBlazor": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj",
+        "projectName": "GoalGetter",
+        "projectPath": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj",
+        "packagesPath": "C:\\Users\\mulha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GoalGetter\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\mulha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj": {
+                "projectPath": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

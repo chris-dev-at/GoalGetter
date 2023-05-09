@@ -247,6 +247,19 @@
         "build": {
           "buildTransitive/netcoreapp3.1/_._": {}
         }
+      },
+      "GG.CoreBusiness/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "MudBlazor": "6.0.13"
+        },
+        "compile": {
+          "bin/placeholder/GG.CoreBusiness.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GG.CoreBusiness.dll": {}
+        }
       }
     }
   },
@@ -585,27 +598,33 @@
         "system.runtime.compilerservices.unsafe.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "GG.CoreBusiness/1.0.0": {
+      "type": "project",
+      "path": "../GG.CoreBusiness/GG.CoreBusiness.csproj",
+      "msbuildProject": "../GG.CoreBusiness/GG.CoreBusiness.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "GG.CoreBusiness >= 1.0.0",
       "MudBlazor >= 6.0.13"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Clemens\\.nuget\\packages\\": {}
+    "C:\\Users\\mulha\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj",
+      "projectUniqueName": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj",
       "projectName": "GoalGetter",
-      "projectPath": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj",
-      "packagesPath": "C:\\Users\\Clemens\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GoalGetter\\obj\\",
+      "projectPath": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj",
+      "packagesPath": "C:\\Users\\mulha\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GoalGetter\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Clemens\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mulha\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -618,7 +637,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj": {
+              "projectPath": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

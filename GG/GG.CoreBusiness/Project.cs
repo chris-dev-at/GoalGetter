@@ -10,8 +10,10 @@ namespace GG.CoreBusiness
 
         public ProgressStatus status { get; set; }
 
+		public string Description { get; set; }
 
-        [Required, StringLength(100, MinimumLength = 1, ErrorMessage = "Projectname must be between 1 and 100 characters")]
+
+		[Required, StringLength(100, MinimumLength = 1, ErrorMessage = "Projectname must be between 1 and 100 characters")]
         public string Name { get; set; }
     }
 }

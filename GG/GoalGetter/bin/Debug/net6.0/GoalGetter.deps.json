@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "GoalGetter/1.0.0": {
         "dependencies": {
+          "GG.CoreBusiness": "1.0.0",
           "MudBlazor": "6.0.13"
         },
         "runtime": {
@@ -128,7 +129,15 @@
           }
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/6.0.0": {}
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {},
+      "GG.CoreBusiness/1.0.0": {
+        "dependencies": {
+          "MudBlazor": "6.0.13"
+        },
+        "runtime": {
+          "GG.CoreBusiness.dll": {}
+        }
+      }
     }
   },
   "libraries": {
@@ -241,6 +250,11 @@
       "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
       "path": "system.runtime.compilerservices.unsafe/6.0.0",
       "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    },
+    "GG.CoreBusiness/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

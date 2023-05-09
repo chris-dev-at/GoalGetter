@@ -11,4 +11,8 @@
     <PackageReference Include="MudBlazor" Version="6.0.13" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GG.CoreBusiness\GG.CoreBusiness.csproj" />
+  </ItemGroup>
+
 </Project>
