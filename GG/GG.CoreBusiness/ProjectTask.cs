@@ -2,9 +2,10 @@
 
 namespace GG.CoreBusiness
 {
-    public class Task
+    public class ProjectTask
     {
-        public string Id { get; init; }
+        public string Id { get; set; }
+        public DateTime Deadline { get; set; }
         public ProgressStatus Status { get; set; }
         public Teammember AssignedPerson { get; set; }
 
