@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoalGetter", "GoalGetter\Go
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GG.CoreBusiness", "GG.CoreBusiness\GG.CoreBusiness.csproj", "{6D0604F9-F245-4C29-A0EB-88A9D3FEA221}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests_CoreBusiness", "UnitTests_CoreBusiness\UnitTests_CoreBusiness.csproj", "{1C7C6C70-0AB3-448B-9754-4D6F9942E422}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppPlayground", "ConsoleAppPlayground\ConsoleAppPlayground.csproj", "{2471C830-2BC7-4900-973F-10C0542DEF8D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{6D0604F9-F245-4C29-A0EB-88A9D3FEA221}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D0604F9-F245-4C29-A0EB-88A9D3FEA221}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D0604F9-F245-4C29-A0EB-88A9D3FEA221}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C7C6C70-0AB3-448B-9754-4D6F9942E422}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C7C6C70-0AB3-448B-9754-4D6F9942E422}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C7C6C70-0AB3-448B-9754-4D6F9942E422}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C7C6C70-0AB3-448B-9754-4D6F9942E422}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2471C830-2BC7-4900-973F-10C0542DEF8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2471C830-2BC7-4900-973F-10C0542DEF8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2471C830-2BC7-4900-973F-10C0542DEF8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2471C830-2BC7-4900-973F-10C0542DEF8D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
