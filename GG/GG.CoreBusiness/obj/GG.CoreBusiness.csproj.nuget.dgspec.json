@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Source\\Repos\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj": {}
+    "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Source\\Repos\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj": {
+    "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Source\\Repos\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj",
+        "projectUniqueName": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj",
         "projectName": "GG.CoreBusiness",
-        "projectPath": "C:\\Users\\user\\Source\\Repos\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Source\\Repos\\GoalGetter\\GG\\GG.CoreBusiness\\obj\\",
+        "projectPath": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj",
+        "packagesPath": "C:\\Users\\Clemens\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GG.CoreBusiness\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\Clemens\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,6 +39,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "MudBlazor": {
+              "target": "Package",
+              "version": "[6.0.13, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -59,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
