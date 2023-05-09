@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "GG.UseCases/1.0.0": {
+        "dependencies": {
+          "GG.CoreBusiness": "1.0.0"
+        },
+        "runtime": {
+          "GG.UseCases.dll": {}
+        }
+      },
+      "GG.CoreBusiness/1.0.0": {
+        "runtime": {
+          "GG.CoreBusiness.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "GG.UseCases/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GG.CoreBusiness/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

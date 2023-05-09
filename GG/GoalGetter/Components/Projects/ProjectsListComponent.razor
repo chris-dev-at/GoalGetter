@@ -1,4 +1,5 @@
-﻿@*Hier kommen die Karten für jeder Projekt*@
+﻿@inject IViewProjectsByNameUseCase viewProjectsByNameUseCase
+@*Hier kommen die Karten für jeder Projekt*@
 
 
 @if (projects != null)
@@ -15,8 +16,8 @@
 	[Parameter]
 	public string searchTerm { get; set; } = string.Empty;
 
-	//protected override async Task OnParametersSetAsync()
-	//{
-	//	//listInventories = (await ViewInventoriesByNameUseCase.ExecuteAsync(this.searchTerm)).ToList();
-	//}
+	protected override async Task OnParametersSetAsync()
+	{
+		projects = (await viewProjectsByNameUseCase.ExecuteAsync(this.searchTerm)).ToList();
+	}
 }

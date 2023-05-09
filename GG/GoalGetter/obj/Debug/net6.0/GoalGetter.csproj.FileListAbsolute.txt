@@ -30,3 +30,42 @@ C:\Users\user\source\repos\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\refint\Goal
 C:\Users\user\source\repos\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\GoalGetter.pdb
 C:\Users\user\source\repos\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\GoalGetter.genruntimeconfig.cache
 C:\Users\user\source\repos\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\ref\GoalGetter.dll
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\GoalGetter.csproj.AssemblyReference.cache
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\GoalGetter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\GoalGetter.AssemblyInfoInputs.cache
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\GoalGetter.AssemblyInfo.cs
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\GoalGetter.csproj.CoreCompileInputs.cache
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\GoalGetter.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\GoalGetter.RazorAssemblyInfo.cache
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\GoalGetter.RazorAssemblyInfo.cs
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\GoalGetter.dll
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\refint\GoalGetter.dll
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\GoalGetter.pdb
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\bin\Debug\net6.0\appsettings.json
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\bin\Debug\net6.0\GoalGetter.staticwebassets.runtime.json
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\bin\Debug\net6.0\GoalGetter.exe
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\bin\Debug\net6.0\GoalGetter.deps.json
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\bin\Debug\net6.0\GoalGetter.runtimeconfig.json
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\bin\Debug\net6.0\GoalGetter.dll
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\bin\Debug\net6.0\GoalGetter.pdb
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\bin\Debug\net6.0\GG.CoreBusiness.dll
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\bin\Debug\net6.0\GG.CoreBusiness.pdb
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\staticwebassets\msbuild.GoalGetter.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\staticwebassets\msbuild.build.GoalGetter.props
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.GoalGetter.props
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.GoalGetter.props
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\scopedcss\bundle\GoalGetter.styles.css
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\scopedcss\projectbundle\GoalGetter.bundle.scp.css
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\GoalGetter.csproj.CopyComplete
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\GoalGetter.genruntimeconfig.cache
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\ref\GoalGetter.dll
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\bin\Debug\net6.0\GG.Plugins.InMemory.dll
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\bin\Debug\net6.0\GG.UseCases.dll
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\bin\Debug\net6.0\GG.Plugins.InMemory.pdb
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GoalGetter\bin\Debug\net6.0\GG.UseCases.pdb

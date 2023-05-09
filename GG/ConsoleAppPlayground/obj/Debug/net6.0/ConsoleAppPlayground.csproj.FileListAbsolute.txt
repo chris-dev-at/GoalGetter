@@ -16,3 +16,21 @@ C:\Users\user\source\repos\GoalGetter\GG\ConsoleAppPlayground\obj\Debug\net6.0\r
 C:\Users\user\source\repos\GoalGetter\GG\ConsoleAppPlayground\obj\Debug\net6.0\ConsoleAppPlayground.pdb
 C:\Users\user\source\repos\GoalGetter\GG\ConsoleAppPlayground\obj\Debug\net6.0\ConsoleAppPlayground.genruntimeconfig.cache
 C:\Users\user\source\repos\GoalGetter\GG\ConsoleAppPlayground\obj\Debug\net6.0\ref\ConsoleAppPlayground.dll
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\ConsoleAppPlayground\bin\Debug\net6.0\ConsoleAppPlayground.exe
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\ConsoleAppPlayground\bin\Debug\net6.0\ConsoleAppPlayground.deps.json
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\ConsoleAppPlayground\bin\Debug\net6.0\ConsoleAppPlayground.runtimeconfig.json
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\ConsoleAppPlayground\bin\Debug\net6.0\ConsoleAppPlayground.dll
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\ConsoleAppPlayground\bin\Debug\net6.0\ConsoleAppPlayground.pdb
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\ConsoleAppPlayground\bin\Debug\net6.0\GG.CoreBusiness.dll
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\ConsoleAppPlayground\bin\Debug\net6.0\GG.CoreBusiness.pdb
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\ConsoleAppPlayground\obj\Debug\net6.0\ConsoleAppPlayground.csproj.AssemblyReference.cache
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\ConsoleAppPlayground\obj\Debug\net6.0\ConsoleAppPlayground.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\ConsoleAppPlayground\obj\Debug\net6.0\ConsoleAppPlayground.AssemblyInfoInputs.cache
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\ConsoleAppPlayground\obj\Debug\net6.0\ConsoleAppPlayground.AssemblyInfo.cs
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\ConsoleAppPlayground\obj\Debug\net6.0\ConsoleAppPlayground.csproj.CoreCompileInputs.cache
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\ConsoleAppPlayground\obj\Debug\net6.0\ConsoleAppPlayground.csproj.CopyComplete
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\ConsoleAppPlayground\obj\Debug\net6.0\ConsoleAppPlayground.dll
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\ConsoleAppPlayground\obj\Debug\net6.0\refint\ConsoleAppPlayground.dll
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\ConsoleAppPlayground\obj\Debug\net6.0\ConsoleAppPlayground.pdb
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\ConsoleAppPlayground\obj\Debug\net6.0\ConsoleAppPlayground.genruntimeconfig.cache
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\ConsoleAppPlayground\obj\Debug\net6.0\ref\ConsoleAppPlayground.dll

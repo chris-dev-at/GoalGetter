@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\source\\repos\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj": {}
+    "C:\\Users\\mulha\\github\\VERSUCH GOAL\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\source\\repos\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj": {
+    "C:\\Users\\mulha\\github\\VERSUCH GOAL\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\source\\repos\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj",
+        "projectUniqueName": "C:\\Users\\mulha\\github\\VERSUCH GOAL\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj",
         "projectName": "GG.CoreBusiness",
-        "projectPath": "C:\\Users\\user\\source\\repos\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\source\\repos\\GoalGetter\\GG\\GG.CoreBusiness\\obj\\",
+        "projectPath": "C:\\Users\\mulha\\github\\VERSUCH GOAL\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj",
+        "packagesPath": "C:\\Users\\mulha\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\mulha\\github\\VERSUCH GOAL\\GoalGetter\\GG\\GG.CoreBusiness\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\mulha\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -59,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

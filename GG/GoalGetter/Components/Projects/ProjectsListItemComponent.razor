@@ -5,7 +5,7 @@
 	<p>@project.status</p>
 	@foreach (var teamMember in project.assignedTeam.members)
 	{
-		<div><img src="@teamMember.AvatarPath" /></div>
+		<div><img src="@teamMember.person.AvatarPath" /></div>
 	}
 </div>
 @code {

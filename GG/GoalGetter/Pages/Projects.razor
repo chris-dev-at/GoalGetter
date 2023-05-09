@@ -8,26 +8,10 @@
 <Searchbar />
 
 @*Hier kommen die Karten für jeder Projekt*@
-@if (projects != null)
-{
-	@foreach (var project in projects)
-	{
-		<div>
-			<h2>@project.Name</h2>
-			<hr />
-			<h3>@project.Description</h3>
-			<p>@project.status</p>
-			@foreach (var teamMember in project.assignedTeam.members)
-			{
-				<div><img src="@teamMember.AvatarPath" /></div>
-			}
-		</div>
-	}
-}
+<ProjectsListComponent searchTerm="searchterm"/>
 
 
 @code{
-	private List<Project> projects = null;
 	private string searchterm = "";
 
 	private void OnInventorySearch(string searchterm)

@@ -1,31 +1,83 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "GG.CoreBusiness/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/GG.CoreBusiness.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GG.CoreBusiness.dll": {}
+        }
+      },
+      "GG.Plugins.InMemory/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "GG.UseCases": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GG.Plugins.InMemory.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GG.Plugins.InMemory.dll": {}
+        }
+      },
+      "GG.UseCases/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "GG.CoreBusiness": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/GG.UseCases.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GG.UseCases.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "GG.CoreBusiness/1.0.0": {
+      "type": "project",
+      "path": "../GG.CoreBusiness/GG.CoreBusiness.csproj",
+      "msbuildProject": "../GG.CoreBusiness/GG.CoreBusiness.csproj"
+    },
+    "GG.Plugins.InMemory/1.0.0": {
+      "type": "project",
+      "path": "../GG.Plugins.InMemory/GG.Plugins.InMemory.csproj",
+      "msbuildProject": "../GG.Plugins.InMemory/GG.Plugins.InMemory.csproj"
+    },
+    "GG.UseCases/1.0.0": {
+      "type": "project",
+      "path": "../GG.UseCases/GG.UseCases.csproj",
+      "msbuildProject": "../GG.UseCases/GG.UseCases.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "GG.CoreBusiness >= 1.0.0",
+      "GG.Plugins.InMemory >= 1.0.0",
+      "GG.UseCases >= 1.0.0"
+    ]
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\mulha\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Source\\Repos\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj",
+      "projectUniqueName": "C:\\Users\\mulha\\github\\VERSUCH GOAL\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj",
       "projectName": "GoalGetter",
-      "projectPath": "C:\\Users\\user\\Source\\Repos\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Source\\Repos\\GoalGetter\\GG\\GoalGetter\\obj\\",
+      "projectPath": "C:\\Users\\mulha\\github\\VERSUCH GOAL\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj",
+      "packagesPath": "C:\\Users\\mulha\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mulha\\github\\VERSUCH GOAL\\GoalGetter\\GG\\GoalGetter\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\mulha\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -38,7 +90,17 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\mulha\\github\\VERSUCH GOAL\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj": {
+              "projectPath": "C:\\Users\\mulha\\github\\VERSUCH GOAL\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj"
+            },
+            "C:\\Users\\mulha\\github\\VERSUCH GOAL\\GoalGetter\\GG\\GG.Plugins.InMemory\\GG.Plugins.InMemory.csproj": {
+              "projectPath": "C:\\Users\\mulha\\github\\VERSUCH GOAL\\GoalGetter\\GG\\GG.Plugins.InMemory\\GG.Plugins.InMemory.csproj"
+            },
+            "C:\\Users\\mulha\\github\\VERSUCH GOAL\\GoalGetter\\GG\\GG.UseCases\\GG.UseCases.csproj": {
+              "projectPath": "C:\\Users\\mulha\\github\\VERSUCH GOAL\\GoalGetter\\GG\\GG.UseCases\\GG.UseCases.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -69,7 +131,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

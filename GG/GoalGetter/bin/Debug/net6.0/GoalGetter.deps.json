@@ -7,14 +7,55 @@
   "targets": {
     ".NETCoreApp,Version=v6.0": {
       "GoalGetter/1.0.0": {
+        "dependencies": {
+          "GG.CoreBusiness": "1.0.0",
+          "GG.Plugins.InMemory": "1.0.0",
+          "GG.UseCases": "1.0.0"
+        },
         "runtime": {
           "GoalGetter.dll": {}
+        }
+      },
+      "GG.CoreBusiness/1.0.0": {
+        "runtime": {
+          "GG.CoreBusiness.dll": {}
+        }
+      },
+      "GG.Plugins.InMemory/1.0.0": {
+        "dependencies": {
+          "GG.UseCases": "1.0.0"
+        },
+        "runtime": {
+          "GG.Plugins.InMemory.dll": {}
+        }
+      },
+      "GG.UseCases/1.0.0": {
+        "dependencies": {
+          "GG.CoreBusiness": "1.0.0"
+        },
+        "runtime": {
+          "GG.UseCases.dll": {}
         }
       }
     }
   },
   "libraries": {
     "GoalGetter/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GG.CoreBusiness/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GG.Plugins.InMemory/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GG.UseCases/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

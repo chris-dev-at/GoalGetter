@@ -1,0 +1,30 @@
+C:\Users\mulha\github\test\GoalGetter\GG\GG.UseCases\bin\Debug\net6.0\GG.UseCases.deps.json
+C:\Users\mulha\github\test\GoalGetter\GG\GG.UseCases\bin\Debug\net6.0\GG.UseCases.dll
+C:\Users\mulha\github\test\GoalGetter\GG\GG.UseCases\bin\Debug\net6.0\GG.UseCases.pdb
+C:\Users\mulha\github\test\GoalGetter\GG\GG.UseCases\bin\Debug\net6.0\GG.CoreBusiness.dll
+C:\Users\mulha\github\test\GoalGetter\GG\GG.UseCases\bin\Debug\net6.0\GG.CoreBusiness.pdb
+C:\Users\mulha\github\test\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\GG.UseCases.csproj.AssemblyReference.cache
+C:\Users\mulha\github\test\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\GG.UseCases.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mulha\github\test\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\GG.UseCases.AssemblyInfoInputs.cache
+C:\Users\mulha\github\test\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\GG.UseCases.AssemblyInfo.cs
+C:\Users\mulha\github\test\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\GG.UseCases.csproj.CoreCompileInputs.cache
+C:\Users\mulha\github\test\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\GG.UseCases.csproj.CopyComplete
+C:\Users\mulha\github\test\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\GG.UseCases.dll
+C:\Users\mulha\github\test\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\refint\GG.UseCases.dll
+C:\Users\mulha\github\test\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\GG.UseCases.pdb
+C:\Users\mulha\github\test\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\ref\GG.UseCases.dll
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GG.UseCases\bin\Debug\net6.0\GG.UseCases.deps.json
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GG.UseCases\bin\Debug\net6.0\GG.UseCases.dll
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GG.UseCases\bin\Debug\net6.0\GG.UseCases.pdb
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GG.UseCases\bin\Debug\net6.0\GG.CoreBusiness.dll
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GG.UseCases\bin\Debug\net6.0\GG.CoreBusiness.pdb
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\GG.UseCases.csproj.AssemblyReference.cache
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\GG.UseCases.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\GG.UseCases.AssemblyInfoInputs.cache
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\GG.UseCases.AssemblyInfo.cs
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\GG.UseCases.csproj.CoreCompileInputs.cache
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\GG.UseCases.csproj.CopyComplete
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\GG.UseCases.dll
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\refint\GG.UseCases.dll
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\GG.UseCases.pdb
+C:\Users\mulha\github\VERSUCH GOAL\GoalGetter\GG\GG.UseCases\obj\Debug\net6.0\ref\GG.UseCases.dll
