@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MudBlazor" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\GG.CoreBusiness\GG.CoreBusiness.csproj" />
     <ProjectReference Include="..\GG.Plugins.InMemory\GG.Plugins.InMemory.csproj" />
     <ProjectReference Include="..\GG.UseCases\GG.UseCases.csproj" />

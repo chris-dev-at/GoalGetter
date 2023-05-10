@@ -1,19 +1,23 @@
 ﻿@page "/projects"
 @inject NavigationManager NavigationManager
 
-<h1>
-	Projects
-</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 d-flex align-items-center">
+			<MudButton @onclick="NewProject" Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white">+ Project</MudButton>
+			<MudTextField @bind-Value="TextValue" Label="search" Variant="Variant.Outlined" Margin="Margin.Dense" Style="background-color: #0088d3; color: white; width: 70%" class="ms-15"></MudTextField>
+        </div>
+    </div>
+</div>
 
-<button @onclick="NewProject"><img />new Project</button>
+
 <Searchbar OnSearchterm="OnTermSearch" />
-
 @*Hier kommen die Karten für jeder Projekt*@
 <ProjectsListComponent searchTerm="@searchterm"/>
 
-
 @code{
 	private string searchterm = "";
+	public string TextValue { get; set; }
 
 	private void OnTermSearch(string searchterm)
 	{

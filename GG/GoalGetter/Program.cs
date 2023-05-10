@@ -4,6 +4,7 @@ using GG.UseCases.Projects;
 using GG.UseCases.Projects.Interfaces;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,9 @@ builder.Services.AddSingleton<IProjectsRepository, ProjectsRepository>();
 
 builder.Services.AddTransient<IViewProjectsByNameUseCase, ViewProjectsByNameUseCase>();
 builder.Services.AddTransient<IAddProjectUseCase, AddProjectUseCase>();
+
+builder.Services.AddMudServices();
+
 
 var app = builder.Build();
 
