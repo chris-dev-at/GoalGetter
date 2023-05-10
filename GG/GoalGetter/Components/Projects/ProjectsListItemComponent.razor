@@ -3,10 +3,12 @@
 	<hr />
 	<h3>@project.Description</h3>
 	<p>@project.status</p>
+	<div>
 	@foreach (var teamMember in project.assignedTeam.members)
 	{
-		<div><img src="@teamMember.person.AvatarPath" /></div>
+		<img src="@teamMember.person.AvatarPath" class="rounded-circle" width= "50px" />
 	}
+	</div>
 </div>
 @code {
 	[Parameter]
