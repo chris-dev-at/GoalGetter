@@ -18,6 +18,18 @@ namespace GG.Plugins.InMemory
 				return await Task.FromResult(Projects);
 			return Projects.Where(x => x.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
 		}
+		public Task AddProjectAsync(Project project)
+		{
+			if (Projects.Any(x => x.Name.Equals(project.Name, StringComparison.OrdinalIgnoreCase)))
+				return Task.CompletedTask;
+
+			var maxId = Projects.Max(x => x.Id);
+			project.Id = maxId + 1;
+
+			Projects.Add(project);
+			return Task.CompletedTask;
+		}
+
 		Random randy = new Random();
 
 
@@ -159,5 +171,7 @@ namespace GG.Plugins.InMemory
 				.Select(s => s[randy.Next(s.Length)]).ToArray());
 			return ret;
 		}
+
+		
 	}
 }

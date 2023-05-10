@@ -4,10 +4,13 @@
 	<h3>@project.Description</h3>
 	<p>@project.status</p>
 	<div>
-	@foreach (var teamMember in project.assignedTeam.members)
-	{
-		<img src="@teamMember.person.AvatarPath" class="rounded-circle" width= "50px" />
-	}
+		@if (project.assignedTeam != null)
+		{
+			foreach (var teamMember in project.assignedTeam.members)
+			{
+				<img src="@teamMember.person.AvatarPath" class="rounded-circle" width="50px" />
+			}
+		}
 	</div>
 </div>
 @code {

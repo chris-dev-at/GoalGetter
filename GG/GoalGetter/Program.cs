@@ -14,6 +14,8 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<IProjectsRepository, ProjectsRepository>();
 
 builder.Services.AddTransient<IViewProjectsByNameUseCase, ViewProjectsByNameUseCase>();
+builder.Services.AddTransient<IAddProjectUseCase, AddProjectUseCase>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

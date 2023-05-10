@@ -1,10 +1,11 @@
 ﻿@page "/projects"
+@inject NavigationManager NavigationManager
 
 <h1>
 	Projects
 </h1>
 
-<button><img />new Project</button>
+<button @onclick="NewProject"><img />new Project</button>
 <Searchbar OnSearchterm="OnTermSearch" />
 
 @*Hier kommen die Karten für jeder Projekt*@
@@ -17,5 +18,9 @@
 	private void OnTermSearch(string searchterm)
 	{
 		this.searchterm = searchterm;
+	}
+	private void NewProject()
+	{
+		NavigationManager.NavigateTo("/addproject");
 	}
 }

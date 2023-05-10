@@ -1,0 +1,37 @@
+﻿@page "/addproject"
+@inject NavigationManager NavigationManager
+@inject IAddProjectUseCase AddProjectUseCase
+
+<h1>Add Inventory</h1>
+<EditForm Model="newProject" OnValidSubmit="SaveProject">
+	<DataAnnotationsValidator></DataAnnotationsValidator>
+	<ValidationSummary></ValidationSummary>
+	<div class="form-group">
+		<label for="name">Project Name</label>
+		<InputText id="name" @bind-Value="newProject.Name" class="form-control"></InputText>
+	</div>
+
+	<div class="form-group">
+		<label for="description">Description</label>
+		<InputTextArea id="description" @bind-Value="newProject.Description" class="form-control"></InputTextArea>
+	</div>
+	<br />
+	<button type="submit" class="btn btn-primary">Save</button>
+	<button type="button" class="btn btn-primary" @onclick="Cancel">Cancel</button>
+
+</EditForm>
+
+@code {
+	private Project newProject = new Project();
+
+	private async Task SaveProject()
+	{
+		await AddProjectUseCase.ExecuteAsync(newProject);
+		NavigationManager.NavigateTo("/projects");
+	}
+
+	private void Cancel()
+	{
+		NavigationManager.NavigateTo("/projects");
+	}
+}

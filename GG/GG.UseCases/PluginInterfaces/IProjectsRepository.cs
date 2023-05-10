@@ -10,8 +10,9 @@ namespace GG.UseCases.PluginInterfaces
 	public interface IProjectsRepository
 	{
 		Task<IEnumerable<Project>> GetProjectsByNameAsync(string name);
+		Task AddProjectAsync(Project project);
+
 		//Task<Project> GetInventoryByIdAsync(int ProjectId);
-		//Task AddProjectAsync(Project project);
 		//Task<bool> ExistsAsync(Project project);
 		//Task UpdateProjectAsync(Project project);
 		//Task DeleteProjectAsync(Project project);
