@@ -11,17 +11,15 @@
     </div>
 </div>
 
+@*Hier kommen die Karten für jeder Projekt*@
+<ProjectsListComponent searchTerm="@searchterm" />
+
 <style>
     .search-button-wrapper {
         display: flex;
         justify-content: flex-end;
     }
 </style>
-
-
-
-@*Hier kommen die Karten für jeder Projekt*@
-<ProjectsListComponent searchTerm="@searchterm"/>
 
 @code{
 	private string searchterm = "";

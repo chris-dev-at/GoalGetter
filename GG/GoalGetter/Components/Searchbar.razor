@@ -1,17 +1,41 @@
 ﻿﻿
 <div class="input-group">
-	<input type="text" class="form-control" placeholder="Type inventory name here to search" 
+	<input type="text" class="form-control" placeholder="  searchterm"
 			@bind-value="searchterm" />
 	<button type="button" class="btn-success input-group-text"
 			@onclick="OnSearch">Search</button>
 </div>
 
+<style>
+	.form-control {
+		margin-left: 60px;
+		color: white;
+		width: 800px;
+		height: 40px;
+		background-color: #0088d3;
+		border:none;
+		border-radius: 5px;
+	}
+
+	btn-success input-group-text{
+		border: 3px solid black;
+	}
+
+	::placeholder {
+		color: #e4e6e7;
+	}
+</style>
 
 @code {
 	private string searchterm = string.Empty;
 
 	[Parameter]
 	public EventCallback<string> OnSearchterm { get; set; }
+
+	protected override void OnInitialized()
+	{
+		searchterm = "   ";
+	}
 
 	private void OnSearch()
 	{
