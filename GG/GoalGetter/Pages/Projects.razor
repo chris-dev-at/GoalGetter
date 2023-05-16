@@ -6,12 +6,7 @@
     <div class="row">
         <div class="col-md-6 d-flex align-items-center">
             <MudButton @onclick="NewProject" Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white">+ Project</MudButton>
-            @*<MudTextField @bind-Value="TextValue" Variant="Variant.Outlined" Margin="Margin.Dense" Style="background-color: #0088d3; color: white" Rounded="Rounded.All" class="ms-15">
-                <div class="search-button-wrapper">
-                    <MudButton Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white; margin-left: auto">search</MudButton>
-                </div>
-            </MudTextField>*@
-            
+            <Searchbar OnSearchterm="OnTermSearch" />            
         </div>
     </div>
 </div>
@@ -25,7 +20,6 @@
 
 
 
-<Searchbar OnSearchterm="OnTermSearch" />
 @*Hier kommen die Karten für jeder Projekt*@
 <ProjectsListComponent searchTerm="@searchterm"/>
 
