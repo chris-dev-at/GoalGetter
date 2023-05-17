@@ -1,0 +1,23 @@
+﻿@inject IViewPeopleByNameUseCase viewPeopleByNameUseCase
+@*Hier kommen die Karten für jeder Projekt*@
+
+
+@if (people != null)
+{
+	@foreach (var person in people)
+	{
+		<PeopleListItemComponent person="@person" />
+	}
+}
+
+@code {
+	private List<Person> people;
+
+	[Parameter]
+	public string searchTerm { get; set; }
+
+	protected override async Task OnParametersSetAsync()
+	{
+		people = (await viewPeopleByNameUseCase.ExecuteAsync(this.searchTerm)).ToList();
+	}
+}
