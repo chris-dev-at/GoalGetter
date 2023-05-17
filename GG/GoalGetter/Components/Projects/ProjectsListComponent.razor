@@ -17,6 +17,9 @@
 	public int spacing { get; set; } = 2;
 
 	[Parameter]
+	public bool reloadFlag { get; set; }
+
+	[Parameter]
 	public string searchTerm { get; set; }
 
 	protected override async Task OnParametersSetAsync()

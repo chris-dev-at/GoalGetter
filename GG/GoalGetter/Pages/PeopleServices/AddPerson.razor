@@ -2,26 +2,25 @@
 
 <h1>Add Person</h1>
 <EditForm Model="newPerson" OnValidSubmit="SavePerson">
-	<DataAnnotationsValidator></DataAnnotationsValidator>
-	<ValidationSummary></ValidationSummary>
-	<div class="form-group">
-		<label for="firstname">Person Firstname</label>
-		<MudInput id="firstname" @bind-Value="newPerson.Firstname" class="form-control"></MudInput>
-	</div>
-	<div class="form-group">
-		<label for="lastname">Person Lastname</label>
-		<MudInput id="lastname" @bind-Value="newPerson.Lastname" class="form-control"></MudInput>
-	</div>
-
-	<div class="form-group">
-		<label for="email">Person Email</label>
-		<MudInput id="email" @bind-Value="newPerson.Email" class="form-control"></MudInput>
-	</div>
-
-	<br />
-	<MudButton ButtonType="ButtonType.Submit" class="btn btn-primary">Save</MudButton>
-	<MudButton ButtonType="ButtonType.Button" class="btn btn-primary" @onclick="Cancel">Cancel</MudButton>
-
+	<DataAnnotationsValidator />
+	<MudItem>
+		<MudCard>
+			<MudCardContent>
+				<MudTextField Label="First name" HelperText="Max. 8 characters"
+								@bind-Value="newPerson.Firstname" For="@(() => newPerson.Firstname)" />
+				<MudTextField Label="Last name" Class="mt-3"
+								@bind-Value="newPerson.Lastname" For="@(() => newPerson.Lastname)" />
+				<MudTextField Label="Email" Class="mt-3"
+								@bind-Value="newPerson.Email" For="@(() => newPerson.Email)" InputType="InputType.Email" />
+				<MudTextField Label="Phone number" Class="mt-3"
+								@bind-Value="newPerson.Phone" For="@(() => newPerson.Phone)" InputType="InputType.Telephone" />
+			</MudCardContent>
+			<MudCardActions>
+				<MudButton ButtonType="ButtonType.Submit" class="btn btn-primary">Save</MudButton>
+				<MudButton ButtonType="ButtonType.Button" class="btn btn-primary" @onclick="Cancel">Cancel</MudButton>
+			</MudCardActions>
+		</MudCard>
+	</MudItem>
 </EditForm>
 
 @code {
