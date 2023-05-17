@@ -32,11 +32,6 @@
 	[Parameter]
 	public EventCallback<string> OnSearchterm { get; set; }
 
-	protected override void OnInitialized()
-	{
-		searchterm = "   ";
-	}
-
 	private void OnSearch()
 	{
 		OnSearchterm.InvokeAsync(searchterm);
