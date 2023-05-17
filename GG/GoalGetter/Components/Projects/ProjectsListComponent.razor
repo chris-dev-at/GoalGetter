@@ -1,14 +1,16 @@
 ﻿@inject IViewProjectsByNameUseCase viewProjectsByNameUseCase
 @*Hier kommen die Karten für jeder Projekt*@
 
-
-@if (projects != null)
-{
-	@foreach (var project in projects)
+<div>
+	@if (projects != null)
 	{
-		<ProjectsListItemComponent project="@project"/>
+		@foreach (var project in projects)
+		{
+			<ProjectsListItemComponent project="@project" />
+		}
 	}
-}
+</div>
+
 
 @code {
 	private List<Project> projects;

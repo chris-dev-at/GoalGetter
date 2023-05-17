@@ -1,17 +1,27 @@
-﻿<div class="mb-3">
-	<h2>@project.Name</h2>
-	<hr />
-	<h3>@project.Description</h3>
-	<p>@project.status</p>
-	<div>
-		@if (project.assignedTeam != null)
-		{
-			foreach (var teamMember in project.assignedTeam.members)
-			{
-				<img src="@teamMember.person.AvatarPath" class="rounded-circle" width="50px" />
-			}
-		}
-	</div>
+﻿<div class="mb-5" style="margin-top: 20px">
+	<MudContainer MaxWidth="MaxWidth.Small">
+		<MudPaper Height="180px" Width="120%" Square="true">
+			<div class="bg">
+				<h2>@project.Name</h2>
+			</div>
+			<hr />
+			<h3>@project.Description</h3>
+			<p>@project.status</p>
+			<div>
+				@if (project.assignedTeam != null)
+				{
+					foreach (var teamMember in project.assignedTeam.members)
+					{
+						<img src="@teamMember.person.AvatarPath" class="rounded-circle" width="50px" />
+					}
+				}
+			</div>
+		</MudPaper>
+	</MudContainer>
+		
+	
+
+
 </div>
 @code {
 	[Parameter]
