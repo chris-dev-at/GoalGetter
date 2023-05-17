@@ -1,6 +1,4 @@
-﻿@page "/addperson"
-@inject NavigationManager NavigationManager
-@inject IAddPersonUseCase AddPersonUseCase
+﻿@inject IAddPersonUseCase AddPersonUseCase
 
 <h1>Add Person</h1>
 <EditForm Model="newPerson" OnValidSubmit="SavePerson">
@@ -29,14 +27,17 @@
 @code {
 	private Person newPerson = new Person();
 
+
+	[Parameter]
+	public EventCallback<bool> Windowclosed { get; set; }
+
 	private async Task SavePerson()
 	{
 		await AddPersonUseCase.ExecuteAsync(newPerson);
-		NavigationManager.NavigateTo("/people");
+		Windowclosed.InvokeAsync(false);
 	}
-
 	private void Cancel()
 	{
-		NavigationManager.NavigateTo("/people");
+		Windowclosed.InvokeAsync(false);
 	}
 }

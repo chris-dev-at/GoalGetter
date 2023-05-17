@@ -4,7 +4,14 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-6 d-flex align-items-center">
-			<MudButton @onclick="NewPerson" Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white">+ Person</MudButton>
+			<MudButton Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white" Color="Color.Primary" OnClick="@ToggleOpen">
+				+ Person
+			</MudButton>
+			<MudPopover Open="@_isOpen" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
+				<div class="d-flex flex-column pa-1">
+					<AddPerson Windowclosed="Close" />
+				</div>
+			</MudPopover>
 			<Searchbar OnSearchterm="OnTermSearch" />
 		</div>
 	</div>
@@ -14,14 +21,23 @@
 <PeopleListComponent searchTerm="@searchterm" />
 
 @code {
+	public bool _isOpen;
+
+	public void Close(bool status)
+	{
+		_isOpen = status;
+
+	}
+
+	public void ToggleOpen()
+	{
+		_isOpen = true;
+	}
+
 	private string searchterm = "";
 
 	private void OnTermSearch(string searchterm)
 	{
 		this.searchterm = searchterm;
-	}
-	private void NewPerson()
-	{
-		NavigationManager.NavigateTo("/addperson");
 	}
 }
