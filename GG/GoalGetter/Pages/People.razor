@@ -18,15 +18,16 @@
 </div>
 
 @*Hier kommen die Karten für jeder Projekt*@
-<PeopleListComponent searchTerm="@searchterm" />
+<PeopleListComponent searchTerm="@searchterm" reloadFlag="@reloadFlag" />
 
 @code {
 	public bool _isOpen;
+	private bool reloadFlag = false;
 
 	public void Close(bool status)
 	{
 		_isOpen = status;
-		StateHasChanged();
+		reloadFlag = !reloadFlag; // Toggle the reload flag
 	}
 
 	public void ToggleOpen()

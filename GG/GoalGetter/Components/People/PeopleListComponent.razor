@@ -16,6 +16,9 @@
 	[Parameter]
 	public string searchTerm { get; set; }
 
+	[Parameter]
+	public bool reloadFlag { get; set; }
+
 	protected override async Task OnParametersSetAsync()
 	{
 		people = (await viewPeopleByNameUseCase.ExecuteAsync(this.searchTerm)).ToList();

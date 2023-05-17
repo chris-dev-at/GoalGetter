@@ -1,10 +1,14 @@
-﻿﻿
-<div class="input-group">
-	<input type="text" class="form-control" placeholder="What are you searching for"
-			@bind-value="searchterm" />
-	<button type="button" class="btn-success input-group-text"
-			@onclick="OnSearch">Search</button>
-</div>
+﻿
+<form @onsubmit="OnSearch">
+	<div class="input-group">
+		<input type="text" class="form-control" placeholder="What are you searching for"
+			   @bind-value="searchterm"/>
+		<button type="button" class="btn-success input-group-text"
+				@onclick="OnSearch">
+			Search
+		</button>
+	</div>
+</form>
 
 @code {
 	private string searchterm = string.Empty;

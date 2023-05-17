@@ -652,19 +652,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Clemens\\.nuget\\packages\\": {}
+    "C:\\Users\\mulha\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj",
+      "projectUniqueName": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj",
       "projectName": "GoalGetter",
-      "projectPath": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj",
-      "packagesPath": "C:\\Users\\Clemens\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GoalGetter\\obj\\",
+      "projectPath": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GoalGetter\\GoalGetter.csproj",
+      "packagesPath": "C:\\Users\\mulha\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GoalGetter\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Clemens\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mulha\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -678,14 +678,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj": {
-              "projectPath": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj"
+            "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj": {
+              "projectPath": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj"
             },
-            "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GG.Plugins.InMemory\\GG.Plugins.InMemory.csproj": {
-              "projectPath": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GG.Plugins.InMemory\\GG.Plugins.InMemory.csproj"
+            "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GG.Plugins.InMemory\\GG.Plugins.InMemory.csproj": {
+              "projectPath": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GG.Plugins.InMemory\\GG.Plugins.InMemory.csproj"
             },
-            "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GG.UseCases\\GG.UseCases.csproj": {
-              "projectPath": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GG.UseCases\\GG.UseCases.csproj"
+            "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GG.UseCases\\GG.UseCases.csproj": {
+              "projectPath": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GG.UseCases\\GG.UseCases.csproj"
             }
           }
         }
