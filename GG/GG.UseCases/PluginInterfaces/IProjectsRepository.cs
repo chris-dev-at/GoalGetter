@@ -12,6 +12,9 @@ namespace GG.UseCases.PluginInterfaces
 		Task<IEnumerable<Project>> GetProjectsByNameAsync(string name);
 		Task AddProjectAsync(Project project);
 
+		Task<IEnumerable<Person>> GetPeopleByNameAsync(string name);
+		Task AddPersonAsync(Person person);
+
 		//Task<Project> GetInventoryByIdAsync(int ProjectId);
 		//Task<bool> ExistsAsync(Project project);
 		//Task UpdateProjectAsync(Project project);

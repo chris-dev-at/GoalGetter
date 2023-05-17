@@ -1,5 +1,27 @@
-﻿<h3>People</h3>
+﻿@page "/people"
+@inject NavigationManager NavigationManager
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6 d-flex align-items-center">
+			<MudButton @onclick="NewPerson" Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white">+ Person</MudButton>
+			<Searchbar OnSearchterm="OnTermSearch" />
+		</div>
+	</div>
+</div>
+
+@*Hier kommen die Karten für jeder Projekt*@
+<PeopleListComponent searchTerm="@searchterm" />
 
 @code {
+	private string searchterm = "";
 
+	private void OnTermSearch(string searchterm)
+	{
+		this.searchterm = searchterm;
+	}
+	private void NewPerson()
+	{
+		NavigationManager.NavigateTo("/addperson");
+	}
 }

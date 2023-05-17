@@ -30,6 +30,22 @@ namespace GG.Plugins.InMemory
 			return Task.CompletedTask;
 		}
 
+		public async Task<IEnumerable<Person>> GetPeopleByNameAsync(string name)
+		{
+			if (string.IsNullOrWhiteSpace(name))
+				return await Task.FromResult(Contact);
+			return Contact.Where(x => x.Firstname.Contains(name, StringComparison.OrdinalIgnoreCase));
+		}
+
+		public Task AddPersonAsync(Person person)
+		{
+			if (Contact.Any(x => x.Firstname.Equals(person.Firstname, StringComparison.OrdinalIgnoreCase)))
+				return Task.CompletedTask;
+
+			Contact.Add(person);
+			return Task.CompletedTask;
+		}
+
 		Random randy = new Random();
 
 

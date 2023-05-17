@@ -17,6 +17,9 @@ builder.Services.AddSingleton<IProjectsRepository, ProjectsRepository>();
 builder.Services.AddTransient<IViewProjectsByNameUseCase, ViewProjectsByNameUseCase>();
 builder.Services.AddTransient<IAddProjectUseCase, AddProjectUseCase>();
 
+builder.Services.AddTransient<IViewPeopleByNameUseCase, ViewPeopleByNameUseCase>();
+builder.Services.AddTransient<IAddPersonUseCase, AddPersonUseCase>();
+
 builder.Services.AddMudServices();
 
 
