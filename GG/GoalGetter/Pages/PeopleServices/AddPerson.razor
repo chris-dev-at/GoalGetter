@@ -1,0 +1,42 @@
+﻿@page "/addperson"
+@inject NavigationManager NavigationManager
+@inject IAddPersonUseCase AddPersonUseCase
+
+<h1>Add Person</h1>
+<EditForm Model="newPerson" OnValidSubmit="SavePerson">
+	<DataAnnotationsValidator></DataAnnotationsValidator>
+	<ValidationSummary></ValidationSummary>
+	<div class="form-group">
+		<label for="firstname">Person Firstname</label>
+		<MudInput id="firstname" @bind-Value="newPerson.Firstname" class="form-control"></MudInput>
+	</div>
+	<div class="form-group">
+		<label for="lastname">Person Lastname</label>
+		<MudInput id="lastname" @bind-Value="newPerson.Lastname" class="form-control"></MudInput>
+	</div>
+
+	<div class="form-group">
+		<label for="email">Person Email</label>
+		<MudInput id="email" @bind-Value="newPerson.Email" class="form-control"></MudInput>
+	</div>
+
+	<MudBreadcrumbs />
+	<MudButton ButtonType="ButtonType.Submit" class="btn btn-primary">Save</MudButton>
+	<MudButton type="button" class="btn btn-primary" @onclick="Cancel">Cancel</MudButton>
+
+</EditForm>
+
+@code {
+	private Person newPerson = new Person();
+
+	private async Task SavePerson()
+	{
+		await AddPersonUseCase.ExecuteAsync(newPerson);
+		NavigationManager.NavigateTo("/people");
+	}
+
+	private void Cancel()
+	{
+		NavigationManager.NavigateTo("/people");
+	}
+}
