@@ -2,3 +2,8 @@
     background-color: #0088d3;
     color: white;
 }
+
+.flex-right-down[b-3xpm0gykpb] {
+    display: flex;
+    justify-content: flex-end;
+}

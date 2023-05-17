@@ -1,7 +1,7 @@
 ﻿@inject IViewProjectsByNameUseCase viewProjectsByNameUseCase
 @*Hier kommen die Karten für jeder Projekt*@
 
-<div>
+<MudGrid Spacing="@spacing" Justify="Justify.FlexStart" Class="mt-13">
 	@if (projects != null)
 	{
 		@foreach (var project in projects)
@@ -9,11 +9,12 @@
 			<ProjectsListItemComponent project="@project" />
 		}
 	}
-</div>
+</MudGrid>
 
 
 @code {
 	private List<Project> projects;
+	public int spacing { get; set; } = 2;
 
 	[Parameter]
 	public string searchTerm { get; set; }
