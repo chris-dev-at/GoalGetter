@@ -1,6 +1,7 @@
 /* _content/GoalGetter/Components/Projects/ProjectsListComponent.razor.rz.scp.css */
 div[b-100r8gzndn] {
     display: flex;
+    width: 700px;
 }
 /* _content/GoalGetter/Components/Projects/ProjectsListItemComponent.razor.rz.scp.css */
 .bg[b-3xpm0gykpb] {
@@ -10,7 +11,7 @@ div[b-100r8gzndn] {
 /* _content/GoalGetter/Components/Searchbar.razor.rz.scp.css */
 
 .form-control[b-ug0s5b7ca7] {
-    margin-left: 60px;
+    margin-left: 50px;
     color: white;
     width: 800px;
     height: 40px;

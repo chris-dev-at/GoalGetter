@@ -1,5 +1,5 @@
-﻿<div class="mb-5" style="margin-top: 20px">
-	<MudContainer MaxWidth="MaxWidth.Small">
+﻿@*<div class="mb-5" style="margin-top: 20px">
+	<MudContainer MaxWidth="MaxWidth.Medium">
 		<MudPaper Height="180px" Width="120%" Square="true">
 			<div class="bg">
 				<h2>@project.Name</h2>
@@ -12,18 +12,39 @@
 				{
 					foreach (var teamMember in project.assignedTeam.members)
 					{
-						<img src="@teamMember.person.AvatarPath" class="rounded-circle" width="50px" />
+						<img src="@teamMember.person.AvatarPath" class="rounded-circle" width="25px" />
 					}
 				}
 			</div>
 		</MudPaper>
 	</MudContainer>
-		
-	
+</div>*@
 
-
+<div class="mud-grid mud-grid-spacing-xs-1 justify-start">
+	<MudItem>	
+		<MudPaper Height="170px" Width="200px">
+			<div class="bg">
+				<h2>@project.Name</h2>
+			</div>
+			<hr />
+			<h3>@project.Description</h3>
+			<p>@project.status</p>
+			<div>
+				@if (project.assignedTeam != null)
+				{
+					foreach (var teamMember in project.assignedTeam.members)
+					{
+						<img src="@teamMember.person.AvatarPath" class="rounded-circle" width="25px" />
+					}
+				}
+			</div>
+		</MudPaper>
+	</MudItem>
 </div>
+
+
 @code {
 	[Parameter]
 	public Project project{ get; set; }
+
 }
