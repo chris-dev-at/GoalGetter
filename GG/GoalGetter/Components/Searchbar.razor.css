@@ -1,0 +1,19 @@
+﻿
+.form-control {
+    margin-left: 60px;
+    color: white;
+    width: 800px;
+    height: 40px;
+    background-color: #0088d3;
+    border: none;
+    border-radius: 5px;
+}
+
+btn-success input-group-text {
+    border: 3px solid black;
+}
+
+::placeholder {
+    color: #e4e6e7;
+}
+
