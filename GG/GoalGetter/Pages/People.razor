@@ -8,7 +8,7 @@
 				+ Person
 			</MudButton>
 			<MudPopover Open="@_isOpen" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
-				<div class="d-flex flex-column pa-1">
+				<div class="d-flex flex-column pa-10">
 					<AddPerson Windowclosed="Close" />
 				</div>
 			</MudPopover>
@@ -26,7 +26,7 @@
 	public void Close(bool status)
 	{
 		_isOpen = status;
-
+		StateHasChanged();
 	}
 
 	public void ToggleOpen()

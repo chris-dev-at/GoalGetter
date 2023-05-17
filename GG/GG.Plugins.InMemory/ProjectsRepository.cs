@@ -34,7 +34,9 @@ namespace GG.Plugins.InMemory
 		{
 			if (string.IsNullOrWhiteSpace(name))
 				return await Task.FromResult(Contact);
-			return Contact.Where(x => x.Firstname.Contains(name, StringComparison.OrdinalIgnoreCase));
+			return Contact.Where(x =>
+					x.Firstname.Contains(name, StringComparison.OrdinalIgnoreCase) ||
+					x.Lastname.Contains(name, StringComparison.OrdinalIgnoreCase));
 		}
 
 		public Task AddPersonAsync(Person person)
