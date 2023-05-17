@@ -1,5 +1,4 @@
-﻿@page "/addproject"
-@inject NavigationManager NavigationManager
+﻿@inject NavigationManager NavigationManager
 @inject IAddProjectUseCase AddProjectUseCase
 
 <h1>Add Project</h1>
@@ -24,14 +23,18 @@
 @code {
 	private Project newProject = new Project();
 
+	[Parameter]
+	public EventCallback<bool> Windowclosed { get; set; }
+
 	private async Task SaveProject()
 	{
 		await AddProjectUseCase.ExecuteAsync(newProject);
-		NavigationManager.NavigateTo("/projects");
+		Windowclosed.InvokeAsync(false);
 	}
 
 	private void Cancel()
 	{
-		NavigationManager.NavigateTo("/projects");
+		Windowclosed.InvokeAsync(false);
 	}
+
 }

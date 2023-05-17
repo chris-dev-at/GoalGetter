@@ -5,14 +5,21 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6 d-flex align-items-center">
-            <MudButton @onclick="NewProject" Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white">+ Project</MudButton>
+			<MudButton Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white" Color="Color.Primary" OnClick="@ToggleOpen">
+				+ Project
+			</MudButton>
+			<MudPopover Open="@_isOpen" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
+				<div class="d-flex flex-column pa-10">
+					<AddProject Windowclosed="Close" />
+				</div>
+			</MudPopover>
             <Searchbar OnSearchterm="OnTermSearch" />            
         </div>
     </div>
 </div>
 
 @*Hier kommen die Karten für jeder Projekt*@
-<ProjectsListComponent searchTerm="@searchterm" />
+<ProjectsListComponent searchTerm="@searchterm" reloadFlag="@reloadFlag" />
 
 <style>
     .search-button-wrapper {
@@ -22,14 +29,25 @@
 </style>
 
 @code{
+
+	public bool _isOpen;
+	private bool reloadFlag = false;
+
+	public void Close(bool status)
+	{
+		_isOpen = status;
+		reloadFlag = !reloadFlag; // Toggle the reload flag
+	}
+
+	public void ToggleOpen()
+	{
+		_isOpen = true;
+	}
+
 	private string searchterm = "";
 
 	private void OnTermSearch(string searchterm)
 	{
 		this.searchterm = searchterm;
-	}
-	private void NewProject()
-	{
-		NavigationManager.NavigateTo("/addproject");
 	}
 }
