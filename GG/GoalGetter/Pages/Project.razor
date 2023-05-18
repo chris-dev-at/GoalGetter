@@ -1,8 +1,12 @@
 ﻿@page "/project/{ProId:int}"
 @inject IViewProjectByIdUseCase ViewProjectByIdUseCase
+@layout ProjectMainLayout
 
-<h3>@project.Name</h3>
-<h3>@project.Description</h3>
+
+	<h3>@project.Name</h3>
+	<h3>@project.Description</h3>
+	<!-- Rest of your component code -->
+
 
 @code {
 
@@ -15,5 +19,4 @@
 	{
 		project = await ViewProjectByIdUseCase.ExecuteAsync(this.ProId);
 	}
-
 }
