@@ -12,6 +12,8 @@ namespace GG.Plugins.InMemory
 		{
 			CreateTestData();
 		}
+
+		//CRUD for Project Entitys
 		public async Task<IEnumerable<Project>> GetProjectsByNameAsync(string name)
 		{
 			if (string.IsNullOrWhiteSpace(name))
@@ -29,6 +31,24 @@ namespace GG.Plugins.InMemory
 			Projects.Add(project);
 			return Task.CompletedTask;
 		}
+
+		public async Task<Project> GetProjectByIdAsync(int ProjectId)
+		{
+			var pro = Projects.First(x => x.Id == ProjectId);
+			var newpro = new Project
+			{
+				Id = pro.Id,
+				Name = pro.Name,
+				Description = pro.Description,
+				Tasks = pro.Tasks,
+				Budget= pro.Budget,
+				assignedTeam = pro.assignedTeam,
+				status = pro.status
+			};
+			return await Task.FromResult(newpro);
+		}
+
+		//CRUD for People Entitys
 
 		public async Task<IEnumerable<Person>> GetPeopleByNameAsync(string name)
 		{

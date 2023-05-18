@@ -1,6 +1,6 @@
 ﻿using GG.CoreBusiness;
 
-namespace GG.UseCases.Projects.Interfaces
+namespace GG.UseCases.People.Interfaces
 {
     public interface IViewPeopleByNameUseCase
     {

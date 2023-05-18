@@ -19,7 +19,7 @@ namespace ConsoleAppPlayground
             {
                 Contact.Add(new Person()
                 {
-                    Id = RandomString(),
+                    Id = 1,
                     Firstname = "Rainer",
                     Lastname = "Winkler",
                     Address = "DE, Emskirchen 91448, Altschauerberg 8",
@@ -29,7 +29,7 @@ namespace ConsoleAppPlayground
 
                 Contact.Add(new Person()
                 {
-                    Id = RandomString(),
+                    Id = 2,
                     Firstname = "Ilse",
                     Lastname = "Nigischer",
                     Address = "AT Waidhofen a. T. 3830, Buxdihudenstraße 1",
@@ -39,7 +39,7 @@ namespace ConsoleAppPlayground
 
                 Contact.Add(new Person()
                 {
-                    Id = RandomString(),
+                    Id = 3,
                     Firstname = "Herwig",
                     Lastname = "Macho",
                     Address = "AT Zwettl 3910, Propstei 8",
@@ -49,7 +49,7 @@ namespace ConsoleAppPlayground
 
                 Contact.Add(new Person()
                 {
-                    Id = RandomString(),
+                    Id = 4,
                     Firstname = "Lukas",
                     Lastname = "Kolinsky",
                     Address = "AT, Zwettl 3910, Propstei 7",
@@ -59,7 +59,7 @@ namespace ConsoleAppPlayground
 
                 Contact.Add(new Person()
                 {
-                    Id = RandomString(),
+                    Id = 5,
                     Firstname = "Mulham",
                     Lastname = "Taylouni",
                     Address = "AT, Gmünd 3950, Schremserstraße 69",
@@ -69,7 +69,7 @@ namespace ConsoleAppPlayground
 
                 Contact.Add(new Person()
                 {
-                    Id = RandomString(),
+                    Id = 6,
                     Firstname = "Christian",
                     Lastname = "Wiesinger",
                     Address = "AT, Rappottenstein 3911, Burgunderweg 109",
@@ -79,7 +79,7 @@ namespace ConsoleAppPlayground
 
                 Contact.Add(new Person()
                 {
-                    Id = RandomString(),
+                    Id = 7,
                     Firstname = "Clemens",
                     Lastname = "Schmid",
                     Address = "AT, Zwettl 3910,Hammerweg 3",
@@ -95,7 +95,7 @@ namespace ConsoleAppPlayground
                 t1.members.Add(new Teammember() { person = getRandomPerson(), Description = "Programmer", Role = Teamrolle.Worker });
                 t1.members.Add(new Teammember() { person = getRandomPerson(), Description = "Projektleiter", Role = Teamrolle.Projektleader });
 
-                Project p1 = new Project() { Name = "Project 1", Budget = 99.50f, status = ProgressStatus.In_Progress, assignedTeam = t1, Description = "This project is for testing", Id = RandomString(), Tasks = new List<ProjectTask>() };
+                Project p1 = new Project() { Name = "Project 1", Budget = 99.50f, status = ProgressStatus.In_Progress, assignedTeam = t1, Description = "This project is for testing", Id = 1, Tasks = new List<ProjectTask>() };
 
                 p1.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
                 p1.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
@@ -115,7 +115,7 @@ namespace ConsoleAppPlayground
                 t2.members.Add(new Teammember() { person = Contact[0], Description = "Programmer", Role = Teamrolle.Administrator });
                 t2.members.Add(new Teammember() { person = getRandomPerson(), Description = "Projektleiter", Role = Teamrolle.Projektleader });
 
-                Project p2 = new Project() { Name = "Funky Munky", Budget = 99.50f, status = ProgressStatus.In_Progress, assignedTeam = t2, Tasks = new List<ProjectTask>() };
+                Project p2 = new Project() { Name = "Funky Munky", Budget = 99.50f, status = ProgressStatus.In_Progress, assignedTeam = t2, Id= 2, Tasks = new List<ProjectTask>() };
 
                 p2.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t2), Deadline = RandomDay(), Id = RandomString() });
                 p2.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t2), Deadline = RandomDay(), Id = RandomString() });

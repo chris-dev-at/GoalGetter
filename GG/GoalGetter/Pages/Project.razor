@@ -1,10 +1,19 @@
-﻿@page "/project/{id:int}"
+﻿@page "/project/{ProId:int}"
+@inject IViewProjectByIdUseCase ViewProjectByIdUseCase
 
-<h3></h3>
+<h3>@project.Name</h3>
+<h3>@project.Description</h3>
 
 @code {
-	[Parameter]
-	public int id { get; set; }
 
+	[Parameter]
+	public int ProId { get; set; }
+
+	private GG.CoreBusiness.Project project = new GG.CoreBusiness.Project();
+
+	protected override async Task OnParametersSetAsync()
+	{
+		project = await ViewProjectByIdUseCase.ExecuteAsync(this.ProId);
+	}
 
 }

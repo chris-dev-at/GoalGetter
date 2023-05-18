@@ -1,4 +1,6 @@
 using GG.Plugins.InMemory;
+using GG.UseCases.People;
+using GG.UseCases.People.Interfaces;
 using GG.UseCases.PluginInterfaces;
 using GG.UseCases.Projects;
 using GG.UseCases.Projects.Interfaces;
@@ -16,6 +18,7 @@ builder.Services.AddSingleton<IProjectsRepository, ProjectsRepository>();
 
 builder.Services.AddTransient<IViewProjectsByNameUseCase, ViewProjectsByNameUseCase>();
 builder.Services.AddTransient<IAddProjectUseCase, AddProjectUseCase>();
+builder.Services.AddTransient<IViewProjectByIdUseCase, ViewProjectByIdUseCase>();
 
 builder.Services.AddTransient<IViewPeopleByNameUseCase, ViewPeopleByNameUseCase>();
 builder.Services.AddTransient<IAddPersonUseCase, AddPersonUseCase>();
