@@ -16,4 +16,8 @@
     <ProjectReference Include="..\GG.UseCases\GG.UseCases.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\TeamServices\" />
+  </ItemGroup>
+
 </Project>
