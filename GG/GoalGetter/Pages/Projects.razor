@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6 d-flex align-items-center">
-			<MudButton @onclick="OpenDialog" Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white" Color="Color.Primary" >
+			<MudButton OnClick="@((e) => OpenDialog(maxWidth))" Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white" Color="Color.Primary">
 				+ Project
 			</MudButton>
 			<MudPopover Open="@_isOpen" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
@@ -52,9 +52,10 @@
 		this.searchterm = searchterm;
 	}
 
-	private void OpenDialog()
+	DialogOptions maxWidth = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true };
+
+	private void OpenDialog(DialogOptions options)
 	{
-		var options = new DialogOptions { CloseOnEscapeKey = true };
-		DialogService.Show<AddProject>("Add People", options);
+		DialogService.Show<AddProject>("Add Projects", options);
 	}
 }
