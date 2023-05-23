@@ -1,11 +1,12 @@
 ﻿@page "/"
 @page "/projects"
 @inject NavigationManager NavigationManager
+@inject IDialogService DialogService
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6 d-flex align-items-center">
-			<MudButton Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white" Color="Color.Primary" OnClick="@ToggleOpen">
+			<MudButton @onclick="OpenDialog" Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white" Color="Color.Primary" >
 				+ Project
 			</MudButton>
 			<MudPopover Open="@_isOpen" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
@@ -49,5 +50,11 @@
 	private void OnTermSearch(string searchterm)
 	{
 		this.searchterm = searchterm;
+	}
+
+	private void OpenDialog()
+	{
+		var options = new DialogOptions { CloseOnEscapeKey = true };
+		DialogService.Show<AddProject>("Add People", options);
 	}
 }
