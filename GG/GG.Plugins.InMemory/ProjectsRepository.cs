@@ -8,7 +8,7 @@ namespace GG.Plugins.InMemory
 		private List<Project> Projects = new List<Project>();
 		private List<Person> Contact = new List<Person>();
 
-		public ProjectsRepository() 
+		public ProjectsRepository()
 		{
 			CreateTestData();
 		}
@@ -20,6 +20,7 @@ namespace GG.Plugins.InMemory
 				return await Task.FromResult(Projects);
 			return Projects.Where(x => x.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
 		}
+
 		public Task AddProjectAsync(Project project)
 		{
 			if (Projects.Any(x => x.Name.Equals(project.Name, StringComparison.OrdinalIgnoreCase)))
@@ -41,7 +42,7 @@ namespace GG.Plugins.InMemory
 				Name = pro.Name,
 				Description = pro.Description,
 				Tasks = pro.Tasks,
-				Budget= pro.Budget,
+				Budget = pro.Budget,
 				assignedTeam = pro.assignedTeam,
 				status = pro.status
 			};
@@ -54,16 +55,67 @@ namespace GG.Plugins.InMemory
 		{
 			return await GetPersonWithinPersonList(name, Contact);
 		}
-		public async Task<IEnumerable<Person>> GetPersonWithinPersonList(string person_name, List<Person> personlist)
+		public async Task<IEnumerable<Person>> GetPersonWithinPersonList(string person_name, IEnumerable<Person> personlist)
+		{
+			if (string.IsNullOrWhiteSpace(person_name))
+				return await Task.FromResult(personlist);
+			return Contact.Where(x =>
+					x.Firstname.Contains(person_name, StringComparison.OrdinalIgnoreCase) ||
+					x.Lastname.Contains(person_name, StringComparison.OrdinalIgnoreCase));
+		}
+
+        public async Task<IEnumerable<Teammember>> GetTeammemberByNameWithinTeamAsync (string person_name, Team team) 
 		{
             if (string.IsNullOrWhiteSpace(person_name))
-                return await Task.FromResult(personlist);
-            return Contact.Where(x =>
-					x.Firstname.Contains(person_name, StringComparison.OrdinalIgnoreCase) ||
-                    x.Lastname.Contains(person_name, StringComparison.OrdinalIgnoreCase));
+                return await Task.FromResult(team.members);
+            return team.members.Where(x =>
+                    x.person.Firstname.Contains(person_name, StringComparison.OrdinalIgnoreCase) ||
+                    x.person.Lastname.Contains(person_name, StringComparison.OrdinalIgnoreCase));
         }
 
-		public Task AddPersonAsync(Person person)
+        public async Task<IEnumerable<ProjectTask>> GetTaskByNameWithinList(string task_name, IEnumerable<ProjectTask> tasks)
+        {
+            if (string.IsNullOrWhiteSpace(task_name))
+                return await Task.FromResult(tasks);
+            return tasks.Where(x =>
+                    x.Name.Contains(task_name, StringComparison.OrdinalIgnoreCase) ||
+                    x.Description.Contains(task_name, StringComparison.OrdinalIgnoreCase));
+        }
+
+		public async Task DeleteTeammemberFromTeamAsync(Teammember member, Team t)
+		{
+			if(member != null)
+				t.members.Remove(member);
+		}
+		public async Task DeletePersonCompletelyAsync(Person person)
+		{
+			if(person == null) return;
+
+
+			//Remove out of all Projects
+			foreach (Project p in Projects)
+			{
+				foreach (Teammember member in p.assignedTeam.members)
+				{
+					if (member.person == person)
+					{
+						await DeleteTeammemberFromTeamAsync(member, p.assignedTeam);
+
+						//Remove from all Assigned Tasks
+						foreach (ProjectTask task in p.Tasks)
+						{
+							if (task.AssignedPerson == member)
+								task.AssignedPerson = null;
+						}
+					}
+				}
+			}
+
+			//Remove from Contacts
+			Contact.Remove(person);
+		}
+
+        public Task AddPersonAsync(Person person)
 		{
 			if (Contact.Any(x => x.Firstname.Equals(person.Firstname, StringComparison.OrdinalIgnoreCase)))
 				return Task.CompletedTask;
