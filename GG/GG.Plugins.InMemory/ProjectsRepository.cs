@@ -52,12 +52,16 @@ namespace GG.Plugins.InMemory
 
 		public async Task<IEnumerable<Person>> GetPeopleByNameAsync(string name)
 		{
-			if (string.IsNullOrWhiteSpace(name))
-				return await Task.FromResult(Contact);
-			return Contact.Where(x =>
-					x.Firstname.Contains(name, StringComparison.OrdinalIgnoreCase) ||
-					x.Lastname.Contains(name, StringComparison.OrdinalIgnoreCase));
+			return await GetPersonWithinPersonList(name, Contact);
 		}
+		public async Task<IEnumerable<Person>> GetPersonWithinPersonList(string person_name, List<Person> personlist)
+		{
+            if (string.IsNullOrWhiteSpace(person_name))
+                return await Task.FromResult(personlist);
+            return Contact.Where(x =>
+					x.Firstname.Contains(person_name, StringComparison.OrdinalIgnoreCase) ||
+                    x.Lastname.Contains(person_name, StringComparison.OrdinalIgnoreCase));
+        }
 
 		public Task AddPersonAsync(Person person)
 		{
