@@ -16,8 +16,10 @@ namespace GG.UseCases.PluginInterfaces
 		Task<IEnumerable<Person>> GetPeopleByNameAsync(string name);
 		Task AddPersonAsync(Person person);
 
-		//Task<bool> ExistsAsync(Project project);
-		//Task UpdateProjectAsync(Project project);
-		//Task DeleteProjectAsync(Project project);
-	}
+		Task <IEnumerable<Person>> GetPersonWithinPersonList(string person_name, List<Person> persons);
+
+        //Task<bool> ExistsAsync(Project project);
+        //Task UpdateProjectAsync(Project project);
+        //Task DeleteProjectAsync(Project project);
+    }
 }
