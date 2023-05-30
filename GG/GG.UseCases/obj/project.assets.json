@@ -612,19 +612,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mulha\\.nuget\\packages\\": {}
+    "C:\\Users\\Clemens\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GG.UseCases\\GG.UseCases.csproj",
+      "projectUniqueName": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GG.UseCases\\GG.UseCases.csproj",
       "projectName": "GG.UseCases",
-      "projectPath": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GG.UseCases\\GG.UseCases.csproj",
-      "packagesPath": "C:\\Users\\mulha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GG.UseCases\\obj\\",
+      "projectPath": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GG.UseCases\\GG.UseCases.csproj",
+      "packagesPath": "C:\\Users\\Clemens\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GG.UseCases\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\mulha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Clemens\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -638,8 +638,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj": {
-              "projectPath": "C:\\Users\\mulha\\github\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj"
+            "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj": {
+              "projectPath": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\GG.CoreBusiness\\GG.CoreBusiness.csproj"
             }
           }
         }

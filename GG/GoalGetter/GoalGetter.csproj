@@ -20,4 +20,8 @@
     <Folder Include="Pages\TeamServices\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\images\Logo-GoalGetter.png" />
+  </ItemGroup>
+
 </Project>
