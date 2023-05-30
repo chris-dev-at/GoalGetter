@@ -7,4 +7,3 @@
 
 #ignore every .vs directory
 **/.vs/
-/GG/GG.UseCases/obj/Debug/net6.0/GG.UseCases.GeneratedMSBuildEditorConfig.editorconfig
