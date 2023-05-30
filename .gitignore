@@ -1,8 +1,10 @@
 # ignore all .env files
 *.env
 
-#Ignroe debugs
-/GG/GoalGetter/bin/*
-/GG/GoalGetter/obj/*
-/GG/ConsoleAppPlayground/bin/*
-/GG/ConsoleAppPlayground/obj/*
+#Ignroe debugs & releases
+**/obj/*
+**/bin/*
+
+#ignore every .vs directory
+**/.vs/
+/GG/GG.UseCases/obj/Debug/net6.0/GG.UseCases.GeneratedMSBuildEditorConfig.editorconfig
