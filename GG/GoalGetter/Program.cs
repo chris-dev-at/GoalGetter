@@ -4,6 +4,8 @@ using GG.UseCases.People.Interfaces;
 using GG.UseCases.PluginInterfaces;
 using GG.UseCases.Projects;
 using GG.UseCases.Projects.Interfaces;
+using GG.UseCases.Team;
+using GG.UseCases.Team.Interfaces;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using MudBlazor.Services;
@@ -22,6 +24,8 @@ builder.Services.AddTransient<IViewProjectByIdUseCase, ViewProjectByIdUseCase>()
 
 builder.Services.AddTransient<IViewPeopleByNameUseCase, ViewPeopleByNameUseCase>();
 builder.Services.AddTransient<IAddPersonUseCase, AddPersonUseCase>();
+
+builder.Services.AddTransient<IViewTeamMembersByProjectIdUseCase, ViewTeamMembersByProjectIdUseCase>();
 
 builder.Services.AddMudServices();
 
