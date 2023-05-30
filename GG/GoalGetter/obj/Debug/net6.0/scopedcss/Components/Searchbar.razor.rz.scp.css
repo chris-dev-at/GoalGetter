@@ -2,11 +2,11 @@
 .form-control[b-ug0s5b7ca7] {
     margin-left: 50px;
     color: white;
-    width: 800px;
-    height: 40px;
+    min-width: 800px;
+    min-height: 40px;
     background-color: #0088d3;
     border: none;
-    border-radius: 5px;
+    border-radius: 15px;
 }
 
 btn-success input-group-text[b-ug0s5b7ca7] {

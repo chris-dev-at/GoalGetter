@@ -1,23 +1,23 @@
-﻿
-<form @onsubmit="OnSearch">
-	<div class="input-group">
-		<input type="text" class="form-control" placeholder="What are you searching for"
-			   @bind-value="searchterm"/>
-		<button type="button" class="btn-success input-group-text"
-				@onclick="OnSearch">
-			Search
-		</button>
-	</div>
+﻿<form @onsubmit="OnSearch">
+    <div class="input-group">
+        <div style="display: flex; align-items: center;">
+            <MudTextField @bind-Value="searchterm" Style="margin-left: 50px; color: white; min-width: 750px; max-height: 40px; background-color: #0088d3; border: none; border-radius: 5px;" Placeholder="Search" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Inherit" />
+            <div style="flex-grow: 1;"></div>
+            <MudButton Variant="Variant.Outlined" type="button" class="btn-success input-group-text" OnClick=@OnSearch>
+                Search
+            </MudButton>
+        </div>
+    </div>
 </form>
 
 @code {
-	private string searchterm = string.Empty;
+    private string searchterm = string.Empty;
 
-	[Parameter]
-	public EventCallback<string> OnSearchterm { get; set; }
+    [Parameter]
+    public EventCallback<string> OnSearchterm { get; set; }
 
-	private void OnSearch()
-	{
-		OnSearchterm.InvokeAsync(searchterm);
-	}
+    private void OnSearch()
+    {
+        OnSearchterm.InvokeAsync(searchterm);
+    }
 }
