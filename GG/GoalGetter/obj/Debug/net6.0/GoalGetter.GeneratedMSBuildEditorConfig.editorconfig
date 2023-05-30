@@ -9,77 +9,113 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = GoalGetter
 build_property.RootNamespace = GoalGetter
-build_property.ProjectDir = C:\Users\mulha\github\GoalGetter\GG\GoalGetter\
+build_property.ProjectDir = C:\Users\user\Source\Repos\chris-dev-at\GoalGetter\GG\GoalGetter\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\mulha\github\GoalGetter\GG\GoalGetter
+build_property.MSBuildProjectDirectory = C:\Users\user\Source\Repos\chris-dev-at\GoalGetter\GG\GoalGetter
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/mulha/github/GoalGetter/GG/GoalGetter/App.razor]
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mulha/github/GoalGetter/GG/GoalGetter/Components/People/PeopleListComponent.razor]
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Components/People/PeopleListComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQZW9wbGVcUGVvcGxlTGlzdENvbXBvbmVudC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mulha/github/GoalGetter/GG/GoalGetter/Components/People/PeopleListItemComponent.razor]
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Components/People/PeopleListItemComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQZW9wbGVcUGVvcGxlTGlzdEl0ZW1Db21wb25lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mulha/github/GoalGetter/GG/GoalGetter/Pages/People.razor]
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Components/Tasks/TasksListComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xUYXNrc1xUYXNrc0xpc3RDb21wb25lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Components/Tasks/TasksListItemComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xUYXNrc1xUYXNrc0xpc3RJdGVtQ29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Components/Team/TeamListComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xUZWFtXFRlYW1MaXN0Q29tcG9uZW50LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Components/Team/TeamListItemComponent.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xUZWFtXFRlYW1MaXN0SXRlbUNvbXBvbmVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Pages/People.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGVvcGxlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mulha/github/GoalGetter/GG/GoalGetter/Pages/PeopleServices/AddPerson.razor]
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Pages/PeopleServices/AddPerson.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGVvcGxlU2VydmljZXNcQWRkUGVyc29uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mulha/github/GoalGetter/GG/GoalGetter/Pages/Projects.razor]
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Pages/Project.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvamVjdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Pages/Projects.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvamVjdHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mulha/github/GoalGetter/GG/GoalGetter/Pages/ProjectsServices/AddProject.razor]
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Pages/ProjectsServices/AddProject.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvamVjdHNTZXJ2aWNlc1xBZGRQcm9qZWN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mulha/github/GoalGetter/GG/GoalGetter/Shared/SurveyPrompt.razor]
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Pages/TasksServices/AddTask.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFza3NTZXJ2aWNlc1xBZGRUYXNrLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Pages/Team.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGVhbS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Shared/ProjectMainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFByb2plY3RNYWluTGF5b3V0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Shared/ProjectNavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFByb2plY3ROYXZNZW51LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mulha/github/GoalGetter/GG/GoalGetter/_Imports.razor]
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mulha/github/GoalGetter/GG/GoalGetter/Components/Projects/ProjectsListComponent.razor]
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Components/Projects/ProjectsListComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQcm9qZWN0c1xQcm9qZWN0c0xpc3RDb21wb25lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-100r8gzndn
 
-[C:/Users/mulha/github/GoalGetter/GG/GoalGetter/Components/Projects/ProjectsListItemComponent.razor]
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Components/Projects/ProjectsListItemComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQcm9qZWN0c1xQcm9qZWN0c0xpc3RJdGVtQ29tcG9uZW50LnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-3xpm0gykpb
 
-[C:/Users/mulha/github/GoalGetter/GG/GoalGetter/Components/Searchbar.razor]
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Components/Searchbar.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xTZWFyY2hiYXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-ug0s5b7ca7
 
-[C:/Users/mulha/github/GoalGetter/GG/GoalGetter/Shared/MainLayout.razor]
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-3c5xakm02k
 
-[C:/Users/mulha/github/GoalGetter/GG/GoalGetter/Shared/NavMenu.razor]
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-4t02nald7w
 
-[C:/Users/mulha/github/GoalGetter/GG/GoalGetter/Pages/Error.cshtml]
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mulha/github/GoalGetter/GG/GoalGetter/Pages/_Host.cshtml]
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/mulha/github/GoalGetter/GG/GoalGetter/Pages/_Layout.cshtml]
+[C:/Users/user/Source/Repos/chris-dev-at/GoalGetter/GG/GoalGetter/Pages/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
