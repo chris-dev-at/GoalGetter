@@ -12,7 +12,7 @@
 
     [Parameter]
     public EventCallback<string> OnSearchterm { get; set; }
-
+    public string iwas;
     private void OnSearch()
     {
         OnSearchterm.InvokeAsync(searchterm);
