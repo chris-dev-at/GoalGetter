@@ -1,6 +1,5 @@
 ﻿using GG.CoreBusiness;
-using Plugin.Geolocator;
-using Plugin.Geolocator.Abstractions;
+using Libraries.DistanceAddressCalculator;
 
 namespace ConsoleAppPlayground
 {
@@ -14,6 +13,10 @@ namespace ConsoleAppPlayground
 
         public static void TestGeolocator()
         {
+            Address a = Address.FindAddresses("Hammerweg 3 Zwettl")[0];
+            Address b = Address.FindAddresses("Propstei 7 Zwettl")[0];
+
+            Console.WriteLine(Address.CalcDistance(a, b));
         }
 
         public static void Librarytest()
