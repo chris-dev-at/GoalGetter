@@ -1,0 +1,9 @@
+﻿.bg {
+    background-color: #0088d3;
+    color: white;
+}
+
+.flex-right-down {
+    display: flex;
+    justify-content: flex-end;
+}

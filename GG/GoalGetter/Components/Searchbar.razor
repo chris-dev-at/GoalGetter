@@ -1,0 +1,20 @@
+﻿<form @onsubmit="OnSearch">
+    <div class="input-group">
+        <div style="display: flex">
+            <MudTextField Class="min-vw-750" Style="max-height: 40px; border-radius: 5px" @bind-Value="searchterm" HelperText="@searchterm" Label="Search" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" />
+            <MudButton Variant="Variant.Outlined" type="button" class="btn-success input-group-text" Style="max-height: 40px; margin-top: 7px" OnClick=@OnSearch>Search</MudButton>
+        </div>
+    </div>
+</form>
+
+@code {
+    private string searchterm = string.Empty;
+
+    [Parameter]
+    public EventCallback<string> OnSearchterm { get; set; }
+
+    private void OnSearch()
+    {
+        OnSearchterm.InvokeAsync(searchterm);
+    }
+}

@@ -1,0 +1,29 @@
+﻿@inject IViewTeamMembersByProjectIdUseCase viewTeamMembersByProjectIdUseCase
+@*Hier kommen die Karten für jeder Projekt*@
+
+
+@if (team != null)
+{
+	@foreach (var person in team)
+	{
+		<TeamListItemComponent person="@person" />
+	}
+}
+
+@code {
+	private List<GG.CoreBusiness.Teammember> team;
+
+	[Parameter]
+	public string searchTerm { get; set; }
+
+	[Parameter]
+	public int proid { get; set; }
+
+	[Parameter]
+	public bool reloadFlag { get; set; }
+
+	protected override async Task OnParametersSetAsync()
+	{
+		team = (await viewTeamMembersByProjectIdUseCase.ExecuteAsync(searchTerm, proid)).ToList();
+	}
+}

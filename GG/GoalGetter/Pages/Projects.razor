@@ -1,0 +1,45 @@
+﻿@page "/"
+@page "/projects"
+@inject NavigationManager NavigationManager
+@inject IDialogService DialogService
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 d-flex">
+			<MudButton OnClick="@((e) => OpenDialog(maxWidth))" Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white; max-height: 40px; margin-right: 40px; margin-top: 8px" Color="Color.Primary">
+				+ Project
+			</MudButton>
+			<MudPopover Open="@_isOpen" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
+				<div class="d-flex flex-column pa-10">
+					<AddProject Windowclosed="Close" />
+				</div>
+			</MudPopover>
+            <Searchbar OnSearchterm="OnTermSearch" />            
+        </div>
+    </div>
+</div>
+
+@*Hier kommen die Karten für jeder Projekt*@
+<ProjectsListComponent searchTerm="@searchterm" reloadFlag="@reloadFlag" />
+
+
+@code{
+
+	public bool _isOpen;
+	private bool reloadFlag = false;
+
+	private string searchterm = "";
+
+	private void OnTermSearch(string searchterm)
+	{
+		this.searchterm = searchterm;
+	}
+
+	DialogOptions maxWidth = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true };
+
+	private void OpenDialog(DialogOptions options)
+	{
+		DialogService.Show<AddProject>("Add Projects", options);
+		reloadFlag = !reloadFlag; // Toggle the reload flag
+	}
+}
