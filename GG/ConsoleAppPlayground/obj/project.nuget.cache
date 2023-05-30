@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HdVzqWqc5uM4/Lj3lPzb1f/6vauIdO80Zt4Wj0IIthdxaCZ3glYLjviwqKq4/kmCsoGamTpq8glm24IU/a4HbA==",
+  "dgSpecHash": "6NTMElHACWPVSn5gSX8z+iatQy4OhmC0YNX7LgGmO83uoutvIdLZzpaD4olgSp7uxg3gCy+Q3tV+056LAKKYMg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Clemens\\source\\repos\\GitHub\\GoalGetter\\GG\\ConsoleAppPlayground\\ConsoleAppPlayground.csproj",
   "expectedPackageFiles": [
@@ -18,7 +18,8 @@
     "C:\\Users\\Clemens\\.nuget\\packages\\microsoft.jsinterop\\6.0.11\\microsoft.jsinterop.6.0.11.nupkg.sha512",
     "C:\\Users\\Clemens\\.nuget\\packages\\mudblazor\\6.2.3\\mudblazor.6.2.3.nupkg.sha512",
     "C:\\Users\\Clemens\\.nuget\\packages\\system.io.pipelines\\6.0.3\\system.io.pipelines.6.0.3.nupkg.sha512",
-    "C:\\Users\\Clemens\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "C:\\Users\\Clemens\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\Clemens\\.nuget\\packages\\xam.plugin.geolocator\\4.5.0.6\\xam.plugin.geolocator.4.5.0.6.nupkg.sha512"
   ],
   "logs": []
 }

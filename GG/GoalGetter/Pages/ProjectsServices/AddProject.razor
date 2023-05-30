@@ -26,13 +26,12 @@
 
 @code {
 	private Project newProject = new Project();
-	[CascadingParameter] MudDialogInstance MudDialog { get; set; }
 
-	[Parameter]
-	public EventCallback<bool> Windowclosed { get; set; }
+	[CascadingParameter] MudDialogInstance MudDialog { get; set; }
 
 	private async Task SaveProject()
 	{
+		newProject.assignedTeam = new Team();
 		await AddProjectUseCase.ExecuteAsync(newProject);
 		MudDialog.Close(DialogResult.Ok(true));
 	}

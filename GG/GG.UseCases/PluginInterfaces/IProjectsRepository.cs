@@ -20,8 +20,9 @@ namespace GG.UseCases.PluginInterfaces
 
 		Task<IEnumerable<Teammember>> GetTeammemberByNameWithinTeamAsync(string person_name, GG.CoreBusiness.Team team);
 		Task<IEnumerable<ProjectTask>> GetTaskByNameWithinList(string task_name, IEnumerable<ProjectTask> tasks);
-		Task DeletePersonCompletelyAsync(Person person);
-		Task DeleteTeammemberFromTeamAsync(Teammember member, GG.CoreBusiness.Team t);
+		Task RemovePersonCompletelyAsync(Person person);
+		Task RemoveTeammemberFromTeamAsync(Teammember member, GG.CoreBusiness.Team t);
+		Task RemovePersonFromProjectAsync(Person person, Project p);
 
         //Task<bool> ExistsAsync(Project project);
         //Task UpdateProjectAsync(Project project);

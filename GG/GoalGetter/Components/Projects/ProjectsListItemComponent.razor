@@ -7,7 +7,7 @@
 	<h3>@project.Description</h3>
 	<p class="flex-right-down">@project.status</p>
 	<div class="flex-right-down">
-		@if (project.assignedTeam != null)
+		@if (project.assignedTeam.members != null)
 		{
 			foreach (var teamMember in project.assignedTeam.members)
 			{

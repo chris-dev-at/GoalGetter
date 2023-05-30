@@ -1,4 +1,6 @@
 ﻿using GG.CoreBusiness;
+using Plugin.Geolocator;
+using Plugin.Geolocator.Abstractions;
 
 namespace ConsoleAppPlayground
 {
@@ -7,13 +9,22 @@ namespace ConsoleAppPlayground
 
         static void Main(string[] args)
         {
+            TestGeolocator();
+        }
+
+        public static void TestGeolocator()
+        {
+        }
+
+        public static void Librarytest()
+        {
             List<Project> Projects = new List<Project>();
             List<Person> Contact = new List<Person>();
             Random randy = new Random();
 
 
             CreateTestData();
-            Console.WriteLine(  );
+            Console.WriteLine();
 
             void CreateTestData()
             {
@@ -89,7 +100,7 @@ namespace ConsoleAppPlayground
 
 
                 //Project I
-                Team t1 = new Team() { Description = "Dream Team", Id=RandomString(), members=new List<Teammember>() };
+                Team t1 = new Team() { Description = "Dream Team", Id = RandomString(), members = new List<Teammember>() };
 
                 t1.members.Add(new Teammember() { person = getRandomPerson(), Description = "Designer", Role = Teamrolle.Worker });
                 t1.members.Add(new Teammember() { person = getRandomPerson(), Description = "Programmer", Role = Teamrolle.Worker });
@@ -115,7 +126,7 @@ namespace ConsoleAppPlayground
                 t2.members.Add(new Teammember() { person = Contact[0], Description = "Programmer", Role = Teamrolle.Administrator });
                 t2.members.Add(new Teammember() { person = getRandomPerson(), Description = "Projektleiter", Role = Teamrolle.Projektleader });
 
-                Project p2 = new Project() { Name = "Funky Munky", Budget = 99.50f, status = ProgressStatus.In_Progress, assignedTeam = t2, Id= 2, Tasks = new List<ProjectTask>() };
+                Project p2 = new Project() { Name = "Funky Munky", Budget = 99.50f, status = ProgressStatus.In_Progress, assignedTeam = t2, Id = 2, Tasks = new List<ProjectTask>() };
 
                 p2.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t2), Deadline = RandomDay(), Id = RandomString() });
                 p2.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t2), Deadline = RandomDay(), Id = RandomString() });

@@ -47,6 +47,10 @@
             "MudBlazor": {
               "target": "Package",
               "version": "[6.2.3, )"
+            },
+            "Xam.Plugin.Geolocator": {
+              "target": "Package",
+              "version": "[4.5.0.6, )"
             }
           },
           "imports": [

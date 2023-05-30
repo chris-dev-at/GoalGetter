@@ -66,7 +66,9 @@ namespace GG.Plugins.InMemory
 
         public async Task<IEnumerable<Teammember>> GetTeammemberByNameWithinTeamAsync (string person_name, Team team) 
 		{
-            if (string.IsNullOrWhiteSpace(person_name))
+			if (team.members == null)
+				return await Task.FromResult(new List<Teammember>());
+			if (string.IsNullOrWhiteSpace(person_name))
                 return await Task.FromResult(team.members);
             return team.members.Where(x =>
                     x.person.Firstname.Contains(person_name, StringComparison.OrdinalIgnoreCase) ||
@@ -82,12 +84,12 @@ namespace GG.Plugins.InMemory
                     x.Description.Contains(task_name, StringComparison.OrdinalIgnoreCase));
         }
 
-		public async Task DeleteTeammemberFromTeamAsync(Teammember member, Team t)
+		public async Task RemoveTeammemberFromTeamAsync(Teammember member, Team t)
 		{
 			if(member != null)
 				t.members.Remove(member);
 		}
-		public async Task DeletePersonCompletelyAsync(Person person)
+		public async Task RemovePersonCompletelyAsync(Person person)
 		{
 			if(person == null) return;
 
@@ -95,25 +97,29 @@ namespace GG.Plugins.InMemory
 			//Remove out of all Projects
 			foreach (Project p in Projects)
 			{
-				foreach (Teammember member in p.assignedTeam.members)
-				{
-					if (member.person == person)
-					{
-						await DeleteTeammemberFromTeamAsync(member, p.assignedTeam);
-
-						//Remove from all Assigned Tasks
-						foreach (ProjectTask task in p.Tasks)
-						{
-							if (task.AssignedPerson == member)
-								task.AssignedPerson = null;
-						}
-					}
-				}
+				await RemovePersonFromProjectAsync(person, p);
 			}
 
 			//Remove from Contacts
 			Contact.Remove(person);
 		}
+		public async Task RemovePersonFromProjectAsync(Person person, Project p)
+		{
+            foreach (Teammember member in p.assignedTeam.members)
+            {
+                if (member.person == person)
+                {
+                    await RemoveTeammemberFromTeamAsync(member, p.assignedTeam);
+
+                    //Remove from all Assigned Tasks
+                    foreach (ProjectTask task in p.Tasks)
+                    {
+                        if (task.AssignedPerson == member)
+                            task.AssignedPerson = null;
+                    }
+                }
+            }
+        }
 
         public Task AddPersonAsync(Person person)
 		{
