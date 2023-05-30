@@ -66,7 +66,9 @@ namespace GG.Plugins.InMemory
 
         public async Task<IEnumerable<Teammember>> GetTeammemberByNameWithinTeamAsync (string person_name, Team team) 
 		{
-            if (string.IsNullOrWhiteSpace(person_name))
+			if (team.members == null)
+				return await Task.FromResult(new List<Teammember>());
+			if (string.IsNullOrWhiteSpace(person_name))
                 return await Task.FromResult(team.members);
             return team.members.Where(x =>
                     x.person.Firstname.Contains(person_name, StringComparison.OrdinalIgnoreCase) ||

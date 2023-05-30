@@ -22,28 +22,10 @@
 @*Hier kommen die Karten für jeder Projekt*@
 <ProjectsListComponent searchTerm="@searchterm" reloadFlag="@reloadFlag" />
 
-<style>
-    .search-button-wrapper {
-        display: flex;
-        justify-content: flex-end;
-    }
-</style>
-
 @code{
 
 	public bool _isOpen;
 	private bool reloadFlag = false;
-
-	public void Close(bool status)
-	{
-		_isOpen = status;
-		reloadFlag = !reloadFlag; // Toggle the reload flag
-	}
-
-	public void ToggleOpen()
-	{
-		_isOpen = true;
-	}
 
 	private string searchterm = "";
 
@@ -57,5 +39,6 @@
 	private void OpenDialog(DialogOptions options)
 	{
 		DialogService.Show<AddProject>("Add Projects", options);
+		reloadFlag = !reloadFlag; // Toggle the reload flag
 	}
 }

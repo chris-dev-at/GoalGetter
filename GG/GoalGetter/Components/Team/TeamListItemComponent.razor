@@ -1,5 +1,18 @@
-﻿<h3>TeamListItemComponent</h3>
+﻿<div class="mb-5" style="margin-top: 20px">
+	<MudContainer MaxWidth="MaxWidth.Small">
+		<MudPaper Height="180px" Width="120%" Square="true">
+			<div class="bg">
+				<h2>@person.person.Firstname @person.person.Lastname</h2>
+				<img src="@person.person.AvatarPath" class="rounded-circle" width="50px" />
+			</div>
+			<hr />
+		</MudPaper>
+	</MudContainer>
 
+
+
+
+</div>
 @code {
-
-}
+	[Parameter]
+	public Teammember person { get; set; }}
