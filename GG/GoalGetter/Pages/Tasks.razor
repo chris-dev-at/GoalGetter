@@ -1,0 +1,8 @@
+﻿@page "/project/{proid:int}/tasks"
+@layout ProjectMainLayout
+<h3>Tasks for project @proid</h3>
+
+@code {
+	[Parameter]
+	public int proid { get; set; }
+}

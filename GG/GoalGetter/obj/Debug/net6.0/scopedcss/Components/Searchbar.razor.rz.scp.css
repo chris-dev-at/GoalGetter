@@ -1,5 +1,5 @@
-﻿
-.form-control {
+
+.form-control[b-ug0s5b7ca7] {
     margin-left: 50px;
     color: white;
     min-width: 800px;
@@ -9,11 +9,11 @@
     border-radius: 15px;
 }
 
-btn-success input-group-text {
+btn-success input-group-text[b-ug0s5b7ca7] {
     border: 3px solid black;
 }
 
-::placeholder {
+[b-ug0s5b7ca7]::placeholder {
     color: #e4e6e7;
 }
 
