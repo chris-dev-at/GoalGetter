@@ -1,0 +1,8 @@
+# ignore all .env files
+*.env
+
+#Ignroe debugs
+/GG/GoalGetter/bin/*
+/GG/GoalGetter/obj/*
+/GG/ConsoleAppPlayground/bin/*
+/GG/ConsoleAppPlayground/obj/*
