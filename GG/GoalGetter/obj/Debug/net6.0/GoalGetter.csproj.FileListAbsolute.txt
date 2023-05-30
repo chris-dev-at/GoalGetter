@@ -170,3 +170,6 @@ C:\Users\mulha\github\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\ref\GoalGetter.d
 C:\Users\mulha\github\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\scopedcss\Components\Searchbar.razor.rz.scp.css
 C:\Users\mulha\github\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\scopedcss\Components\Projects\ProjectsListComponent.razor.rz.scp.css
 C:\Users\mulha\github\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\scopedcss\Components\Projects\ProjectsListItemComponent.razor.rz.scp.css
+C:\Users\Clemens\source\repos\GitHub\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\scopedcss\Components\Projects\ProjectsListComponent.razor.rz.scp.css
+C:\Users\Clemens\source\repos\GitHub\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\scopedcss\Components\Projects\ProjectsListItemComponent.razor.rz.scp.css
+C:\Users\Clemens\source\repos\GitHub\GoalGetter\GG\GoalGetter\obj\Debug\net6.0\scopedcss\Components\Searchbar.razor.rz.scp.css
