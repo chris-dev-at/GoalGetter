@@ -21,10 +21,12 @@ namespace GG.UseCases.PluginInterfaces
 		Task<IEnumerable<Teammember>> GetTeammemberByNameWithinTeamAsync(string person_name, GG.CoreBusiness.Team team);
 		Task<IEnumerable<ProjectTask>> GetTaskByNameWithinList(string task_name, IEnumerable<ProjectTask> tasks);
 		Task RemovePersonCompletelyAsync(Person person);
-		Task RemoveTeammemberFromTeamAsync(Teammember member, GG.CoreBusiness.Team t);
+		Task RemoveTeammemberFromTeamAsync(Teammember member, GG.CoreBusiness.Team team);
 		Task RemovePersonFromProjectAsync(Person person, Project p);
-		Task GetAllPersonsIfnotAlreadyThere(Person person, GG.CoreBusiness.Team team);
-		Task AddPersonToTeamIfNotAlreadyThere(Person person, GG.CoreBusiness.Team team);
+		Task<IEnumerable<Person>> GetAllPersonsIfnotAlreadyInTeamAsync(GG.CoreBusiness.Team team);
+		Task<bool> PersonAlreadyInTeam(Person person, GG.CoreBusiness.Team team);
+        Task AddPersonToTeam(Teammember member, GG.CoreBusiness.Team team);
+		Task AddTaskToProject(ProjectTask task, Project project);
 
         //Task<bool> ExistsAsync(Project project);
         //Task UpdateProjectAsync(Project project);

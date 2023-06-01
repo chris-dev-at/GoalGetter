@@ -133,7 +133,32 @@ namespace GG.Plugins.InMemory
 			return Task.CompletedTask;
 		}
 
-		Random randy = new Random();
+        public async Task<IEnumerable<Person>> GetAllPersonsIfnotAlreadyInTeamAsync(Team team)
+		{
+			return Contact.Where(x => !team.members.Cast<Person>().Contains(x));
+        }
+
+        public async Task<bool> PersonAlreadyInTeam(Person person, Team team)
+        {
+			return team.members.Cast<Person>().Contains(person);
+        }
+
+        public Task AddPersonToTeam(Teammember member, Team team)
+        {
+			team.members.Add(member);
+			return Task.CompletedTask;
+        }
+
+        public Task AddTaskToProject(ProjectTask task, Project projects)
+        {
+			projects.Tasks.Add(task);
+			return Task.CompletedTask;
+        }
+
+
+        #region Testdata
+
+        Random randy = new Random();
 
 
         void CreateTestData()
@@ -274,7 +299,10 @@ namespace GG.Plugins.InMemory
 				.Select(s => s[randy.Next(s.Length)]).ToArray());
 			return ret;
 		}
+        #endregion
+		//
 
+<<<<<<< HEAD
         public Task GetAllPersonsIfnotAlreadyThere(Person person, Team team)
         {
             throw new NotImplementedException();
@@ -284,5 +312,8 @@ namespace GG.Plugins.InMemory
         {
             throw new NotImplementedException();
         }
+=======
+
+>>>>>>> 2a85c8bb19180d1b5f65031ffcc3b941790c8b64
     }
 }
