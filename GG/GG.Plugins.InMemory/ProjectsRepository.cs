@@ -275,6 +275,14 @@ namespace GG.Plugins.InMemory
 			return ret;
 		}
 
-		
-	}
+        public Task GetAllPersonsIfnotAlreadyThere(Person person, Team team)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task AddPersonToTeamIfNotAlreadyThere(Person person, Team team)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

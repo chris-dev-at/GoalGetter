@@ -4,6 +4,8 @@ using GG.UseCases.People.Interfaces;
 using GG.UseCases.PluginInterfaces;
 using GG.UseCases.Projects;
 using GG.UseCases.Projects.Interfaces;
+using GG.UseCases.Tasks;
+using GG.UseCases.Tasks.Interfaces;
 using GG.UseCases.Team;
 using GG.UseCases.Team.Interfaces;
 using Microsoft.AspNetCore.Components;
@@ -26,6 +28,9 @@ builder.Services.AddTransient<IViewPeopleByNameUseCase, ViewPeopleByNameUseCase>
 builder.Services.AddTransient<IAddPersonUseCase, AddPersonUseCase>();
 
 builder.Services.AddTransient<IViewTeamMembersByProjectIdUseCase, ViewTeamMembersByProjectIdUseCase>();
+
+//Taks Services
+builder.Services.AddTransient<IViewTasksByProjectIdUseCase, ViewTasksByProjectIdUseCase>();
 
 builder.Services.AddMudServices();
 
