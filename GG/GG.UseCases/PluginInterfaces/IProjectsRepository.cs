@@ -23,6 +23,8 @@ namespace GG.UseCases.PluginInterfaces
 		Task RemovePersonCompletelyAsync(Person person);
 		Task RemoveTeammemberFromTeamAsync(Teammember member, GG.CoreBusiness.Team t);
 		Task RemovePersonFromProjectAsync(Person person, Project p);
+		Task GetAllPersonsIfnotAlreadyThere(Person person, GG.CoreBusiness.Team team);
+		Task AddPersonToTeamIfNotAlreadyThere(Person person, GG.CoreBusiness.Team team);
 
         //Task<bool> ExistsAsync(Project project);
         //Task UpdateProjectAsync(Project project);
