@@ -301,19 +301,5 @@ namespace GG.Plugins.InMemory
 		}
         #endregion
 		//
-
-<<<<<<< HEAD
-        public Task GetAllPersonsIfnotAlreadyThere(Person person, Team team)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task AddPersonToTeamIfNotAlreadyThere(Person person, Team team)
-        {
-            throw new NotImplementedException();
-        }
-=======
-
->>>>>>> 2a85c8bb19180d1b5f65031ffcc3b941790c8b64
     }
 }
