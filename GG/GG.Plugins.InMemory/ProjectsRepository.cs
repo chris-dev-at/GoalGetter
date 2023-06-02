@@ -10,149 +10,286 @@ namespace GG.Plugins.InMemory
 
 		public ProjectsRepository()
 		{
+			//Load Data
 			CreateTestData();
 		}
 
 		//CRUD for Project Entitys
-		public async Task<IEnumerable<Project>> GetProjectsByNameAsync(string name)
+		public async Task<StatusReport<IEnumerable<Project>>> GetProjectsByNameAsync(string name)
 		{
 			if (string.IsNullOrWhiteSpace(name))
-				return await Task.FromResult(Projects);
-			return Projects.Where(x => x.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
-		}
+				return new StatusReport<IEnumerable<Project>>(
+						StatusState.Normal,
+                        await Task.FromResult(Projects),
+						"Projects have been found"
+                    );
 
-		public Task AddProjectAsync(Project project)
+			IEnumerable<Project> result = Projects.Where(x => x.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
+            return new StatusReport<IEnumerable<Project>>(
+                        result.Any() ? StatusState.Normal : StatusState.Warning,
+                        result,
+                        result.Any() ? "Projects have been found" : "Projects have been found"
+                    );
+        }
+
+		public Task<StatusReport<EmptyVal>> AddProjectAsync(Project project)
 		{
 			if (Projects.Any(x => x.Name.Equals(project.Name, StringComparison.OrdinalIgnoreCase)))
-				return Task.CompletedTask;
+                return Task.FromResult(new StatusReport<EmptyVal>(
+                    StatusState.Error,
+                    EmptyVal.Empty,
+                    "There is already a project with this name" 
+                ));
 
-			var maxId = Projects.Max(x => x.Id);
+            var maxId = Projects.Max(x => x.Id);
 			project.Id = maxId + 1;
-
+			
 			Projects.Add(project);
-			return Task.CompletedTask;
-		}
+            return Task.FromResult(new StatusReport<EmptyVal>(
+                    StatusState.Success,
+                    EmptyVal.Empty,
+                    "Project has been added"
+                ));
+        }
 
-		public async Task<Project> GetProjectByIdAsync(int ProjectId)
+		public async Task<StatusReport<Project>> GetProjectByIdAsync(int ProjectId)
 		{
-			var pro = Projects.First(x => x.Id == ProjectId);
-			var newpro = new Project
-			{
-				Id = pro.Id,
-				Name = pro.Name,
-				Description = pro.Description,
-				Tasks = pro.Tasks,
-				Budget = pro.Budget,
-				assignedTeam = pro.assignedTeam,
-				status = pro.status
-			};
-			return await Task.FromResult(newpro);
+			var pro = Projects.FirstOrDefault(x => x.Id == ProjectId);
+            return new StatusReport<Project>(
+                    pro == null ? StatusState.Normal : StatusState.Warning,
+                    pro,
+                    pro == null ? "No projects have been found" : "Project has been found"
+                );
 		}
 
 		//CRUD for People Entitys
 
-		public async Task<IEnumerable<Person>> GetPeopleByNameAsync(string name)
+		public async Task<StatusReport<IEnumerable<Person>>> GetPeopleByNameAsync(string name)
 		{
-			return await GetPersonWithinPersonList(name, Contact);
-		}
-		public async Task<IEnumerable<Person>> GetPersonWithinPersonList(string person_name, IEnumerable<Person> personlist)
+			IEnumerable<Person> result = GetPersonWithinPersonList(name, Contact).Result.Value;
+            return new StatusReport<IEnumerable<Person>>(
+                    result.Any() ? StatusState.Normal : StatusState.Warning,
+                    result,
+                    result.Any() ? "No people have been found" : "People have been found"
+                );
+        }
+
+		public async Task<StatusReport<IEnumerable<Person>>> GetPersonWithinPersonList(string person_name, IEnumerable<Person> personlist)
 		{
 			if (string.IsNullOrWhiteSpace(person_name))
-				return await Task.FromResult(personlist);
-			return Contact.Where(x =>
+				return new StatusReport<IEnumerable<Person>>(
+						StatusState.Normal,
+						await Task.FromResult(personlist),
+						"People have been found"
+					);
+
+            IEnumerable<Person> result = Contact.Where(x =>
 					x.Firstname.Contains(person_name, StringComparison.OrdinalIgnoreCase) ||
 					x.Lastname.Contains(person_name, StringComparison.OrdinalIgnoreCase));
-		}
 
-        public async Task<IEnumerable<Teammember>> GetTeammemberByNameWithinTeamAsync (string person_name, Team team) 
+            return new StatusReport<IEnumerable<Person>>(
+                    result.Any() ? StatusState.Normal : StatusState.Warning,
+                    result,
+                    result.Any() ? "No people have been found" : "People have been found"
+                );
+        }
+
+        public async Task<StatusReport<IEnumerable<Teammember>>> GetTeammemberByNameWithinTeamAsync (string person_name, Team team) 
 		{
 			if (team.members == null)
-				return await Task.FromResult(new List<Teammember>());
-			if (string.IsNullOrWhiteSpace(person_name))
-                return await Task.FromResult(team.members);
-            return team.members.Where(x =>
+				return new StatusReport<IEnumerable<Teammember>>(
+						StatusState.Normal,
+						new List<Teammember>(),
+						"No people have been found"
+					);
+            if (string.IsNullOrWhiteSpace(person_name))
+				return new StatusReport<IEnumerable<Teammember>>(
+						StatusState.Normal,
+                        await Task.FromResult(team.members),
+						"People have been found"
+					);
+
+            IEnumerable<Teammember> result = team.members.Where(x =>
                     x.person.Firstname.Contains(person_name, StringComparison.OrdinalIgnoreCase) ||
                     x.person.Lastname.Contains(person_name, StringComparison.OrdinalIgnoreCase));
+
+            return new StatusReport<IEnumerable<Teammember>>(
+                        result.Any() ? StatusState.Normal : StatusState.Warning,
+                        result,
+						result.Any() ? "No people have been found" : "People have been found"
+                    );
+
         }
 
-        public async Task<IEnumerable<ProjectTask>> GetTaskByNameWithinList(string task_name, IEnumerable<ProjectTask> tasks)
+        public async Task<StatusReport<IEnumerable<ProjectTask>>> GetTaskByNameWithinList(string task_name, IEnumerable<ProjectTask> tasks)
         {
             if (string.IsNullOrWhiteSpace(task_name))
-                return await Task.FromResult(tasks);
-            return tasks.Where(x =>
+				return new StatusReport<IEnumerable<ProjectTask>>(
+							StatusState.Normal,
+                            await Task.FromResult(tasks),
+							"Tasks have been found"
+						);
+
+            IEnumerable<ProjectTask> result = tasks.Where(x =>
                     x.Name.Contains(task_name, StringComparison.OrdinalIgnoreCase) ||
                     x.Description.Contains(task_name, StringComparison.OrdinalIgnoreCase));
+
+            return new StatusReport<IEnumerable<ProjectTask>>(
+                        result.Any() ? StatusState.Normal : StatusState.Warning,
+                        result,
+                        result.Any() ? "No tasks have been found" : "Tasks have been found"
+                    );
         }
 
-		public async Task RemoveTeammemberFromTeamAsync(Teammember member, Team t)
+        public async Task<StatusReport<EmptyVal>> RemoveTeammemberFromTeamAsync(Teammember member, Team t)
 		{
-			if(member != null)
-				t.members.Remove(member);
-		}
-		public async Task RemovePersonCompletelyAsync(Person person)
-		{
-			if(person == null) return;
-
-
-			//Remove out of all Projects
-			foreach (Project p in Projects)
+			if (t.members.Contains(member))
 			{
-				await RemovePersonFromProjectAsync(person, p);
+				t.members.Remove(member);
+				return new StatusReport<EmptyVal>(
+							StatusState.Success,
+							EmptyVal.Empty,
+							"Teammember has been removed from Team"
+						);
 			}
 
-			//Remove from Contacts
-			Contact.Remove(person);
-		}
-		public async Task RemovePersonFromProjectAsync(Person person, Project p)
+            return new StatusReport<EmptyVal>(
+                        StatusState.Failed,
+                        EmptyVal.Empty,
+                        "Member was not found within Team"
+                    );
+        }
+		public async Task<StatusReport<EmptyVal>> RemovePersonCompletelyAsync(Person person)
 		{
-            foreach (Teammember member in p.assignedTeam.members)
-            {
-                if (member.person == person)
+			if (Contact.Contains(person) )
+			{
+                //Remove out of all Projects
+                foreach (Project p in Projects)
                 {
-                    await RemoveTeammemberFromTeamAsync(member, p.assignedTeam);
+                    await RemovePersonFromProjectAsync(person, p);
+                }
 
-                    //Remove from all Assigned Tasks
-                    foreach (ProjectTask task in p.Tasks)
+                //Remove from Contacts
+                Contact.Remove(person);
+
+                return new StatusReport<EmptyVal>(
+                            StatusState.Success,
+                            EmptyVal.Empty,
+                            "Person has been removed"
+                        );
+            }
+
+			return new StatusReport<EmptyVal>(
+						StatusState.Failed,
+						EmptyVal.Empty,
+						"Member was not found within Contacts"
+					);
+
+
+        }
+		public async Task<StatusReport<EmptyVal>> RemovePersonFromProjectAsync(Person person, Project p)
+		{
+			//Check if person is within Team
+			if (p.assignedTeam.members.Cast<Person>().Contains(person))
+			{
+                foreach (Teammember member in p.assignedTeam.members)
+                {
+                    if (member.person == person)
                     {
-                        if (task.AssignedPerson == member)
-                            task.AssignedPerson = null;
+                        await RemoveTeammemberFromTeamAsync(member, p.assignedTeam);
+
+                        //Remove from all Assigned Tasks
+                        foreach (ProjectTask task in p.Tasks)
+                        {
+                            if (task.AssignedPerson == member)
+                                task.AssignedPerson = null;
+                        }
                     }
                 }
+                return new StatusReport<EmptyVal>(
+                            StatusState.Success,
+                            EmptyVal.Empty,
+                            "Person has been removed from project"
+                        );
             }
+			
+            return new StatusReport<EmptyVal>(
+                        StatusState.Failed,
+                        EmptyVal.Empty,
+                        "Member was not found within Project"
+                    );
+
         }
 
-        public Task AddPersonAsync(Person person)
+        //Continue Status Reporting
+        public async Task<StatusReport<EmptyVal>> AddPersonAsync(Person person)
 		{
 			if (Contact.Any(x => x.Firstname.Equals(person.Firstname, StringComparison.OrdinalIgnoreCase)))
-				return Task.CompletedTask;
+                return new StatusReport<EmptyVal>(
+                        StatusState.Failed,
+                        EmptyVal.Empty,
+                        "Person already exists"
+                    );
 
-			var maxId = Contact.Max(x => x.Id);
+            var maxId = Contact.Max(x => x.Id);
 			person.Id = maxId + 1;
 
 			Contact.Add(person);
-			return Task.CompletedTask;
-		}
+            return new StatusReport<EmptyVal>(
+                        StatusState.Success,
+                        EmptyVal.Empty,
+                        "Person has been added"
+                    );
+        }
 
-        public async Task<IEnumerable<Person>> GetAllPersonsIfnotAlreadyInTeamAsync(Team team)
+        public async Task<StatusReport<IEnumerable<Person>>> GetAllPersonsIfnotAlreadyInTeamAsync(Team team)
 		{
-			return Contact.Where(x => !team.members.Cast<Person>().Contains(x));
+			IEnumerable<Person> result =  Contact.Where(x => !team.members.Cast<Person>().Contains(x));
+            return new StatusReport<IEnumerable<Person>>(
+                        result.Any() ? StatusState.Normal : StatusState.Warning,
+                        result,
+						result.Any() ? "No people have been found" : "People have been found"
+                    );
         }
 
-        public async Task<bool> PersonAlreadyInTeam(Person person, Team team)
+        public async Task<StatusReport<bool>> PersonAlreadyInTeam(Person person, Team team)
         {
-			return team.members.Cast<Person>().Contains(person);
+			bool result = team.members.Cast<Person>().Contains(person);
+            return new StatusReport<bool>(
+                        StatusState.Normal,
+                        result,
+                        result != null ? "Person was not found within Team" : "Person was found within Team"
+                    );
         }
 
-        public Task AddPersonToTeam(Teammember member, Team team)
+        public async Task<StatusReport<EmptyVal>> AddTeammemberToTeam(Teammember member, Team team)
         {
-			team.members.Add(member);
-			return Task.CompletedTask;
+			if(PersonAlreadyInTeam(member.person, team).Result.Value)
+                return new StatusReport<EmptyVal>(
+                        StatusState.Failed,
+                        EmptyVal.Empty,
+                        "Person already within Team"
+                    );
+
+
+            team.members.Add(member);
+
+            return new StatusReport<EmptyVal>(
+                        StatusState.Success,
+                        EmptyVal.Empty,
+                        "Person has been added"
+                    );
         }
 
-        public Task AddTaskToProject(ProjectTask task, Project projects)
+        public async Task<StatusReport<EmptyVal>> AddTaskToProject(ProjectTask task, Project projects)
         {
 			projects.Tasks.Add(task);
-			return Task.CompletedTask;
+
+			return new StatusReport<EmptyVal>(
+                        StatusState.Success,
+                        EmptyVal.Empty,
+                        "Task has been added"
+                    );
         }
 
 
