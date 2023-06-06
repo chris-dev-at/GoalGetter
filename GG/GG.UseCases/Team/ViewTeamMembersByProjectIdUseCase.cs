@@ -16,10 +16,18 @@ namespace GG.UseCases.Team
 		{
 			this.projectsRepository = projectsRepository;
 		}
-		public async Task<IEnumerable<Teammember>> ExecuteAsync(string name, int projectid)
+		public async Task<StatusReport<IEnumerable<Teammember>>> ExecuteAsync(string name, int projectid)
 		{
 			var pro = await this.projectsRepository.GetProjectByIdAsync(projectid);
-			return this.projectsRepository.GetTeammemberByNameWithinTeamAsync(name, pro.Value.assignedTeam).Result.Value;
+
+			if(pro.Value != null) 
+				return this.projectsRepository.GetTeammemberByNameWithinTeamAsync(name, pro.Value.assignedTeam).Result;
+			else
+				return new StatusReport<IEnumerable<Teammember>>(
+						StatusState.Error,
+						null,
+						pro.Reason
+					);
 		}
 	}
 }

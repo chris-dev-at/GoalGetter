@@ -1,4 +1,6 @@
 ﻿@inject IViewProjectsByNameUseCase viewProjectsByNameUseCase
+@inject ISnackbar Snackbar
+@inject NavigationManager NavigationManager
 @*Hier kommen die Karten für jeder Projekt*@
 
 <MudGrid Spacing="@spacing" Justify="Justify.FlexStart" Class="mt-12">
@@ -24,6 +26,14 @@
 
 	protected override async Task OnParametersSetAsync()
 	{
-		projects = (await viewProjectsByNameUseCase.ExecuteAsync(this.searchTerm)).ToList();
+		var result = viewProjectsByNameUseCase.ExecuteAsync(this.searchTerm).Result;
+
+		if (result.Value != null)
+			projects = result.Value.ToList();
+		else
+		{
+			Snackbar.Add(result.Reason, result.severity);
+			NavigationManager.NavigateTo("/");
+		}
 	}
 }

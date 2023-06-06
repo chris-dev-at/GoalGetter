@@ -4,6 +4,6 @@ namespace GG.UseCases.People.Interfaces
 {
     public interface IViewPeopleByNameUseCase
     {
-        Task<IEnumerable<Person>> ExecuteAsync(string name = "");
+        Task<StatusReport<IEnumerable<Person>>> ExecuteAsync(string name = "");
     }
 }

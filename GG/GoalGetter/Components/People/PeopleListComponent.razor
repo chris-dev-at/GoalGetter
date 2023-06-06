@@ -1,4 +1,6 @@
 ﻿@inject IViewPeopleByNameUseCase viewPeopleByNameUseCase
+@inject ISnackbar Snackbar
+@inject NavigationManager NavigationManager
 @*Hier kommen die Karten für jeder Projekt*@
 
 
@@ -21,6 +23,16 @@
 
 	protected override async Task OnParametersSetAsync()
 	{
-		people = (await viewPeopleByNameUseCase.ExecuteAsync(this.searchTerm)).ToList();
+		people = viewPeopleByNameUseCase.ExecuteAsync(this.searchTerm).Result.Value.ToList();
+
+		var result = viewPeopleByNameUseCase.ExecuteAsync(this.searchTerm).Result;
+
+		if (result.Value != null)
+			people = result.Value.ToList();
+		else
+		{
+			Snackbar.Add(result.Reason, result.severity);
+			NavigationManager.NavigateTo("/");
+		}
 	}
 }

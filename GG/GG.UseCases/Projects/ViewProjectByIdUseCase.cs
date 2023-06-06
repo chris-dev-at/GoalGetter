@@ -16,9 +16,9 @@ namespace GG.UseCases.Projects
 		{
 			this.projectsRepository = projectsRepository;
 		}
-		public async Task<Project> ExecuteAsync(int projectid)
+		public async Task<StatusReport<Project>> ExecuteAsync(int projectid)
 		{
-			return this.projectsRepository.GetProjectByIdAsync(projectid).Result.Value;
+			return this.projectsRepository.GetProjectByIdAsync(projectid).Result;
 		}
 	}
 }

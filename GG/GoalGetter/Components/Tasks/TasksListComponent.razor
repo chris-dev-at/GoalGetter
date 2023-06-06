@@ -1,4 +1,6 @@
 ﻿@inject IViewTasksByProjectIdUseCase viewTasksByProjectIdUseCase
+@inject ISnackbar Snackbar
+@inject NavigationManager NavigationManager
 
 @if (tasks != null)
 {
@@ -49,7 +51,15 @@
 
 	protected override async Task OnParametersSetAsync()
 	{
-		tasks = (await viewTasksByProjectIdUseCase.ExecuteAsync(this.searchTerm, proid)).ToList();
+		var result = viewTasksByProjectIdUseCase.ExecuteAsync(this.searchTerm, proid).Result;
+
+		if (result.Value != null)
+			tasks = result.Value.ToList();
+		else
+		{
+			Snackbar.Add(result.Reason, result.severity);
+			NavigationManager.NavigateTo("/");
+		}
 
 		// Simulate a delay of 1 second
 		await Task.Delay(TimeSpan.FromSeconds(1.5));

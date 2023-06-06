@@ -1,6 +1,8 @@
 ﻿@page "/project/{ProId:int}"
 @inject IViewProjectByIdUseCase ViewProjectByIdUseCase
 @layout ProjectMainLayout
+@inject ISnackbar Snackbar
+@inject NavigationManager NavigationManager
 
 
 	<MudText Typo="Typo.h2">@project.Name</MudText>
@@ -17,6 +19,13 @@
 
 	protected override async Task OnParametersSetAsync()
 	{
-		project = await ViewProjectByIdUseCase.ExecuteAsync(this.ProId);
+		var result = ViewProjectByIdUseCase.ExecuteAsync(this.ProId).Result;
+		if (result.Value != null)
+			project = result.Value;
+		else
+		{
+			Snackbar.Add(result.Reason, result.severity);
+			NavigationManager.NavigateTo("/");
+		}
 	}
 }
