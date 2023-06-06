@@ -13,7 +13,12 @@ namespace GG.CoreBusiness
         public string Reason { get; set; } 
 
         public StatusReport() { }
-        public StatusReport(StatusState state, T val, string reason = "") { }
+        public StatusReport(StatusState state, T val, string reason = "") 
+        { 
+            State = state;
+            Value = val;
+            Reason = reason;
+        }
 
         public override string ToString() => State + this.Reason;
 
