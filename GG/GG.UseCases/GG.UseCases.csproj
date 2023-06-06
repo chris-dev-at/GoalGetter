@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Tasks\Interfaces\" />
     <Folder Include="Team\Interfaces\" />
   </ItemGroup>
 
