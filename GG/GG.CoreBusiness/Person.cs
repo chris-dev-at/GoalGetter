@@ -10,7 +10,7 @@ namespace GG.CoreBusiness
     public class Person
     {
         public int Id { get; set; }
-        public string AvatarPath { get; set; } = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png";
+        public string AvatarPath { get; set; } = null;
 
 
         [Required, StringLength(100, MinimumLength = 1, ErrorMessage = "Firstname must be between 1 and 100 characters")]

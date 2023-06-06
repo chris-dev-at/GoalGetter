@@ -3,7 +3,14 @@
 		<MudPaper Height="180px" Width="120%" Square="true">
 			<div class="bg">
 				<h2>@person.person.Firstname @person.person.Lastname</h2>
-				<img src="@person.person.AvatarPath" class="rounded-circle" width="50px" />
+				@if (@person.person.AvatarPath != null)
+				{
+					<MudAvatar Image="@person.person.AvatarPath" />
+				}
+				else
+				{
+					<MudAvatar Color="Color.Primary">@person.person.Firstname.First()@person.person.Lastname.First()</MudAvatar>
+				}
 			</div>
 			<hr />
 		</MudPaper>

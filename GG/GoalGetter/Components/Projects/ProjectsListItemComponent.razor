@@ -9,10 +9,19 @@
 	<div class="flex-right-down">
 		@if (project.assignedTeam.members != null)
 		{
-			foreach (var teamMember in project.assignedTeam.members)
+			<MudAvatarGroup Max="3" Spacing="4" MaxColor="Color.Primary">
+			@foreach (var teamMember in project.assignedTeam.members)
 			{
-				<img src="@teamMember.person.AvatarPath" class="rounded-circle" width="25px" />
+					if (@teamMember.person.AvatarPath != null)
+					{
+						<MudAvatar Image="@teamMember.person.AvatarPath" />
+					}
+					else
+					{
+						<MudAvatar Color="Color.Primary">@teamMember.person.Firstname.First()@teamMember.person.Lastname.First()</MudAvatar>
+					}
 			}
+			</MudAvatarGroup>
 		}
 	</div>
 </MudItem>

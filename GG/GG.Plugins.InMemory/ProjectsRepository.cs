@@ -1,5 +1,6 @@
 ﻿using GG.CoreBusiness;
 using GG.UseCases.PluginInterfaces;
+using static MudBlazor.Colors;
 
 namespace GG.Plugins.InMemory
 {
@@ -77,7 +78,9 @@ namespace GG.Plugins.InMemory
 
         public async Task<IEnumerable<ProjectTask>> GetTaskByNameWithinList(string task_name, IEnumerable<ProjectTask> tasks)
         {
-            if (string.IsNullOrWhiteSpace(task_name))
+			if (tasks == null)
+				return await Task.FromResult(new List<ProjectTask>());
+			if (string.IsNullOrWhiteSpace(task_name))
                 return await Task.FromResult(tasks);
             return tasks.Where(x =>
                     x.Name.Contains(task_name, StringComparison.OrdinalIgnoreCase) ||
@@ -169,7 +172,7 @@ namespace GG.Plugins.InMemory
 				Firstname = "Rainer",
 				Lastname = "Winkler",
 				Address = "DE, Emskirchen 91448, Altschauerberg 8",
-				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+				AvatarPath = null,
 				Email = "r.winkler@htlkrems.at"
 			});
 
@@ -179,7 +182,7 @@ namespace GG.Plugins.InMemory
 				Firstname = "Ilse",
 				Lastname = "Nigischer",
 				Address = "AT Waidhofen a. T. 3830, Buxdihudenstraße 1",
-				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+				AvatarPath = null,
 				Email = "i.nigischer@htlkrems.at"
 			});
 
@@ -189,7 +192,7 @@ namespace GG.Plugins.InMemory
 				Firstname = "Herwig",
 				Lastname = "Macho",
 				Address = "AT Zwettl 3910, Propstei 8",
-				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+				AvatarPath = null,
 				Email = "h.macho@htlkrems.at"
 			});
 
@@ -199,7 +202,7 @@ namespace GG.Plugins.InMemory
 				Firstname = "Lukas",
 				Lastname = "Kolinsky",
 				Address = "AT, Zwettl 3910, Propstei 7",
-				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+				AvatarPath = null,
 				Email = "lukas.kolinsky1@gmail.com"
 			});
 
@@ -209,7 +212,7 @@ namespace GG.Plugins.InMemory
 				Firstname = "Mulham",
 				Lastname = "Taylouni",
 				Address = "AT, Gmünd 3950, Schremserstraße 69",
-				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+				AvatarPath = null,
 				Email = "contact@taylouni.me"
 			});
 
@@ -219,7 +222,7 @@ namespace GG.Plugins.InMemory
 				Firstname = "Christian",
 				Lastname = "Wiesinger",
 				Address = "AT, Rappottenstein 3911, Burgunderweg 109",
-				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+				AvatarPath = null,
 				Email = "contact@taylouni.me"
 			});
 
@@ -229,7 +232,7 @@ namespace GG.Plugins.InMemory
 				Firstname = "Clemens",
 				Lastname = "Schmid",
 				Address = "AT, Zwettl 3910,Hammerweg 3",
-				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+				AvatarPath = null,
 				Email = "c.schmid@htlkrems.at"
 			});
 

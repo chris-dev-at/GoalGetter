@@ -1,12 +1,40 @@
 ﻿@inject IViewTasksByProjectIdUseCase viewTasksByProjectIdUseCase
 
-@foreach (ProjectTask item in tasks)
+@if (tasks != null)
 {
-	<TasksListItemComponent task="@item"/>
+	<MudTable Items="@tasks" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
+		<HeaderContent>
+			<MudTh>Task Name</MudTh>
+			<MudTh>Deadline</MudTh>
+			<MudTh>Status</MudTh>
+			<MudTh>Description</MudTh>
+			<MudTh>Assigned Teammember</MudTh>
+		</HeaderContent>
+
+		<RowTemplate>
+			<MudTd DataLabel="Task Name">@context.Name</MudTd>
+			<MudTd DataLabel="Deadline">@context.Deadline</MudTd>
+			<MudTd DataLabel="Status">@context.Status</MudTd>
+			<MudTd DataLabel="Description" HideSmall="_hidePosition">@context.Description</MudTd>
+			<MudTd DataLabel="Assigned Teammember">
+				@if (@context.AssignedPerson.person.AvatarPath != null)
+				{
+				<MudAvatar Image="@context.AssignedPerson.person.AvatarPath" />
+				}
+				else
+				{
+					<MudAvatar Color="Color.Primary">@context.AssignedPerson.person.Firstname.First()@context.AssignedPerson.person.Lastname.First()</MudAvatar>
+				}
+				</MudTd>
+		</RowTemplate>
+	</MudTable>
+
 }
 
 
 @code {
+	private bool _hidePosition;
+	private bool _loading = true;
 
 	[Parameter]
 	public int proid { get; set; }
@@ -18,6 +46,7 @@
 	public bool reloadFlag { get; set; }
 
 	private IEnumerable<ProjectTask> tasks = new List<ProjectTask>();
+
 	protected override async Task OnParametersSetAsync()
 	{
 		tasks = (await viewTasksByProjectIdUseCase.ExecuteAsync(this.searchTerm, proid)).ToList();
