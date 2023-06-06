@@ -1,11 +1,13 @@
-﻿
+﻿@inject ISnackbar Snackbar
 
 @code {
     [CascadingParameter] MudDialogInstance MudDialog { get; set; }
 
     private async Task SavePerson()
     {
-        //await AddPersonUseCase.ExecuteAsync(newPerson);
+
+        //StatusReport<EmptyVal> status = await AddTaskUseCase.ExecuteAsync(newPerson);
+        //Snackbar.Add(status.Reason, status.severity);
         MudDialog.Close(DialogResult.Ok(true));
     }
 

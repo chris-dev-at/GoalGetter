@@ -1,4 +1,6 @@
 ﻿@inject IAddPersonUseCase AddPersonUseCase
+@inject ISnackbar Snackbar
+
 
 
 <EditForm Model="newPerson" OnValidSubmit="SavePerson">
@@ -40,19 +42,22 @@
 </EditForm>
 
 @code {
-    private Person newPerson = new Person();
-    [CascadingParameter] MudDialogInstance MudDialog { get; set; }
 
-    [Parameter]
-    public EventCallback<bool> Windowclosed { get; set; }
+	private Person newPerson = new Person();
+	[CascadingParameter] MudDialogInstance MudDialog { get; set; }
 
-    private async Task SavePerson()
-    {
-        await AddPersonUseCase.ExecuteAsync(newPerson);
-        MudDialog.Close(DialogResult.Ok(true));
-    }
+	[Parameter]
+	public EventCallback<bool> Windowclosed { get; set; }
 
-    void Cancel() => MudDialog.Cancel();
+	private async Task SavePerson()
+	{
+		StatusReport<EmptyVal> status = await AddPersonUseCase.ExecuteAsync(newPerson);
+		Snackbar.Add(status.Reason, status.severity);
+
+		MudDialog.Close(DialogResult.Ok(true));
+	}
+
+	void Cancel() => MudDialog.Cancel();
 
 
 	IList<IBrowserFile> files = new List<IBrowserFile>();
@@ -61,6 +66,4 @@
 		files.Add(file);
 		//TODO upload the files to the server
 	}
-
-
 }
