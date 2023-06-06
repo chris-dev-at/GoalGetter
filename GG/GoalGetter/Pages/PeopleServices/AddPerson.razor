@@ -14,6 +14,22 @@
 								@bind-Value="newPerson.Email" For="@(() => newPerson.Email)" InputType="InputType.Email" />
 				<MudTextField Label="Phone number" Class="mt-3"
 								@bind-Value="newPerson.Phone" For="@(() => newPerson.Phone)" InputType="InputType.Telephone" />
+
+				<MudFileUpload T="IBrowserFile" Accept=".jpg, .png" FilesChanged="UploadFiles">
+					<ButtonTemplate Context="pictureUploadContext">
+						<MudIconButton HtmlTag="label"
+									   Color="Color.Info"
+									   Icon="@Icons.Material.Filled.PhotoCamera"
+										for="@pictureUploadContext">
+						</MudIconButton>
+					</ButtonTemplate>
+				</MudFileUpload>
+
+				@if (files.Any())
+				{
+					<MudText>@files.Last().Name</MudText>
+				}
+
 			</MudCardContent>
 			<MudCardActions>
 				<MudButton ButtonType="ButtonType.Submit" class="btn btn-primary">Save</MudButton>
@@ -37,4 +53,14 @@
     }
 
     void Cancel() => MudDialog.Cancel();
+
+
+	IList<IBrowserFile> files = new List<IBrowserFile>();
+	private void UploadFiles(IBrowserFile file)
+	{
+		files.Add(file);
+		//TODO upload the files to the server
+	}
+
+
 }
