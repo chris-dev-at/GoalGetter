@@ -9,7 +9,7 @@
 				}
 				else
 				{
-					<MudAvatar Color="Color.Primary">@person.Firstname.First()@person.Lastname.First()</MudAvatar>
+					<MudAvatar Color="@person.AvatarColor">@person.Firstname.First()@person.Lastname.First()</MudAvatar>
 
 				}
 			</div>
@@ -26,4 +26,18 @@
 @code {
 	[Parameter]
 	public Person person { get; set; }
+
+	Random random = new Random();
+
+	private Color GetRandomColor()
+	{
+
+		Type type = typeof(Color);
+		Array values = type.GetEnumValues();
+		int index = random.Next(values.Length);
+
+		return (Color)values.GetValue(index);
+	}
+
+
 }

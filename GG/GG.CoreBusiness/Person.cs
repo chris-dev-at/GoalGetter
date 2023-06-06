@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using MudBlazor;
 using System.Threading.Tasks;
 
 namespace GG.CoreBusiness
@@ -11,6 +12,8 @@ namespace GG.CoreBusiness
     {
         public int Id { get; set; }
         public string AvatarPath { get; set; } = null;
+
+        public Color AvatarColor { get; set; } = Color.Primary;
 
 
         [Required, StringLength(100, MinimumLength = 1, ErrorMessage = "Firstname must be between 1 and 100 characters")]
