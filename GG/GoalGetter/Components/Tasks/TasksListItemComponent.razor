@@ -1,5 +1,8 @@
-﻿<h3>TasksListItemComponent</h3>
+﻿<div>
+	@task.Name
+</div>
 
 @code {
-
+	[Parameter]
+	public ProjectTask task { get; set; }
 }
