@@ -1,5 +1,6 @@
 ﻿@inject IAddPersonUseCase AddPersonUseCase
 @inject ISnackbar Snackbar
+@using Libraries.DistanceAddressCalculator;
 
 
 
@@ -16,6 +17,11 @@
 								@bind-Value="newPerson.Email" For="@(() => newPerson.Email)" InputType="InputType.Email" />
 				<MudTextField Label="Phone number" Class="mt-3"
 								@bind-Value="newPerson.Phone" For="@(() => newPerson.Phone)" InputType="InputType.Telephone" />
+
+				<MudAutocomplete T="string" Label="Address" @bind-Value="addressval" SearchFunc="@SearchAddress"
+									ResetValueOnEmptyText="@resetValueOnEmptyText"
+									CoerceText="@coerceText" CoerceValue="@coerceValue"
+									AdornmentIcon="@Icons.Material.Filled.Map" AdornmentColor="Color.Primary" />
 
 				<MudFileUpload T="IBrowserFile" Accept=".jpg, .png" FilesChanged="UploadFiles">
 					<ButtonTemplate Context="pictureUploadContext">
@@ -59,11 +65,50 @@
 
 	void Cancel() => MudDialog.Cancel();
 
-
+	//Avatar Upload
 	IList<IBrowserFile> files = new List<IBrowserFile>();
 	private void UploadFiles(IBrowserFile file)
 	{
 		files.Add(file);
 		//TODO upload the files to the server
 	}
+
+	//Location 
+	private bool resetValueOnEmptyText;
+	private bool coerceText;
+	private bool coerceValue;
+	private string addressval;
+	private int API_CALLCOUNT = 0;
+	private bool API_Blocked = false;
+	private string latestSearch = "";
+	private Address[] searchOptions =
+	{
+	};
+
+	private async Task<IEnumerable<string>> SearchAddress(string value)
+	{
+		// In real life, use an asynchronous function for fetching data from an API.
+		await Task.Delay(5);
+
+		if (value == null)
+			return new List<string>();
+
+		// If the text is null or empty, don't return values (drop-down will not open).
+		addressval = value;
+		if(value.Length > 4)
+			await UpdateAddresses();
+		return searchOptions.Select(x => $"OSM: {x.ID} {x.Name}");
+	}
+
+	private async Task UpdateAddresses()
+	{
+		if(latestSearch != addressval)
+		{
+			latestSearch = addressval;
+			searchOptions = Address.FindAddresses(addressval);
+			await Task.Delay(2000);
+			API_CALLCOUNT++;
+		}
+	}
+
 }

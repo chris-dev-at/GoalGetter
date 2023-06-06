@@ -14,6 +14,7 @@
     <ProjectReference Include="..\GG.CoreBusiness\GG.CoreBusiness.csproj" />
     <ProjectReference Include="..\GG.Plugins.InMemory\GG.Plugins.InMemory.csproj" />
     <ProjectReference Include="..\GG.UseCases\GG.UseCases.csproj" />
+    <ProjectReference Include="..\Libraries\Libraries.csproj" />
   </ItemGroup>
 
   <ItemGroup>

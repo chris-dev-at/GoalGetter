@@ -21,19 +21,9 @@
 			<MudTd><MudAvatar Image="@context.AvatarPath"/></MudTd>
     </RowTemplate>
 	</MudTable>
-@*	<MudSelect Label="Persons" MultiSelection="true" @bind-SelectedValues="@options">
-		@if(people != null)
-		{
-			foreach (Person person in people)
-			{
-				<MudSelectItem T="Person" Value="@person">@person.Firstname</MudSelectItem>
-			}
-		}
-
-	</MudSelect>*@
 	<MudCardActions>
-		<MudButton ButtonType="ButtonType.Submit" class="btn btn-primary" @onclick="Save">Save</MudButton>
-		<MudButton ButtonType="ButtonType.Button" class="btn btn-primary" @onclick="Cancel">Cancel</MudButton>
+		<MudButton ButtonType="ButtonType.Submit" class="btn btn-primary" @onclick="Save">Add</MudButton>
+		<MudButton ButtonType="ButtonType.Button" class="btn btn-primary" @onclick="Cancel">Close</MudButton>
 	</MudCardActions>
 </MudCard>
 
