@@ -29,12 +29,12 @@
 
     private List<GG.CoreBusiness.Teammember> team;
 
-	DialogOptions maxWidth = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true };
+	DialogOptions maxWidth = new DialogOptions() { MaxWidth = MaxWidth.Large, FullWidth = true };
 
 	private void OpenDialog(DialogOptions options)
 	{
 		var parameter = new DialogParameters { ["ProId"] = proid };
-		DialogService.Show<AddTeam>("Add People", options);
+		DialogService.ShowAsync<AddTeam>("Add People", parameter, options);
 	}
 
 	private string searchterm = "";

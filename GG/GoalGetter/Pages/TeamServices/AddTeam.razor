@@ -3,7 +3,25 @@
 @inject ISnackbar Snackbar
 
 <MudCard>
-	<MudSelect Label="Persons" MultiSelection="true" @bind-SelectedValues="@options">
+	<MudTable Items="people" MultiSelection="true" @bind-SelectedItems="@options" Striped="true">
+		<HeaderContent>
+        <MudTh>FirstName</MudTh>
+        <MudTh>LastName</MudTh>
+        <MudTh>Address</MudTh>
+        <MudTh>Email</MudTh>
+        <MudTh>Phone</MudTh>
+		<MudTh>Avatar</MudTh>
+    </HeaderContent>
+	 <RowTemplate>
+			<MudTd DataLabel="FirstName">@context.Firstname</MudTd>
+			<MudTd DataLabel="LastName">@context.Lastname</MudTd>
+			<MudTd DataLabel="Address">@context.Address</MudTd>
+			<MudTd DataLabel="Email">@context.Email</MudTd>
+			<MudTd DataLabel="Phone">@context.Phone</MudTd>
+			<MudTd><MudAvatar Image="@context.AvatarPath"/></MudTd>
+    </RowTemplate>
+	</MudTable>
+@*	<MudSelect Label="Persons" MultiSelection="true" @bind-SelectedValues="@options">
 		@if(people != null)
 		{
 			foreach (Person person in people)
@@ -12,7 +30,7 @@
 			}
 		}
 
-	</MudSelect>
+	</MudSelect>*@
 	<MudCardActions>
 		<MudButton ButtonType="ButtonType.Submit" class="btn btn-primary" @onclick="Save">Save</MudButton>
 		<MudButton ButtonType="ButtonType.Button" class="btn btn-primary" @onclick="Cancel">Cancel</MudButton>
@@ -32,7 +50,7 @@
 
 	private IEnumerable<Person> people = new List<Person>();
 
-	private IEnumerable<Person> options { get; set; } = new List<Person>();
+	private HashSet<Person> options { get; set; } = new HashSet<Person>();
 
 	protected override async Task OnInitializedAsync()
 	{
