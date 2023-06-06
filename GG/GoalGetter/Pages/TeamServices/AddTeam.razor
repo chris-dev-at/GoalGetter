@@ -1,5 +1,9 @@
 ﻿@inject IViewPeopleIfNotInTeamUseCase viewPeopleIfNotInTeamUseCase
+<<<<<<< HEAD
 @inject IAddTeamUseCase addTeamUseCase
+=======
+@inject ISnackbar Snackbar
+>>>>>>> 0ee8f39a992afeef4ad33834d55523db3520e928
 
 <MudCard>
 	<MudSelect Label="Persons" MultiSelection="true" @bind-SelectedValues="@options">
@@ -35,7 +39,11 @@
 
 	protected override async Task OnInitializedAsync()
 	{
-		people = await viewPeopleIfNotInTeamUseCase.ExecuteAsync(ProId);
+		StatusReport<IEnumerable<Person>> status = viewPeopleIfNotInTeamUseCase.ExecuteAsync(ProId).Result;
+		if (status.Value != null)
+			people = status.Value;
+		else
+			Snackbar.Add(status.Reason, status.severity);
 	}
 
 	private void Save()
