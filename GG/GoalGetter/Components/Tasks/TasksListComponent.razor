@@ -50,5 +50,10 @@
 	protected override async Task OnParametersSetAsync()
 	{
 		tasks = (await viewTasksByProjectIdUseCase.ExecuteAsync(this.searchTerm, proid)).ToList();
+
+		// Simulate a delay of 1 second
+		await Task.Delay(TimeSpan.FromSeconds(1.5));
+
+		_loading = false;
 	}
 }

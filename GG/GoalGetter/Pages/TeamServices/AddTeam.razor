@@ -1,9 +1,38 @@
-﻿<h3>AddTeam</h3>
+﻿@inject IViewPeopleIfNotInTeamUseCase viewPeopleIfNotInTeamUseCase
+
+<MudCard>
+	<MudSelect Label="Persons" MultiSelection="true" @bind-SelectedValues="@options">
+		@if(people != null)
+		{
+			foreach (Person person in people)
+			{
+				<MudSelectItem T="Person" Value="@person">@person.Firstname</MudSelectItem>
+			}
+		}
+
+	</MudSelect>
+	<MudCardActions>
+		<MudButton ButtonType="ButtonType.Button" class="btn btn-primary" @onclick="Cancel">Cancel</MudButton>
+	</MudCardActions>
+</MudCard>
+
+
+
 
 @code {
-	
+	[CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+	void Cancel() => MudDialog.Cancel();
+
+	[Parameter]
+	public int ProId { get; set; }
+
+	private IEnumerable<Person> people = new List<Person>();
+
+	private IEnumerable<Person> options { get; set; } = new List<Person>();
+
 	protected override async Task OnInitializedAsync()
 	{
-		
+		people = await viewPeopleIfNotInTeamUseCase.ExecuteAsync(ProId);
 	}
 }

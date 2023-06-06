@@ -4,8 +4,8 @@
 		<MudText Typo="Typo.h6" Class="w-50">@project.Name</MudText>
 	</div>
 	<hr />
-	<h3>@project.Description</h3>
-	<p class="flex-right-down">@project.status</p>
+	<MudText Class="mw-100">@project.Description</MudText>
+	<MudChip Variant="Variant.Outlined" Color="Color.Primary" Class="flex-right-down">@project.status</MudChip>
 	<div class="flex-right-down">
 		@if (project.assignedTeam.members != null)
 		{

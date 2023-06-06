@@ -14,8 +14,4 @@
     <ProjectReference Include="..\GG.CoreBusiness\GG.CoreBusiness.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Team\Interfaces\" />
-  </ItemGroup>
-
 </Project>

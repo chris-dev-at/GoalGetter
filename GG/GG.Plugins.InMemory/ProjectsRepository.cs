@@ -191,7 +191,7 @@ namespace GG.Plugins.InMemory
 		public async Task<StatusReport<EmptyVal>> RemovePersonFromProjectAsync(Person person, Project p)
 		{
 			//Check if person is within Team
-			if (p.assignedTeam.members.Cast<Person>().Contains(person))
+			if (p.assignedTeam.members.Select(t => t.person).Contains(person))
 			{
 				foreach (Teammember member in p.assignedTeam.members)
 				{
@@ -245,7 +245,7 @@ namespace GG.Plugins.InMemory
 
 		public async Task<StatusReport<IEnumerable<Person>>> GetAllPersonsIfnotAlreadyInTeamAsync(Team team)
 		{
-			IEnumerable<Person> result = Contact.Where(x => !team.members.Cast<Person>().Contains(x));
+			IEnumerable<Person> result = Contact.Where(x => !team.members.Select(t => t.person).Contains(x));
 			return new StatusReport<IEnumerable<Person>>(
 						result.Any() ? StatusState.Normal : StatusState.Warning,
 						result,
@@ -255,7 +255,7 @@ namespace GG.Plugins.InMemory
 
 		public async Task<StatusReport<bool>> PersonAlreadyInTeam(Person person, Team team)
 		{
-			bool result = team.members.Cast<Person>().Contains(person);
+			bool result = team.members.Select(t => t.person).Contains(person);
 			return new StatusReport<bool>(
 						StatusState.Normal,
 						result,

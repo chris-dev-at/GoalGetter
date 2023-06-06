@@ -9,17 +9,18 @@ using System.Threading.Tasks;
 
 namespace GG.UseCases.Team
 {
-    public class AddTeamUseCase : IAddTeamUseCase
+    public class ViewPeopleIfNotInTeamUseCase : IViewPeopleIfNotInTeamUseCase
 	{
 		private readonly IProjectsRepository projectsRepository;
-		public AddTeamUseCase(IProjectsRepository projectsRepository)
+		public ViewPeopleIfNotInTeamUseCase(IProjectsRepository projectsRepository)
 		{
 			this.projectsRepository = projectsRepository;
 		}
-		public async Task ExecuteAsync(Teammember person, int projectid)
+		public async Task<IEnumerable<Person>> ExecuteAsync(int projectid)
 		{
 			var pro = await this.projectsRepository.GetProjectByIdAsync(projectid);
-			await this.projectsRepository.AddTeammemberToTeam(person, pro.Value.assignedTeam);
+			//return this.projectsRepository.GetAllPersonsIfnotAlreadyInTeamAsync(pro.Value.assignedTeam).Result.Value;
+			return this.projectsRepository.GetPeopleByNameAsync("").Result.Value;
 		}
 	}
 }

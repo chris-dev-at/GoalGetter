@@ -27,7 +27,9 @@ builder.Services.AddTransient<IViewProjectByIdUseCase, ViewProjectByIdUseCase>()
 builder.Services.AddTransient<IViewPeopleByNameUseCase, ViewPeopleByNameUseCase>();
 builder.Services.AddTransient<IAddPersonUseCase, AddPersonUseCase>();
 
+// Team Services
 builder.Services.AddTransient<IViewTeamMembersByProjectIdUseCase, ViewTeamMembersByProjectIdUseCase>();
+builder.Services.AddTransient<IViewPeopleIfNotInTeamUseCase, ViewPeopleIfNotInTeamUseCase>();
 
 //Taks Services
 builder.Services.AddTransient<IViewTasksByProjectIdUseCase, ViewTasksByProjectIdUseCase>();
