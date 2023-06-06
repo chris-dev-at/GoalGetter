@@ -1,4 +1,6 @@
 ﻿@inject IViewTeamMembersByProjectIdUseCase viewTeamMembersByProjectIdUseCase
+@inject ISnackbar Snackbar
+@inject NavigationManager NavigationManager
 @*Hier kommen die Karten für jeder Projekt*@
 
 
@@ -24,6 +26,14 @@
 
 	protected override async Task OnParametersSetAsync()
 	{
-		team = (await viewTeamMembersByProjectIdUseCase.ExecuteAsync(searchTerm, proid)).ToList();
+		var result = viewTeamMembersByProjectIdUseCase.ExecuteAsync(searchTerm, proid).Result;
+
+		if (result.Value != null)
+			team = result.Value.ToList();
+		else
+		{
+			Snackbar.Add(result.Reason, result.severity);
+			NavigationManager.NavigateTo("/");
+		}
 	}
 }

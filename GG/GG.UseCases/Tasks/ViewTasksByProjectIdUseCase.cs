@@ -17,10 +17,17 @@ namespace GG.UseCases.Tasks
             this.projectsRepository = projectsRepository;
         }
 
-        public async Task<IEnumerable<ProjectTask>> ExecuteAsync(string name, int projectid)
+        public async Task<StatusReport<IEnumerable<ProjectTask>>> ExecuteAsync(string name, int projectid)
         {
             var pro = await this.projectsRepository.GetProjectByIdAsync(projectid);
-            return this.projectsRepository.GetTaskByNameWithinList(name, pro.Value.Tasks).Result.Value;
-        }
+            if(pro.Value != null)
+                return this.projectsRepository.GetTaskByNameWithinList(name, pro.Value.Tasks).Result;
+            else
+				return new StatusReport<IEnumerable<ProjectTask>>(
+						StatusState.Error,
+						null,
+						pro.Reason
+					);
+		}
     }
 }

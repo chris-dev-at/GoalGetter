@@ -4,6 +4,6 @@ namespace GG.UseCases.Projects.Interfaces
 {
     public interface IViewProjectsByNameUseCase
     {
-        Task<IEnumerable<Project>> ExecuteAsync(string name = "");
+        Task<StatusReport<IEnumerable<Project>>> ExecuteAsync(string name = "");
     }
 }

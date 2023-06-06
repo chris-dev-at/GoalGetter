@@ -4,6 +4,6 @@ namespace GG.UseCases.Team.Interfaces
 {
     public interface IViewTeamMembersByProjectIdUseCase
     {
-        Task<IEnumerable<Teammember>> ExecuteAsync(string name, int projectid);
+        Task<StatusReport<IEnumerable<Teammember>>> ExecuteAsync(string name, int projectid);
     }
 }
