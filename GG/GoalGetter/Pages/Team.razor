@@ -1,16 +1,20 @@
 ﻿@page "/project/{proid:int}/team"
 @layout ProjectMainLayout
-@inject NavigationManager NavigationManager
 @inject IViewTeamMembersByProjectIdUseCase viewTeamMembersByProjectIdUseCase
 
 <h3>Team for project @proid</h3>
 
+@inject IDialogService DialogService
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-6 d-flex align-items-center">
-			<MudButton Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white" Color="Color.Primary" OnClick="NavigateAddTeam">
-				+ Teammember
+			<MudButton Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white" Color="Color.Primary" OnClick="@((e) => OpenDialog(maxWidth))">
+				+ Person
 			</MudButton>
+			<MudPopover AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
+				<AddTeam ProId="@proid" />
+			</MudPopover>
 			<Searchbar OnSearchterm="OnTermSearch" />
 		</div>
 	</div>
@@ -23,9 +27,15 @@
 	[Parameter]
 	public int proid { get; set; }
 
-	private List<GG.CoreBusiness.Teammember> team;
+    private List<GG.CoreBusiness.Teammember> team;
 
-	private void NavigateAddTeam() => NavigationManager.NavigateTo($"/project/{proid}/team/addteam");
+	DialogOptions maxWidth = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true };
+
+	private void OpenDialog(DialogOptions options)
+	{
+		var parameter = new DialogParameters { ["ProId"] = proid };
+		DialogService.Show<AddTeam>("Add People", options);
+	}
 
 	private string searchterm = "";
 

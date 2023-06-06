@@ -1,5 +1,4 @@
-﻿@page "/project/{ProId:int}/team/addteam"
-@inject IViewPeopleIfNotInTeamUseCase viewPeopleIfNotInTeamUseCase
+﻿@inject IViewPeopleIfNotInTeamUseCase viewPeopleIfNotInTeamUseCase
 @inject IAddTeamUseCase addTeamUseCase
 
 <MudCard>
@@ -15,7 +14,7 @@
 	</MudSelect>
 	<MudCardActions>
 		<MudButton ButtonType="ButtonType.Submit" class="btn btn-primary" @onclick="Save">Save</MudButton>
-		<MudButton ButtonType="ButtonType.Button" class="btn btn-primary" >Cancel</MudButton>
+		<MudButton ButtonType="ButtonType.Button" class="btn btn-primary" @onclick="Cancel">Cancel</MudButton>
 	</MudCardActions>
 </MudCard>
 
@@ -23,6 +22,9 @@
 
 
 @code {
+	[CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+	void Cancel() => MudDialog.Cancel();
 
 	[Parameter]
 	public int ProId { get; set; }
