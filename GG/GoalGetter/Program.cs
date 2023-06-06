@@ -30,6 +30,7 @@ builder.Services.AddTransient<IAddPersonUseCase, AddPersonUseCase>();
 // Team Services
 builder.Services.AddTransient<IViewTeamMembersByProjectIdUseCase, ViewTeamMembersByProjectIdUseCase>();
 builder.Services.AddTransient<IViewPeopleIfNotInTeamUseCase, ViewPeopleIfNotInTeamUseCase>();
+builder.Services.AddTransient<IAddTeamUseCase, AddTeamUseCase>();
 
 //Taks Services
 builder.Services.AddTransient<IViewTasksByProjectIdUseCase, ViewTasksByProjectIdUseCase>();

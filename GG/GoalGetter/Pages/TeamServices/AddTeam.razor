@@ -1,4 +1,6 @@
-﻿@inject IViewPeopleIfNotInTeamUseCase viewPeopleIfNotInTeamUseCase
+﻿@page "/project/{ProId:int}/team/addteam"
+@inject IViewPeopleIfNotInTeamUseCase viewPeopleIfNotInTeamUseCase
+@inject IAddTeamUseCase addTeamUseCase
 
 <MudCard>
 	<MudSelect Label="Persons" MultiSelection="true" @bind-SelectedValues="@options">
@@ -12,7 +14,8 @@
 
 	</MudSelect>
 	<MudCardActions>
-		<MudButton ButtonType="ButtonType.Button" class="btn btn-primary" @onclick="Cancel">Cancel</MudButton>
+		<MudButton ButtonType="ButtonType.Submit" class="btn btn-primary" @onclick="Save">Save</MudButton>
+		<MudButton ButtonType="ButtonType.Button" class="btn btn-primary" >Cancel</MudButton>
 	</MudCardActions>
 </MudCard>
 
@@ -20,9 +23,6 @@
 
 
 @code {
-	[CascadingParameter] MudDialogInstance MudDialog { get; set; }
-
-	void Cancel() => MudDialog.Cancel();
 
 	[Parameter]
 	public int ProId { get; set; }
@@ -34,5 +34,15 @@
 	protected override async Task OnInitializedAsync()
 	{
 		people = await viewPeopleIfNotInTeamUseCase.ExecuteAsync(ProId);
+	}
+
+	private void Save()
+	{
+		foreach (Person p in options)
+		{
+			
+			addTeamUseCase.ExecuteAsync(new Teammember{person = p, Role= Teamrolle.Worker}, ProId);
+			
+		}
 	}
 }

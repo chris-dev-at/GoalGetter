@@ -19,8 +19,8 @@ namespace GG.UseCases.Team
 		public async Task<IEnumerable<Person>> ExecuteAsync(int projectid)
 		{
 			var pro = await this.projectsRepository.GetProjectByIdAsync(projectid);
-			//return this.projectsRepository.GetAllPersonsIfnotAlreadyInTeamAsync(pro.Value.assignedTeam).Result.Value;
-			return this.projectsRepository.GetPeopleByNameAsync("").Result.Value;
+			return this.projectsRepository.GetAllPersonsIfnotAlreadyInTeamAsync(pro.Value.assignedTeam).Result.Value;
+			//return this.projectsRepository.GetPeopleByNameAsync("").Result.Value;
 		}
 	}
 }
