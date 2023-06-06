@@ -3,48 +3,48 @@
 @inject IDialogService DialogService
 
 <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-6 d-flex align-items-center">
-			<MudButton Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white" Color="Color.Primary" OnClick="@((e) => OpenDialog(maxWidth))">
-				+ Person
-			</MudButton>
-			<MudPopover Open="@_isOpen" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
-					<AddPerson/>
-			</MudPopover>
-			<Searchbar OnSearchterm="OnTermSearch" />
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-md-6 d-flex align-items-center">
+            <MudButton Variant="Variant.Filled" DisableElevation="true" Style="max-height: 40px; margin-top: 7px; background-color: #0088d3; color: white; margin-right: 3vw" OnClick="@((e) => OpenDialog(maxWidth))">
+                + Person
+            </MudButton>
+            <MudPopover Open="@_isOpen" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
+                <AddPerson />
+            </MudPopover>
+            <Searchbar OnSearchterm="OnTermSearch" />
+        </div>
+    </div>
 </div>
 
 @*Hier kommen die Karten für jeder Projekt*@
 <PeopleListComponent searchTerm="@searchterm" reloadFlag="@reloadFlag" />
 
 @code {
-	public bool _isOpen;
-	private bool reloadFlag = false;
+    public bool _isOpen;
+    private bool reloadFlag = false;
 
-	public void Close(bool status)
-	{
-		_isOpen = status;
-		reloadFlag = !reloadFlag; // Toggle the reload flag
-	}
+    public void Close(bool status)
+    {
+        _isOpen = status;
+        reloadFlag = !reloadFlag; // Toggle the reload flag
+    }
 
-	public void ToggleOpen()
-	{
-		_isOpen = true;
-	}
+    public void ToggleOpen()
+    {
+        _isOpen = true;
+    }
 
-	private string searchterm = "";
+    private string searchterm = "";
 
-	private void OnTermSearch(string searchterm)
-	{
-		this.searchterm = searchterm;
-	}
+    private void OnTermSearch(string searchterm)
+    {
+        this.searchterm = searchterm;
+    }
 
-	DialogOptions maxWidth = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true };
+    DialogOptions maxWidth = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true };
 
-	private void OpenDialog(DialogOptions options)
-	{
-		DialogService.Show<AddPerson>("Add People", options);
-	}
+    private void OpenDialog(DialogOptions options)
+    {
+        DialogService.Show<AddPerson>("Add People", options);
+    }
 }

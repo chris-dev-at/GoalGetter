@@ -10,12 +10,15 @@
     <!-- Leiste oben - Background: #0088d3 -->
     <MudAppBar Elevation="0" Style="background-color: #0088d3">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        <div style="display: flex; justify-content: flex-end; align-items: center; flex-grow: 1;">
+            <MudImage Src="images/logo-goalgetter.png" Width="50" Height="50" Alt="GG-Logo" Style="border: none;" />
+        </div>
     </MudAppBar>
     <MudDrawer @bind-Open="_drawerOpen" Elevation="1">
         <MudDrawerHeader>
             <MudText Typo="Typo.h6">GoalGetter</MudText>
         </MudDrawerHeader>
-        <ProjectNavMenu ProId="@ID"/>
+        <ProjectNavMenu ProId="@ID" />
     </MudDrawer>
     <MudMainContent>
         <MudContainer MaxWidth="MaxWidth.Large" Class="my-5 pt-5">
