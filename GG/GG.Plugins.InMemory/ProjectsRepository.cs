@@ -99,7 +99,7 @@ namespace GG.Plugins.InMemory
 		{
 			if (team.members == null)
 				return new StatusReport<IEnumerable<Teammember>>(
-						StatusState.Normal,
+						StatusState.Warning,
 						new List<Teammember>(),
 						"No people have been found"
 					);
@@ -227,7 +227,7 @@ namespace GG.Plugins.InMemory
 		{
 			if (Contact.Any(x => x.Firstname.Equals(person.Firstname, StringComparison.OrdinalIgnoreCase)))
 				return new StatusReport<EmptyVal>(
-						StatusState.Failed,
+						StatusState.Error,
 						EmptyVal.Empty,
 						"Person already exists"
 					);
@@ -267,7 +267,7 @@ namespace GG.Plugins.InMemory
 		{
 			if (PersonAlreadyInTeam(member.person, team).Result.Value)
 				return new StatusReport<EmptyVal>(
-						StatusState.Failed,
+						StatusState.Error,
 						EmptyVal.Empty,
 						"Person already within Team"
 					);
