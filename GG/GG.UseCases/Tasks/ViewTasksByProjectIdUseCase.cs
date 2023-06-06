@@ -20,7 +20,7 @@ namespace GG.UseCases.Tasks
         public async Task<IEnumerable<ProjectTask>> ExecuteAsync(string name, int projectid)
         {
             var pro = await this.projectsRepository.GetProjectByIdAsync(projectid);
-            return this.projectsRepository.GetTaskByNameWithinList(name, pro.Value.Tasks).Result.Value;
+            return await this.projectsRepository.GetTaskByNameWithinList(name, pro.Tasks);
         }
     }
 }

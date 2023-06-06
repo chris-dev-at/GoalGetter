@@ -18,7 +18,7 @@ namespace GG.UseCases.Projects
 		}
 		public async Task<Project> ExecuteAsync(int projectid)
 		{
-			return this.projectsRepository.GetProjectByIdAsync(projectid).Result.Value;
+			return await this.projectsRepository.GetProjectByIdAsync(projectid);
 		}
 	}
 }

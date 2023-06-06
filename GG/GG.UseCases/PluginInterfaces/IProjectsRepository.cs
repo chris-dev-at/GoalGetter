@@ -9,24 +9,24 @@ namespace GG.UseCases.PluginInterfaces
 {
 	public interface IProjectsRepository
 	{
-		Task<StatusReport<IEnumerable<Project>>> GetProjectsByNameAsync(string name);
-		Task<StatusReport<EmptyVal>> AddProjectAsync(Project project);
-		Task<StatusReport<Project>> GetProjectByIdAsync(int ProjectId);
+		Task<IEnumerable<Project>> GetProjectsByNameAsync(string name);
+		Task AddProjectAsync(Project project);
+		Task<Project> GetProjectByIdAsync(int ProjectId);
 
-		Task<StatusReport<IEnumerable<Person>>> GetPeopleByNameAsync(string name);
-		Task<StatusReport<EmptyVal>> AddPersonAsync(Person person);
+		Task<IEnumerable<Person>> GetPeopleByNameAsync(string name);
+		Task AddPersonAsync(Person person);
 
-		Task<StatusReport<IEnumerable<Person>>> GetPersonWithinPersonList(string person_name, IEnumerable<Person> persons);
+		Task <IEnumerable<Person>> GetPersonWithinPersonList(string person_name, IEnumerable<Person> persons);
 
-		Task<StatusReport<IEnumerable<Teammember>>> GetTeammemberByNameWithinTeamAsync(string person_name, GG.CoreBusiness.Team team);
-		Task<StatusReport<IEnumerable<ProjectTask>>> GetTaskByNameWithinList(string task_name, IEnumerable<ProjectTask> tasks);
-		Task<StatusReport<EmptyVal>> RemovePersonCompletelyAsync(Person person);
-		Task<StatusReport<EmptyVal>> RemoveTeammemberFromTeamAsync(Teammember member, GG.CoreBusiness.Team team);
-		Task<StatusReport<EmptyVal>> RemovePersonFromProjectAsync(Person person, Project p);
-		Task<StatusReport<IEnumerable<Person>>> GetAllPersonsIfnotAlreadyInTeamAsync(GG.CoreBusiness.Team team);
-		Task<StatusReport<bool>> PersonAlreadyInTeam(Person person, GG.CoreBusiness.Team team);
-        Task<StatusReport<EmptyVal>> AddTeammemberToTeam(Teammember member, GG.CoreBusiness.Team team);
-		Task<StatusReport<EmptyVal>> AddTaskToProject(ProjectTask task, Project project);
+		Task<IEnumerable<Teammember>> GetTeammemberByNameWithinTeamAsync(string person_name, GG.CoreBusiness.Team team);
+		Task<IEnumerable<ProjectTask>> GetTaskByNameWithinList(string task_name, IEnumerable<ProjectTask> tasks);
+		Task RemovePersonCompletelyAsync(Person person);
+		Task RemoveTeammemberFromTeamAsync(Teammember member, GG.CoreBusiness.Team team);
+		Task RemovePersonFromProjectAsync(Person person, Project p);
+		Task<IEnumerable<Person>> GetAllPersonsIfnotAlreadyInTeamAsync(GG.CoreBusiness.Team team);
+		Task<bool> PersonAlreadyInTeam(Person person, GG.CoreBusiness.Team team);
+        Task AddPersonToTeam(Teammember member, GG.CoreBusiness.Team team);
+		Task AddTaskToProject(ProjectTask task, Project project);
 
         //Task<bool> ExistsAsync(Project project);
         //Task UpdateProjectAsync(Project project);

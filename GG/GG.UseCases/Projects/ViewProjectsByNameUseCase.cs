@@ -18,7 +18,7 @@ namespace GG.UseCases.Projects
 		}
 		public async Task<IEnumerable<Project>> ExecuteAsync(string name = "")
 		{
-			return projectsRepository.GetProjectsByNameAsync(name).Result.Value;
+			return await projectsRepository.GetProjectsByNameAsync(name);
 		}
 	}
 }

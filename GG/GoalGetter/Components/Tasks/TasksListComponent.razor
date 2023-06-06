@@ -1,5 +1,25 @@
-﻿<h3>TasksListComponent</h3>
+﻿@inject IViewTasksByProjectIdUseCase viewTasksByProjectIdUseCase
+
+@foreach (ProjectTask item in tasks)
+{
+	<TasksListItemComponent task="@item"/>
+}
+
 
 @code {
 
+	[Parameter]
+	public int proid { get; set; }
+
+	[Parameter]
+	public string searchTerm { get; set; }
+
+	[Parameter]
+	public bool reloadFlag { get; set; }
+
+	private IEnumerable<ProjectTask> tasks = new List<ProjectTask>();
+	protected override async Task OnParametersSetAsync()
+	{
+		tasks = (await viewTasksByProjectIdUseCase.ExecuteAsync(this.searchTerm, proid)).ToList();
+	}
 }
