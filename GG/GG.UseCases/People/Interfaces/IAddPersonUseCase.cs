@@ -4,6 +4,6 @@ namespace GG.UseCases.People.Interfaces
 {
     public interface IAddPersonUseCase
     {
-        Task ExecuteAsync(Person person);
+        Task<StatusReport<EmptyVal>> ExecuteAsync(Person person);
     }
 }

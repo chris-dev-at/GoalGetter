@@ -17,10 +17,11 @@ namespace GG.UseCases.People
         {
             this.projectsRepository = projectsRepository;
         }
-        public async Task ExecuteAsync(Person person)
+        public async Task<StatusReport<EmptyVal>> ExecuteAsync(Person person)
         {
             person.AvatarColor = await GetRandomColor();
-            await projectsRepository.AddPersonAsync(person);
+            
+            return await projectsRepository.AddPersonAsync(person);
         }
         public async Task<Color> GetRandomColor()
         {

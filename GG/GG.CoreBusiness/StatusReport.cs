@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MudBlazor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,18 @@ namespace GG.CoreBusiness
 		public T Value { get; set; }
 		public string Reason { get; set; }
 
-		public StatusReport() { }
+		private Dictionary<StatusState, Severity> translateStatusState = new Dictionary<StatusState, Severity>{
+			{ StatusState.Normal, Severity.Normal },
+			{ StatusState.Failed, Severity.Warning },
+			{ StatusState.Warning, Severity.Warning },
+			{ StatusState.Error, Severity.Error },
+			{ StatusState.Success, Severity.Success }
+		};
+
+		public Severity severity { get { return this.translateStatusState[this.State]; } private set { } }
+
+
+        public StatusReport() { }
 		public StatusReport(StatusState state, T val, string reason = "")
 		{
 			State = state;
@@ -21,8 +33,9 @@ namespace GG.CoreBusiness
 		}
 
 		public override string ToString() => State + this.Reason;
-
 	}
+
+
 	public enum StatusState { Success, Normal, Warning, Failed, Error }
 	public enum EmptyVal { Empty }
 }

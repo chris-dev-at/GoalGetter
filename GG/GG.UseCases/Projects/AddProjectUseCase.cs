@@ -16,9 +16,9 @@ namespace GG.UseCases.Projects
 		{
 			this.projectsRepository = projectsRepository;
 		}
-		public async Task ExecuteAsync(Project project)
+		public async Task<StatusReport<EmptyVal>> ExecuteAsync(Project project)
 		{
-			await this.projectsRepository.AddProjectAsync(project);
+			return await this.projectsRepository.AddProjectAsync(project);
 		}
 	}
 }

@@ -307,7 +307,7 @@ namespace GG.Plugins.InMemory
 				Firstname = "Rainer",
 				Lastname = "Winkler",
 				Address = "DE, Emskirchen 91448, Altschauerberg 8",
-				AvatarPath = null,
+				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
 				Email = "r.winkler@htlkrems.at"
 			});
 
@@ -317,7 +317,7 @@ namespace GG.Plugins.InMemory
 				Firstname = "Ilse",
 				Lastname = "Nigischer",
 				Address = "AT Waidhofen a. T. 3830, Buxdihudenstraße 1",
-				AvatarPath = null,
+				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
 				Email = "i.nigischer@htlkrems.at"
 			});
 
@@ -327,7 +327,7 @@ namespace GG.Plugins.InMemory
 				Firstname = "Herwig",
 				Lastname = "Macho",
 				Address = "AT Zwettl 3910, Propstei 8",
-				AvatarPath = null,
+				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
 				Email = "h.macho@htlkrems.at"
 			});
 
@@ -337,7 +337,7 @@ namespace GG.Plugins.InMemory
 				Firstname = "Lukas",
 				Lastname = "Kolinsky",
 				Address = "AT, Zwettl 3910, Propstei 7",
-				AvatarPath = null,
+				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
 				Email = "lukas.kolinsky1@gmail.com"
 			});
 
@@ -347,7 +347,7 @@ namespace GG.Plugins.InMemory
 				Firstname = "Mulham",
 				Lastname = "Taylouni",
 				Address = "AT, Gmünd 3950, Schremserstraße 69",
-				AvatarPath = null,
+				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
 				Email = "contact@taylouni.me"
 			});
 
@@ -357,7 +357,7 @@ namespace GG.Plugins.InMemory
 				Firstname = "Christian",
 				Lastname = "Wiesinger",
 				Address = "AT, Rappottenstein 3911, Burgunderweg 109",
-				AvatarPath = null,
+				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
 				Email = "contact@taylouni.me"
 			});
 
@@ -367,7 +367,7 @@ namespace GG.Plugins.InMemory
 				Firstname = "Clemens",
 				Lastname = "Schmid",
 				Address = "AT, Zwettl 3910,Hammerweg 3",
-				AvatarPath = null,
+				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
 				Email = "c.schmid@htlkrems.at"
 			});
 

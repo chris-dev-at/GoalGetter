@@ -4,6 +4,6 @@ namespace GG.UseCases.Projects.Interfaces
 {
     public interface IAddProjectUseCase
     {
-        Task ExecuteAsync(Project project);
+        Task<StatusReport<EmptyVal>> ExecuteAsync(Project project);
     }
 }

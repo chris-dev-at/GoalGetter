@@ -1,5 +1,6 @@
 ﻿@inject NavigationManager NavigationManager
 @inject IAddProjectUseCase AddProjectUseCase
+@inject ISnackbar Snackbar
 
 <MudDialog>
 	<DialogContent>
@@ -36,7 +37,9 @@
 	private async Task SaveProject()
 	{
 		newProject.assignedTeam = new Team();
-		await AddProjectUseCase.ExecuteAsync(newProject);
+		StatusReport<EmptyVal> status = await AddProjectUseCase.ExecuteAsync(newProject);
+		Snackbar.Add(status.Reason, status.severity);
+
 		MudDialog.Close(DialogResult.Ok(true));
 	}
 
