@@ -8,16 +8,20 @@
 			<ValidationSummary></ValidationSummary>
 			<div class="form-group">
 				<label for="name">Project Name</label>
-				<MudInput id="name" @bind-Value="newProject.Name" class="form-control"></MudInput>
+				<br />
+				<MudInput id="name" @bind-Value="newProject.Name"></MudInput>
 			</div>
+
+			<br />
 
 			<div class="form-group">
 				<label for="description">Description</label>
-				<MudTextField id="description" @bind-Value="newProject.Description" class="form-control"></MudTextField>
+				<MudTextField id="description" @bind-Value="newProject.Description"></MudTextField>
 			</div>
 			<br/>
-		<MudButton ButtonType="ButtonType.Submit" class="btn btn-primary">Save</MudButton>
-		<MudButton ButtonType="ButtonType.Button" class="btn btn-primary" @onclick="Cancel">Cancel</MudButton>
+			<br/>
+		<MudButton ButtonType="ButtonType.Submit">Save</MudButton>
+		<MudButton ButtonType="ButtonType.Button" @onclick="Cancel">Cancel</MudButton>
 
 		</EditForm>
 	</DialogContent>
