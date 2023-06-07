@@ -18,7 +18,17 @@
 			<MudTd DataLabel="Address">@context.Address</MudTd>
 			<MudTd DataLabel="Email">@context.Email</MudTd>
 			<MudTd DataLabel="Phone">@context.Phone</MudTd>
-			<MudTd><MudAvatar Image="@context.AvatarPath"/></MudTd>
+			<MudTd>
+				@if (context.AvatarPath != null)
+				{
+					<MudAvatar Image="@context.AvatarPath"></MudAvatar>
+				}
+				else
+				{
+					<MudAvatar Color="@context.AvatarColor">@context.Firstname.First()@context.Lastname.First()</MudAvatar>
+
+				}
+			</MudTd>
     </RowTemplate>
 	</MudTable>
 	<MudCardActions>
@@ -28,10 +38,11 @@
 </MudCard>
 
 
-
-
 @code {
 	[CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+	[Parameter]
+	public Action<bool> OnTeammmemberAdded { get; set; } // Update the type to
 
 	void Cancel() => MudDialog.Cancel();
 
@@ -57,7 +68,8 @@
 		{
 			
 			addTeamUseCase.ExecuteAsync(new Teammember{person = p, Role= Teamrolle.Worker}, ProId);
-			
+			OnTeammmemberAdded?.Invoke(true); // Invoke the event callback to trigger reload
+
 		}
 	}
 }

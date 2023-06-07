@@ -45,6 +45,18 @@
 
     private void OpenDialog(DialogOptions options)
     {
-        DialogService.Show<AddPerson>("Add People", options);
+        var parameters = new DialogParameters();
+        parameters.Add("OnPersonAdded", HandlePersonAdded);
+        DialogService.Show<AddPerson>("Add People",parameters, options);
+    }
+
+    private void HandlePersonAdded(bool isAdded)
+    {
+        if (isAdded)
+        {
+            reloadFlag = !reloadFlag;
+            searchterm = ""; // Optionally, clear the search term to display all projects after adding
+        }
+        StateHasChanged();
     }
 }

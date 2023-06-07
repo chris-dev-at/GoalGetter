@@ -11,7 +11,7 @@
 			</MudButton>
 			<MudPopover Open="@_isOpen" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
 				<div class="d-flex flex-column pa-10">
-					<AddProject Windowclosed="Close" />
+					<AddProject OnProjectAdded="HandleProjectAdded" />
 				</div>
 			</MudPopover>
             <Searchbar OnSearchterm="OnTermSearch" />            
@@ -39,7 +39,18 @@
 
 	private void OpenDialog(DialogOptions options)
 	{
-		DialogService.Show<AddProject>("Add Projects", options);
-		reloadFlag = !reloadFlag; // Toggle the reload flag
+		var parameters = new DialogParameters();
+		parameters.Add("OnProjectAdded", HandleProjectAdded);
+		DialogService.Show<AddProject>("Add Projects", parameters, options);
+	}
+
+	private void HandleProjectAdded(bool isAdded)
+	{
+		if (isAdded)
+		{
+			reloadFlag = !reloadFlag;
+			searchterm = ""; // Optionally, clear the search term to display all projects after adding
+		}
+		StateHasChanged();
 	}
 }
