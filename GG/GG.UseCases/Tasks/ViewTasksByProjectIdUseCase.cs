@@ -21,7 +21,18 @@ namespace GG.UseCases.Tasks
         {
             var pro = await this.projectsRepository.GetProjectByIdAsync(projectid);
             if(pro.Value != null)
-                return this.projectsRepository.GetTaskByNameWithinList(name, pro.Value.Tasks).Result;
+            {
+                var tmp = this.projectsRepository.GetTaskByNameWithinList(name, pro.Value.Tasks).Result;
+
+				if (tmp.Value != null)
+                    return tmp;
+                else
+					return new StatusReport<IEnumerable<ProjectTask>>(
+						StatusState.Normal,
+						new List<ProjectTask>(),
+						tmp.Reason
+					);
+			}
             else
 				return new StatusReport<IEnumerable<ProjectTask>>(
 						StatusState.Error,

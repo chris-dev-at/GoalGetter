@@ -29,6 +29,9 @@ namespace GG.UseCases.PluginInterfaces
 		Task<StatusReport<bool>> PersonAlreadyInTeam(Person person, GG.CoreBusiness.Team team);
 		Task<StatusReport<EmptyVal>> AddTeammemberToTeam(Teammember member, GG.CoreBusiness.Team team);
 		Task<StatusReport<EmptyVal>> AddTaskToProject(ProjectTask task, Project project);
+		Task<StatusReport<EmptyVal>> SaveProjectToFile(Project p);
+		Task<StatusReport<EmptyVal>> SaveAllProjectToFile();
+		Task<StatusReport<EmptyVal>> SaveContacts();
 			
 		//Task<bool> ExistsAsync(Project project);
 		//Task UpdateProjectAsync(Project project);

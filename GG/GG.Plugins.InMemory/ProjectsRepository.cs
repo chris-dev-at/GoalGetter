@@ -338,6 +338,41 @@ namespace GG.Plugins.InMemory
 						);
 		}
 
+		public async Task<StatusReport<EmptyVal>> SaveProjectToFile(Project p)
+		{
+			//Todo save Projects
+			//Todo Save Address not string of address in Person
+
+			return new StatusReport<EmptyVal>(
+							StatusState.Success,
+							EmptyVal.Empty,
+							$"Project has been saved"
+						);
+		}
+
+		public async Task<StatusReport<EmptyVal>> SaveAllProjectToFile()
+		{
+			foreach (var project in Projects)
+			{
+				await SaveProjectToFile(project);
+			}
+
+			return new StatusReport<EmptyVal>(
+							StatusState.Success,
+							EmptyVal.Empty,
+							$"All Projects have been saved"
+						);
+		}
+
+		public async Task<StatusReport<EmptyVal>> SaveContacts()
+		{
+			//Todo save Contacts
+			return new StatusReport<EmptyVal>(
+							StatusState.Success,
+							EmptyVal.Empty,
+							$"Contact has been saved"
+						);
+		}
 
 		#region Testdata
 
