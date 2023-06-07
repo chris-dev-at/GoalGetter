@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MudBlazor;
+using Microsoft.AspNetCore.Components.Forms;
 
 namespace GG.UseCases.People
 {
@@ -17,11 +18,11 @@ namespace GG.UseCases.People
         {
             this.projectsRepository = projectsRepository;
         }
-        public async Task<StatusReport<EmptyVal>> ExecuteAsync(Person person)
+        public async Task<StatusReport<EmptyVal>> ExecuteAsync(Person person, IBrowserFile image)
         {
             person.AvatarColor = await GetRandomColor();
             
-            return await projectsRepository.AddPersonAsync(person);
+            return await projectsRepository.AddPersonAsync(person, image);
         }
         public async Task<Color> GetRandomColor()
         {

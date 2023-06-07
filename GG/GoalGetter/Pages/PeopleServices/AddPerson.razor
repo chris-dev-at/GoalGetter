@@ -59,7 +59,9 @@
 
 	private async Task SavePerson()
 	{
-		StatusReport<EmptyVal> status = await AddPersonUseCase.ExecuteAsync(newPerson);
+		newPerson.Address = selectedAddress;
+
+		StatusReport<EmptyVal> status = await AddPersonUseCase.ExecuteAsync(newPerson, files.Last());
 		Snackbar.Add(status.Reason, status.severity);
 
 		MudDialog.Close(DialogResult.Ok(true));
@@ -68,11 +70,12 @@
 	void Cancel() => MudDialog.Cancel();
 
 	//Avatar Upload
+	private int maxUploadInMB = 5;
+
 	IList<IBrowserFile> files = new List<IBrowserFile>();
 	private void UploadFiles(IBrowserFile file)
 	{
 		files.Add(file);
-		//TODO upload the files to the server
 	}
 
 	//Location 
