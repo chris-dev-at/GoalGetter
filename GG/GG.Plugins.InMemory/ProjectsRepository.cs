@@ -317,8 +317,14 @@ namespace GG.Plugins.InMemory
 		public async Task<StatusReport<string>> SaveFileToServer(string fileDir, string fileName, IBrowserFile file)
 		{
 			string wwwrootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
-			string tmp_file = Path.Combine(wwwrootPath, fileDir);
-			string filePath = Path.Combine(tmp_file, fileName);
+			string directory = Path.Combine(wwwrootPath, fileDir);
+			string filePath = Path.Combine(directory, fileName);
+
+			//ensure Directory exists
+			if (!Directory.Exists(directory))
+			{
+				Directory.CreateDirectory(directory);
+			}
 
 			using (var stream = new FileStream(filePath, FileMode.Create))
 			{
