@@ -20,13 +20,10 @@
 				<MudTextField Label="Phone number" Class="mt-3"
 								@bind-Value="newPerson.Phone" For="@(() => newPerson.Phone)" InputType="InputType.Telephone" />
 
-				<MudAutocomplete T="string" Label="Address" @bind-Value="addressval" SearchFunc="@SearchAddress"
+				<MudAutocomplete T="string" Label="Address" @bind-Value="selectedAddress" SearchFunc="@SearchAddress"
 									ResetValueOnEmptyText="@resetValueOnEmptyText"
 									CoerceText="@coerceText" CoerceValue="@coerceValue"
 									AdornmentIcon="@Icons.Material.Filled.Map" AdornmentColor="Color.Primary" />
-
-									<MudText>@API_CALLCOUNT</MudText>
-
 
 				<MudFileUpload T="IBrowserFile" Accept=".jpg, .png" FilesChanged="UploadFiles">
 					<ButtonTemplate Context="pictureUploadContext">
@@ -82,6 +79,7 @@
 	private bool resetValueOnEmptyText;
 	private bool coerceText;
 	private bool coerceValue;
+	private string selectedAddress;
 	private string addressval;
 	private int API_CALLCOUNT = 0;
 	private int TimeBetweenAPICall = 1000;
@@ -103,7 +101,8 @@
 		addressval = value;
 		if(value.Length > 4)
 			await TimerTask();
-		return searchOptions.Select(x => $"OSM: {x.ID} {x.Name}");
+
+		return searchOptions.Select(x => $"{x.Name.Replace(',', ' ')}");
 	}
 
 	private string latestSearch = "";
