@@ -61,7 +61,7 @@
 	{
 		newPerson.Address = selectedAddress;
 
-		StatusReport<EmptyVal> status = await AddPersonUseCase.ExecuteAsync(newPerson, files.Last());
+		StatusReport<EmptyVal> status = await AddPersonUseCase.ExecuteAsync(newPerson, files.Any() ? files.Last() : null);
 		Snackbar.Add(status.Reason, status.severity);
 
 		MudDialog.Close(DialogResult.Ok(true));
