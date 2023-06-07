@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Libraries.DistanceAddressCalculator;
 using static MudBlazor.Colors;
+using System.IO.Enumeration;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace GG.Plugins.InMemory
 {
@@ -15,7 +18,7 @@ namespace GG.Plugins.InMemory
 		public ProjectsRepository()
 		{
 			//Load Data
-			CreateTestData();
+			LoadData();
 		}
 
 		//CRUD for Project Entitys
@@ -36,24 +39,27 @@ namespace GG.Plugins.InMemory
 					);
 		}
 
-		public Task<StatusReport<EmptyVal>> AddProjectAsync(Project project)
+		public async Task<StatusReport<EmptyVal>> AddProjectAsync(Project project)
 		{
 			if (Projects.Any(x => x.Name.Equals(project.Name, StringComparison.OrdinalIgnoreCase)))
-				return Task.FromResult(new StatusReport<EmptyVal>(
+				return new StatusReport<EmptyVal>(
 					StatusState.Error,
 					EmptyVal.Empty,
 					"There is already a project with this name"
-				));
+				);
 
 			var maxId = Projects.Max(x => x.Id);
 			project.Id = maxId + 1;
 
 			Projects.Add(project);
-			return Task.FromResult(new StatusReport<EmptyVal>(
+
+			await SaveProjectToFile(project);
+
+			return new StatusReport<EmptyVal>(
 					StatusState.Success,
 					EmptyVal.Empty,
 					"Project has been added"
-				));
+				);
 		}
 
 		public async Task<StatusReport<Project>> GetProjectByIdAsync(int ProjectId)
@@ -145,17 +151,19 @@ namespace GG.Plugins.InMemory
 					);
 		}
 
-		public async Task<StatusReport<EmptyVal>> RemoveTeammemberFromTeamAsync(Teammember member, Team t)
+		public async Task<StatusReport<EmptyVal>> RemoveTeammemberFromTeamAsync(Teammember member, Project p)
 		{
-			if (t.members.Contains(member))
+			if (p.assignedTeam.members.Contains(member))
 			{
-				t.members.Remove(member);
+				p.assignedTeam.members.Remove(member);
 				return new StatusReport<EmptyVal>(
 							StatusState.Success,
 							EmptyVal.Empty,
 							"Teammember has been removed from Team"
 						);
 			}
+
+			await SaveProjectToFile(p);
 
 			return new StatusReport<EmptyVal>(
 						StatusState.Failed,
@@ -165,62 +173,65 @@ namespace GG.Plugins.InMemory
 		}
 		public async Task<StatusReport<EmptyVal>> RemovePersonCompletelyAsync(Person person)
 		{
-			if (Contact.Contains(person))
+			if (!Contact.Contains(person))
 			{
-				//Remove out of all Projects
-				foreach (Project p in Projects)
-				{
-					await RemovePersonFromProjectAsync(person, p);
-				}
-
-				//Remove from Contacts
-				Contact.Remove(person);
-
 				return new StatusReport<EmptyVal>(
-							StatusState.Success,
-							EmptyVal.Empty,
-							"Person has been removed"
-						);
-			}
-
-			return new StatusReport<EmptyVal>(
 						StatusState.Failed,
 						EmptyVal.Empty,
 						"Member was not found within Contacts"
 					);
+			}
 
+			//Remove out of all Projects
+			foreach (Project p in Projects)
+			{
+				await RemovePersonFromProjectAsync(person, p);
+			}
 
+			//Remove from Contacts
+			Contact.Remove(person);
+
+			await SaveContacts();
+
+			return new StatusReport<EmptyVal>(
+						StatusState.Success,
+						EmptyVal.Empty,
+						"Person has been removed"
+					);
 		}
 		public async Task<StatusReport<EmptyVal>> RemovePersonFromProjectAsync(Person person, Project p)
 		{
 			//Check if person is within Team
-			if (p.assignedTeam.members.Select(t => t.person).Contains(person))
+			if (!p.assignedTeam.members.Select(t => t.person).Contains(person))
 			{
-				foreach (Teammember member in p.assignedTeam.members)
-				{
-					if (member.person == person)
-					{
-						await RemoveTeammemberFromTeamAsync(member, p.assignedTeam);
-
-						//Remove from all Assigned Tasks
-						foreach (ProjectTask task in p.Tasks)
-						{
-							if (task.AssignedPerson == member)
-								task.AssignedPerson = null;
-						}
-					}
-				}
 				return new StatusReport<EmptyVal>(
-							StatusState.Success,
-							EmptyVal.Empty,
-							"Person has been removed from project"
-						);
-			}
-
-			return new StatusReport<EmptyVal>(
 						StatusState.Failed,
 						EmptyVal.Empty,
 						"Member was not found within Project"
+					);
+			}
+
+			foreach (Teammember member in p.assignedTeam.members)
+			{
+				if (member.person == person)
+				{
+					await RemoveTeammemberFromTeamAsync(member, p);
+
+					//Remove from all Assigned Tasks
+					foreach (ProjectTask task in p.Tasks)
+					{
+						if (task.AssignedPerson == member)
+							task.AssignedPerson = null;
+					}
+				}
+			}
+
+			await SaveProjectToFile(p);
+
+			return new StatusReport<EmptyVal>(
+						StatusState.Success,
+						EmptyVal.Empty,
+						"Person has been removed from project"
 					);
 
 		}
@@ -258,6 +269,10 @@ namespace GG.Plugins.InMemory
 			}
 
 			Contact.Add(person);
+
+
+			await SaveContacts();
+
 			return new StatusReport<EmptyVal>(
 						StatusState.Success,
 						EmptyVal.Empty,
@@ -285,9 +300,9 @@ namespace GG.Plugins.InMemory
 					);
 		}
 
-		public async Task<StatusReport<EmptyVal>> AddTeammemberToTeam(Teammember member, Team team)
+		public async Task<StatusReport<EmptyVal>> AddTeammemberToTeam(Teammember member, Project p)
 		{
-			if (PersonAlreadyInTeam(member.person, team).Result.Value)
+			if (PersonAlreadyInTeam(member.person, p.assignedTeam).Result.Value)
 				return new StatusReport<EmptyVal>(
 						StatusState.Error,
 						EmptyVal.Empty,
@@ -295,7 +310,10 @@ namespace GG.Plugins.InMemory
 					);
 
 
-			team.members.Add(member);
+			p.assignedTeam.members.Add(member);
+
+			await SaveProjectToFile(p);
+
 
 			return new StatusReport<EmptyVal>(
 						StatusState.Success,
@@ -304,9 +322,11 @@ namespace GG.Plugins.InMemory
 					);
 		}
 
-		public async Task<StatusReport<EmptyVal>> AddTaskToProject(ProjectTask task, Project projects)
+		public async Task<StatusReport<EmptyVal>> AddTaskToProject(ProjectTask task, Project project)
 		{
-			projects.Tasks.Add(task);
+			project.Tasks.Add(task);
+
+			await SaveProjectToFile(project);
 
 			return new StatusReport<EmptyVal>(
 						StatusState.Success,
@@ -323,9 +343,11 @@ namespace GG.Plugins.InMemory
 
 			//ensure Directory exists
 			if (!Directory.Exists(directory))
-			{
 				Directory.CreateDirectory(directory);
-			}
+
+			//overwrite Profile Picture
+			if(File.Exists(filePath))
+				File.Delete(filePath);
 
 			using (var stream = new FileStream(filePath, FileMode.Create))
 			{
@@ -339,10 +361,57 @@ namespace GG.Plugins.InMemory
 						);
 		}
 
+		public async Task<StatusReport<EmptyVal>> SaveTextToFile(string fileDir, string fileName, string text)
+		{
+			string directory = Path.Combine(Directory.GetCurrentDirectory(), fileDir);
+			string filePath = Path.Combine(directory, fileName);
+
+			//ensure Directory exists
+			if (!Directory.Exists(directory))
+				Directory.CreateDirectory(directory);
+
+			//ensure File exists
+			if(!File.Exists(filePath))
+				File.Create(filePath).Close();
+
+			using (var sw = new StreamWriter(filePath, false))
+			{
+				await sw.WriteLineAsync(text);
+			}
+
+			return new StatusReport<EmptyVal>(
+							StatusState.Success,
+							EmptyVal.Empty,
+							$"File has been saved"
+						);
+		}
+
+		public async Task<StatusReport<string>> ReadTextFromFile(string fileDir, string fileName)
+		{
+			string directory = Path.Combine(Directory.GetCurrentDirectory(), fileDir);
+			string filePath = Path.Combine(directory, fileName);
+
+			if (!File.Exists(filePath))
+			{
+				return new StatusReport<string>(
+								StatusState.Error,
+								null,
+								$"File does not exist"
+							);
+			}
+
+			return new StatusReport<string>(
+								StatusState.Normal,
+								await File.ReadAllTextAsync(filePath),
+								$"File has been read"
+							);
+		}
+
 		public async Task<StatusReport<EmptyVal>> SaveProjectToFile(Project p)
 		{
-			//Todo save Projects
-			//Todo Save Address not string of address in Person
+			var jsonString = JsonConvert.SerializeObject(p, Formatting.Indented);
+
+			await SaveTextToFile(Path.Combine("ApplicationData", "projects"), $"{p.Name}.json", jsonString);
 
 			return new StatusReport<EmptyVal>(
 							StatusState.Success,
@@ -367,7 +436,10 @@ namespace GG.Plugins.InMemory
 
 		public async Task<StatusReport<EmptyVal>> SaveContacts()
 		{
-			//Todo save Contacts
+			var jsonString = JsonConvert.SerializeObject(Contact, Formatting.Indented);
+
+			await SaveTextToFile("ApplicationData", "ContactList.json", jsonString);
+
 			return new StatusReport<EmptyVal>(
 							StatusState.Success,
 							EmptyVal.Empty,
@@ -375,252 +447,23 @@ namespace GG.Plugins.InMemory
 						);
 		}
 
-		#region Testdata
-
-		Random randy = new Random();
-
-
-		void CreateTestData()
+		public async Task<StatusReport<EmptyVal>> LoadData()
 		{
-			Contact.Add(new Person()
+
+			Contact = JsonConvert.DeserializeObject<List<Person>>((await ReadTextFromFile("ApplicationData", "ContactList.json")).Value);
+
+			string directory = Path.Combine(Path.Combine(Directory.GetCurrentDirectory(), "ApplicationData"), "projects");
+
+			foreach (var item in Directory.GetFiles(directory))
 			{
-				Id = 1,
-				Firstname = "Rainer",
-				Lastname = "Winkler",
-				Address = new Address(1, 1, 1, "DE, Emskirchen 91448, Altschauerberg 8"),
-				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
-				Email = "r.winkler@htlkrems.at"
-			});
+				Projects.Add(JsonConvert.DeserializeObject<Project>(await File.ReadAllTextAsync(Path.Combine(directory, item))));
+			}
 
-			Contact.Add(new Person()
-			{
-				Id = 2,
-				Firstname = "Ilse",
-				Lastname = "Nigischer",
-				Address = new Address(1, 1, 1, "AT Waidhofen a. T. 3830, Buxdihudenstraße 1"),
-				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
-				Email = "i.nigischer@htlkrems.at"
-			});
-
-			Contact.Add(new Person()
-			{
-				Id = 3,
-				Firstname = "Herwig",
-				Lastname = "Macho",
-				Address = new Address(1, 1, 1, "AT Zwettl 3910, Propstei 8"),
-				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
-				Email = "h.macho@htlkrems.at"
-			});
-
-			Contact.Add(new Person()
-			{
-				Id = 4,
-				Firstname = "Lukas",
-				Lastname = "Kolinsky",
-				Address = new Address(1, 1, 1, "AT, Zwettl 3910, Propstei 7"),
-				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
-				Email = "lukas.kolinsky1@gmail.com"
-			});
-
-			Contact.Add(new Person()
-			{
-				Id = 5,
-				Firstname = "Mulham",
-				Lastname = "Taylouni",
-				Address = new Address(1, 1, 1, "AT, Gmünd 3950, Schremserstraße 69"),
-				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
-				Email = "contact@taylouni.me"
-			});
-
-			Contact.Add(new Person()
-			{
-				Id = 6,
-				Firstname = "Christian",
-				Lastname = "Wiesinger",
-				Address = new Address(1, 1, 1, "AT, Rappottenstein 3911, Burgunderweg 109"),
-				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
-				Email = "contact@taylouni.me"
-			});
-
-			Contact.Add(new Person()
-			{
-				Id = 7,
-				Firstname = "Clemens",
-				Lastname = "Schmid",
-				Address = new Address(1, 1, 1, "AT, Zwettl 3910,Hammerweg 3"),
-				AvatarPath = @"https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
-				Email = "c.schmid@htlkrems.at"
-			});
-
-
-			//Project I
-			Team t1 = new Team() { Description = "Dream Team", Id = RandomString(), members = new List<Teammember>() };
-
-			t1.members.Add(new Teammember() { person = getRandomPerson(), Description = "Designer", Role = Teamrolle.Worker });
-			t1.members.Add(new Teammember() { person = getRandomPerson(), Description = "Programmer", Role = Teamrolle.Worker });
-			t1.members.Add(new Teammember() { person = getRandomPerson(), Description = "Projektleiter", Role = Teamrolle.Projektleader });
-
-			Project p1 = new Project() { Name = "Project 1", Budget = 99.50f, status = ProgressStatus.In_Progress, assignedTeam = t1, Description = "This project is for testing", Id = 1, Tasks = new List<ProjectTask>() };
-
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-			p1.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t1), Deadline = RandomDay(), Id = RandomString() });
-
-			Projects.Add(p1);
-
-
-			//Project II
-			Team t2 = new Team() { Description = "Die 4 netten Menschen", Id = RandomString(), members = new List<Teammember>() };
-
-			t2.members.Add(new Teammember() { person = getRandomPerson(), Description = "Designer", Role = Teamrolle.Worker });
-			t2.members.Add(new Teammember() { person = getRandomPerson(), Description = "Programmer", Role = Teamrolle.Worker });
-			t2.members.Add(new Teammember() { person = Contact[0], Description = "Programmer", Role = Teamrolle.Administrator });
-			t2.members.Add(new Teammember() { person = getRandomPerson(), Description = "Projektleiter", Role = Teamrolle.Projektleader });
-
-			Project p2 = new Project() { Name = "Funky Munky", Budget = 99.50f, status = ProgressStatus.In_Progress, assignedTeam = t2, Id = 2, Tasks = new List<ProjectTask>() };
-
-			p2.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t2), Deadline = RandomDay(), Id = RandomString() });
-			p2.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t2), Deadline = RandomDay(), Id = RandomString() });
-			p2.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(t2), Deadline = RandomDay(), Id = RandomString() });
-			p2.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(t2), Deadline = RandomDay(), Id = RandomString() });
-			p2.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t2), Deadline = RandomDay(), Id = RandomString() });
-			p2.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(t2), Deadline = RandomDay(), Id = RandomString() });
-
-			Projects.Add(p2);
-
+			return new StatusReport<EmptyVal>(
+							StatusState.Success,
+							EmptyVal.Empty,
+							$"Data has been loaded"
+						);
 		}
-
-		//Functions
-		Person getRandomPerson()
-		{
-			return Contact.ToArray()[randy.Next(0, Contact.Count)];
-		}
-		Teammember getRandomTPerson(Team t)
-		{
-			return t.members.ToArray()[randy.Next(0, t.members.Count)];
-		}
-		DateTime RandomDay()
-		{
-			DateTime start = new DateTime(1995, 1, 1);
-			int range = (DateTime.Today - start).Days;
-			return start.AddDays(randy.Next(range));
-		}
-		string RandomString(int length = 8)
-		{
-			string ret = "";
-			const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-			ret = new string(Enumerable.Repeat(chars, length)
-					.Select(s => s[randy.Next(s.Length)]).ToArray());
-			ret = new string(Enumerable.Repeat(chars, length)
-				.Select(s => s[randy.Next(s.Length)]).ToArray());
-			return ret;
-		}
-		#endregion
-		//
 	}
 }

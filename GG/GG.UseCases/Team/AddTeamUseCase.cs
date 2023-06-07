@@ -21,7 +21,7 @@ namespace GG.UseCases.Team
 			var pro = await this.projectsRepository.GetProjectByIdAsync(projectid);
 
 			if(pro.Value != null)
-				return await this.projectsRepository.AddTeammemberToTeam(person, pro.Value.assignedTeam);
+				return await this.projectsRepository.AddTeammemberToTeam(person, pro.Value);
 			else
 				return new StatusReport<EmptyVal>(
 						StatusState.Error,

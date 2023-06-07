@@ -17,17 +17,19 @@ namespace GG.UseCases.PluginInterfaces
 		Task<StatusReport<IEnumerable<Person>>> GetPeopleByNameAsync(string name);
 		Task<StatusReport<EmptyVal>> AddPersonAsync(Person person, IBrowserFile image);
 		Task<StatusReport<string>> SaveFileToServer(string fileDir, string fileName, IBrowserFile file);
+		Task<StatusReport<EmptyVal>> SaveTextToFile(string fileDir, string fileName, string text);
+		Task<StatusReport<string>> ReadTextFromFile(string fileDir, string fileName);
 
 		Task<StatusReport<IEnumerable<Person>>> GetPersonWithinPersonList(string person_name, IEnumerable<Person> persons);
 
 		Task<StatusReport<IEnumerable<Teammember>>> GetTeammemberByNameWithinTeamAsync(string person_name, GG.CoreBusiness.Team team);
 		Task<StatusReport<IEnumerable<ProjectTask>>> GetTaskByNameWithinList(string task_name, IEnumerable<ProjectTask> tasks);
 		Task<StatusReport<EmptyVal>> RemovePersonCompletelyAsync(Person person);
-		Task<StatusReport<EmptyVal>> RemoveTeammemberFromTeamAsync(Teammember member, GG.CoreBusiness.Team team);
+		Task<StatusReport<EmptyVal>> RemoveTeammemberFromTeamAsync(Teammember member, Project project);
 		Task<StatusReport<EmptyVal>> RemovePersonFromProjectAsync(Person person, Project p);
 		Task<StatusReport<IEnumerable<Person>>> GetAllPersonsIfnotAlreadyInTeamAsync(GG.CoreBusiness.Team team);
 		Task<StatusReport<bool>> PersonAlreadyInTeam(Person person, GG.CoreBusiness.Team team);
-		Task<StatusReport<EmptyVal>> AddTeammemberToTeam(Teammember member, GG.CoreBusiness.Team team);
+		Task<StatusReport<EmptyVal>> AddTeammemberToTeam(Teammember member, Project project);
 		Task<StatusReport<EmptyVal>> AddTaskToProject(ProjectTask task, Project project);
 		Task<StatusReport<EmptyVal>> SaveProjectToFile(Project p);
 		Task<StatusReport<EmptyVal>> SaveAllProjectToFile();

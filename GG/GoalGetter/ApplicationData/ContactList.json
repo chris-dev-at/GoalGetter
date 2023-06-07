@@ -1,0 +1,137 @@
+[
+  {
+    "Id": 1,
+    "AvatarPath": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+    "AvatarColor": 1,
+    "Firstname": "Rainer",
+    "Lastname": "Winkler",
+    "Address": {
+      "osm_id": 1,
+      "lat": 1.0,
+      "lon": 1.0,
+      "display_name": "DE, Emskirchen 91448, Altschauerberg 8"
+    },
+    "Email": "r.winkler@htlkrems.at",
+    "Phone": null
+  },
+  {
+    "Id": 2,
+    "AvatarPath": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+    "AvatarColor": 1,
+    "Firstname": "Ilse",
+    "Lastname": "Nigischer",
+    "Address": {
+      "osm_id": 1,
+      "lat": 1.0,
+      "lon": 1.0,
+      "display_name": "AT Waidhofen a. T. 3830, Buxdihudenstraße 1"
+    },
+    "Email": "i.nigischer@htlkrems.at",
+    "Phone": null
+  },
+  {
+    "Id": 3,
+    "AvatarPath": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+    "AvatarColor": 1,
+    "Firstname": "Herwig",
+    "Lastname": "Macho",
+    "Address": {
+      "osm_id": 1,
+      "lat": 1.0,
+      "lon": 1.0,
+      "display_name": "AT Zwettl 3910, Propstei 8"
+    },
+    "Email": "h.macho@htlkrems.at",
+    "Phone": null
+  },
+  {
+    "Id": 4,
+    "AvatarPath": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+    "AvatarColor": 1,
+    "Firstname": "Lukas",
+    "Lastname": "Kolinsky",
+    "Address": {
+      "osm_id": 1,
+      "lat": 1.0,
+      "lon": 1.0,
+      "display_name": "AT, Zwettl 3910, Propstei 7"
+    },
+    "Email": "lukas.kolinsky1@gmail.com",
+    "Phone": null
+  },
+  {
+    "Id": 5,
+    "AvatarPath": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+    "AvatarColor": 1,
+    "Firstname": "Mulham",
+    "Lastname": "Taylouni",
+    "Address": {
+      "osm_id": 1,
+      "lat": 1.0,
+      "lon": 1.0,
+      "display_name": "AT, Gmünd 3950, Schremserstraße 69"
+    },
+    "Email": "contact@taylouni.me",
+    "Phone": null
+  },
+  {
+    "Id": 6,
+    "AvatarPath": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+    "AvatarColor": 1,
+    "Firstname": "Christian",
+    "Lastname": "Wiesinger",
+    "Address": {
+      "osm_id": 1,
+      "lat": 1.0,
+      "lon": 1.0,
+      "display_name": "AT, Rappottenstein 3911, Burgunderweg 109"
+    },
+    "Email": "contact@taylouni.me",
+    "Phone": null
+  },
+  {
+    "Id": 7,
+    "AvatarPath": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
+    "AvatarColor": 1,
+    "Firstname": "Clemens",
+    "Lastname": "Schmid",
+    "Address": {
+      "osm_id": 1,
+      "lat": 1.0,
+      "lon": 1.0,
+      "display_name": "AT, Zwettl 3910,Hammerweg 3"
+    },
+    "Email": "c.schmid@htlkrems.at",
+    "Phone": null
+  },
+  {
+    "Id": 8,
+    "AvatarPath": null,
+    "AvatarColor": 9,
+    "Firstname": "Herr",
+    "Lastname": "Sandman",
+    "Address": {
+      "osm_id": 1011821092,
+      "lat": 48.5612294,
+      "lon": 12.3787306,
+      "display_name": "Sandmann, Kirchberg, Kröning, Gerzen (VGem), Landkreis Landshut, Bayern, 84178, Deutschland"
+    },
+    "Email": "lesand@man.at",
+    "Phone": "+43 664 696969"
+  },
+  {
+    "Id": 9,
+    "AvatarPath": "profiles\\9_HauleitnerAnton.jpg",
+    "AvatarColor": 6,
+    "Firstname": "Anton",
+    "Lastname": "Hauleitner",
+    "Address": {
+      "osm_id": 817235089,
+      "lat": 48.6053821,
+      "lon": 15.1642066,
+      "display_name": "Hammerweg, Zwettl, Gemeinde Zwettl-Niederösterreich, Bezirk Zwettl, Niederösterreich, 3910, Österreich"
+    },
+    "Email": "a.hauleitner@htlkrems.at",
+    "Phone": null
+  }
+]
