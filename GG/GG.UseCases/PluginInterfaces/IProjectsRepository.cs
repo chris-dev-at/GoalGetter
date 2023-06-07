@@ -1,4 +1,5 @@
 ﻿using GG.CoreBusiness;
+using Microsoft.AspNetCore.Components.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,8 @@ namespace GG.UseCases.PluginInterfaces
 		Task<StatusReport<Project>> GetProjectByIdAsync(int ProjectId);
 
 		Task<StatusReport<IEnumerable<Person>>> GetPeopleByNameAsync(string name);
-		Task<StatusReport<EmptyVal>> AddPersonAsync(Person person);
+		Task<StatusReport<EmptyVal>> AddPersonAsync(Person person, IBrowserFile image);
+		Task<StatusReport<string>> SaveFileToServer(string fileDir, string fileName, IBrowserFile file);
 
 		Task<StatusReport<IEnumerable<Person>>> GetPersonWithinPersonList(string person_name, IEnumerable<Person> persons);
 
@@ -27,7 +29,7 @@ namespace GG.UseCases.PluginInterfaces
 		Task<StatusReport<bool>> PersonAlreadyInTeam(Person person, GG.CoreBusiness.Team team);
 		Task<StatusReport<EmptyVal>> AddTeammemberToTeam(Teammember member, GG.CoreBusiness.Team team);
 		Task<StatusReport<EmptyVal>> AddTaskToProject(ProjectTask task, Project project);
-
+			
 		//Task<bool> ExistsAsync(Project project);
 		//Task UpdateProjectAsync(Project project);
 		//Task DeleteProjectAsync(Project project);

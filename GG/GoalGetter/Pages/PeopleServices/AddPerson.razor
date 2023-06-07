@@ -1,6 +1,8 @@
 ﻿@inject IAddPersonUseCase AddPersonUseCase
 @inject ISnackbar Snackbar
 @using Libraries.DistanceAddressCalculator;
+@using System.Timers;
+
 
 
 
@@ -18,7 +20,7 @@
 				<MudTextField Label="Phone number" Class="mt-3"
 								@bind-Value="newPerson.Phone" For="@(() => newPerson.Phone)" InputType="InputType.Telephone" />
 
-				<MudAutocomplete T="string" Label="Address" @bind-Value="addressval" SearchFunc="@SearchAddress"
+				<MudAutocomplete T="string" Label="Address" @bind-Value="selectedAddress" SearchFunc="@SearchAddress"
 									ResetValueOnEmptyText="@resetValueOnEmptyText"
 									CoerceText="@coerceText" CoerceValue="@coerceValue"
 									AdornmentIcon="@Icons.Material.Filled.Map" AdornmentColor="Color.Primary" />
@@ -57,7 +59,9 @@
 
 	private async Task SavePerson()
 	{
-		StatusReport<EmptyVal> status = await AddPersonUseCase.ExecuteAsync(newPerson);
+		newPerson.Address = selectedAddress;
+
+		StatusReport<EmptyVal> status = await AddPersonUseCase.ExecuteAsync(newPerson, files.Any() ? files.Last() : null);
 		Snackbar.Add(status.Reason, status.severity);
 
 		MudDialog.Close(DialogResult.Ok(true));
@@ -68,21 +72,24 @@
 	void Cancel() => MudDialog.Cancel();
 
 	//Avatar Upload
+	private int maxUploadInMB = 5;
+
 	IList<IBrowserFile> files = new List<IBrowserFile>();
 	private void UploadFiles(IBrowserFile file)
 	{
 		files.Add(file);
-		//TODO upload the files to the server
 	}
 
 	//Location 
 	private bool resetValueOnEmptyText;
 	private bool coerceText;
 	private bool coerceValue;
+	private string selectedAddress;
 	private string addressval;
 	private int API_CALLCOUNT = 0;
-	private bool API_Blocked = false;
-	private string latestSearch = "";
+	private int TimeBetweenAPICall = 1000;
+	private Timer searchTimer;
+
 	private Address[] searchOptions =
 	{
 	};
@@ -98,19 +105,27 @@
 		// If the text is null or empty, don't return values (drop-down will not open).
 		addressval = value;
 		if(value.Length > 4)
-			await UpdateAddresses();
-		return searchOptions.Select(x => $"OSM: {x.ID} {x.Name}");
+			await TimerTask();
+
+		return searchOptions.Select(x => $"{x.Name.Replace(',', ' ')}");
 	}
 
+	private string latestSearch = "";
 	private async Task UpdateAddresses()
 	{
-		if(latestSearch != addressval)
-		{
-			latestSearch = addressval;
-			searchOptions = Address.FindAddresses(addressval);
-			await Task.Delay(2000);
-			API_CALLCOUNT++;
-		}
+		latestSearch = addressval;
+		searchOptions = Address.FindAddresses(addressval);
+		API_CALLCOUNT++;
+	}
+
+	private int tmp = 0;
+	private async Task TimerTask()
+	{
+		tmp++;
+		int runtime = tmp;
+		await Task.Delay(TimeBetweenAPICall);
+		if(runtime == tmp)
+			UpdateAddresses();
 	}
 
 

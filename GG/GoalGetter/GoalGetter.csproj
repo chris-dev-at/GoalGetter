@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Folder Include="Pages\TeamServices\" />
+    <Folder Include="wwwroot\profiles\" />
   </ItemGroup>
 
   <ItemGroup>

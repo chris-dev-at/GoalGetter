@@ -1,5 +1,7 @@
 ﻿using GG.CoreBusiness;
 using GG.UseCases.PluginInterfaces;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
 using static MudBlazor.Colors;
 
 namespace GG.Plugins.InMemory
@@ -223,7 +225,7 @@ namespace GG.Plugins.InMemory
 		}
 
 		//Continue Status Reporting
-		public async Task<StatusReport<EmptyVal>> AddPersonAsync(Person person)
+		public async Task<StatusReport<EmptyVal>> AddPersonAsync(Person person, IBrowserFile image)
 		{
 			if (Contact.Any(x => x.Firstname.Equals(person.Firstname, StringComparison.OrdinalIgnoreCase)))
 				return new StatusReport<EmptyVal>(
@@ -232,8 +234,27 @@ namespace GG.Plugins.InMemory
 						"Person already exists"
 					);
 
+			//Handle ID
 			var maxId = Contact.Max(x => x.Id);
 			person.Id = maxId + 1;
+
+			//Handle Avatar
+			if (image != null)
+			{
+				if (image.Size > 5 * 1024 * 1024) // 5MB in bytes
+				{
+					return new StatusReport<EmptyVal>(
+							StatusState.Error,
+							EmptyVal.Empty,
+							"The Avatar you selected is to big (<5MB)"
+						);
+				}
+
+				string fileName = $"{person.Id}_{person.Lastname}{person.Firstname}.{image.Name.Split(".")[image.Name.Split(".").Length-1]}";
+				
+
+				person.AvatarPath = (await SaveFileToServer("profiles", fileName, image)).Value;
+			}
 
 			Contact.Add(person);
 			return new StatusReport<EmptyVal>(
@@ -291,6 +312,24 @@ namespace GG.Plugins.InMemory
 						EmptyVal.Empty,
 						"Task has been added"
 					);
+		}
+
+		public async Task<StatusReport<string>> SaveFileToServer(string fileDir, string fileName, IBrowserFile file)
+		{
+			string wwwrootPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+			string tmp_file = Path.Combine(wwwrootPath, fileDir);
+			string filePath = Path.Combine(tmp_file, fileName);
+
+			using (var stream = new FileStream(filePath, FileMode.Create))
+			{
+				await file.OpenReadStream().CopyToAsync(stream);
+			}
+
+			return new StatusReport<string>(
+							StatusState.Success,
+							Path.Combine(fileDir, fileName),
+							$"File was successfully uploaded"
+						);
 		}
 
 
