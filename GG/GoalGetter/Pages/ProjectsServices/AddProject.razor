@@ -34,6 +34,9 @@
 
 	[CascadingParameter] MudDialogInstance MudDialog { get; set; }
 
+	[Parameter]
+	public Action<bool> OnProjectAdded { get; set; } // Update the type to
+
 	private async Task SaveProject()
 	{
 		newProject.assignedTeam = new Team();
@@ -41,6 +44,8 @@
 		Snackbar.Add(status.Reason, status.severity);
 
 		MudDialog.Close(DialogResult.Ok(true));
+		OnProjectAdded?.Invoke(true); // Invoke the event callback to trigger reload
+
 	}
 
 	void Cancel() => MudDialog.Cancel();

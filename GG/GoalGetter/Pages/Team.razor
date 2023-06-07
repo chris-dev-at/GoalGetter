@@ -21,19 +21,22 @@
 </div>
 
 @*@*Hier kommen die Karten für jeder Projekt*@
-<TeamListComponent proid="@proid" searchTerm="@searchterm" />
+<TeamListComponent proid="@proid" searchTerm="@searchterm" reloadFlag="@reloadFlag" />
 
 @code {
 	[Parameter]
 	public int proid { get; set; }
 
-    private List<GG.CoreBusiness.Teammember> team;
+	private bool reloadFlag = false;
+
+	private List<GG.CoreBusiness.Teammember> team;
 
 	DialogOptions maxWidth = new DialogOptions() { MaxWidth = MaxWidth.Large, FullWidth = true };
 
 	private void OpenDialog(DialogOptions options)
 	{
 		var parameter = new DialogParameters { ["ProId"] = proid };
+		parameter.Add("OnTeammmemberAdded", HandleTeammemberAdded);
 		DialogService.ShowAsync<AddTeam>("Add People", parameter, options);
 	}
 
@@ -42,6 +45,13 @@
 	private void OnTermSearch(string searchterm)
 	{
 		this.searchterm = searchterm;
+	}
+
+	private void HandleTeammemberAdded(bool isAdded)
+	{
+		reloadFlag = !reloadFlag;
+		searchterm = ""; // Optionally, clear the search term to display all projects after adding
+		StateHasChanged();
 	}
 
 }

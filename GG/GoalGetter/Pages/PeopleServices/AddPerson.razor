@@ -53,7 +53,7 @@
 	[CascadingParameter] MudDialogInstance MudDialog { get; set; }
 
 	[Parameter]
-	public EventCallback<bool> Windowclosed { get; set; }
+	public Action<bool> OnPersonAdded { get; set; } // Update the type to
 
 	private async Task SavePerson()
 	{
@@ -61,6 +61,8 @@
 		Snackbar.Add(status.Reason, status.severity);
 
 		MudDialog.Close(DialogResult.Ok(true));
+		OnPersonAdded?.Invoke(true); // Invoke the event callback to trigger reload
+
 	}
 
 	void Cancel() => MudDialog.Cancel();
@@ -110,5 +112,6 @@
 			API_CALLCOUNT++;
 		}
 	}
+
 
 }
