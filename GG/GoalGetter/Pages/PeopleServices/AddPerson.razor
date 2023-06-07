@@ -1,8 +1,6 @@
 ﻿@inject IAddPersonUseCase AddPersonUseCase
 @inject ISnackbar Snackbar
 @using Libraries.DistanceAddressCalculator;
-@using System.Timers;
-
 
 
 
@@ -20,7 +18,7 @@
 				<MudTextField Label="Phone number" Class="mt-3"
 								@bind-Value="newPerson.Phone" For="@(() => newPerson.Phone)" InputType="InputType.Telephone" />
 
-				<MudAutocomplete T="string" Label="Address" @bind-Value="selectedAddress" SearchFunc="@SearchAddress"
+				<MudAutocomplete T="Address" Label="Address" @bind-Value="selectedAddress" SearchFunc="@SearchAddress"
 									ResetValueOnEmptyText="@resetValueOnEmptyText"
 									CoerceText="@coerceText" CoerceValue="@coerceValue"
 									AdornmentIcon="@Icons.Material.Filled.Map" AdornmentColor="Color.Primary" />
@@ -84,30 +82,29 @@
 	private bool resetValueOnEmptyText;
 	private bool coerceText;
 	private bool coerceValue;
-	private string selectedAddress;
+	private Address selectedAddress;
 	private string addressval;
 	private int API_CALLCOUNT = 0;
 	private int TimeBetweenAPICall = 1000;
-	private Timer searchTimer;
 
 	private Address[] searchOptions =
 	{
 	};
 
-	private async Task<IEnumerable<string>> SearchAddress(string value)
+	private async Task<IEnumerable<Address>> SearchAddress(string value)
 	{
 		// In real life, use an asynchronous function for fetching data from an API.
 		await Task.Delay(5);
 
 		if (value == null)
-			return new List<string>();
+			return new List<Address>();
 
 		// If the text is null or empty, don't return values (drop-down will not open).
 		addressval = value;
 		if(value.Length > 4)
 			await TimerTask();
 
-		return searchOptions.Select(x => $"{x.Name.Replace(',', ' ')}");
+		return searchOptions;
 	}
 
 	private string latestSearch = "";
@@ -125,7 +122,7 @@
 		int runtime = tmp;
 		await Task.Delay(TimeBetweenAPICall);
 		if(runtime == tmp)
-			UpdateAddresses();
+			await UpdateAddresses();
 	}
 
 

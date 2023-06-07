@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using MudBlazor;
 using System.Threading.Tasks;
+using Libraries.DistanceAddressCalculator;
 
 namespace GG.CoreBusiness
 {
@@ -25,7 +26,7 @@ namespace GG.CoreBusiness
 
 
         [StringLength(300, ErrorMessage = "Address can't be longer than 300 characters")]
-        public string Address { get; set; }
+        public Address Address { get; set; }
 
 
         [Required, StringLength(320, MinimumLength = 5, ErrorMessage = "Invalid Email Address. Must be between 5 and 320 characters")]

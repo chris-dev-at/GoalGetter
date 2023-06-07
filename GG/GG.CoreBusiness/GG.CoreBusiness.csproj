@@ -10,4 +10,8 @@
     <PackageReference Include="MudBlazor" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Libraries\Libraries.csproj" />
+  </ItemGroup>
+
 </Project>

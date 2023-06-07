@@ -40,10 +40,7 @@ namespace Libraries.DistanceAddressCalculator
 
         public override string ToString()
         {
-            return $"NAME: {this.Name} " +
-                $"ID: {this.ID} " +
-                $"LAT: {this.Latitude} " +
-                $"LON: {this.Longitude} ";
+            return this.Name.Replace(',', ' ');
         }
 
         #region static Methods    
