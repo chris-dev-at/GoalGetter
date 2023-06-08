@@ -20,8 +20,11 @@ namespace GG.UseCases.PluginInterfaces
 		Task<StatusReport<string>> SaveFileToServer(string fileDir, string fileName, IBrowserFile file);
 		Task<StatusReport<EmptyVal>> SaveTextToFile(string fileDir, string fileName, string text);
 		Task<StatusReport<string>> ReadTextFromFile(string fileDir, string fileName);
+		Task<StatusReport<EmptyVal>> ChangePerson(Person person);
+		Task<StatusReport<EmptyVal>> ChangeProject(Project project);
+		Task<StatusReport<EmptyVal>> ChangeProjectTask(ProjectTask task, Project project);
+		Task<StatusReport<EmptyVal>> ChangeTeammember(Teammember teammember, Project project);
 		Task<StatusReport<IEnumerable<Person>>> GetPersonWithinPersonList(string person_name, IEnumerable<Person> persons);
-
 		Task<StatusReport<IEnumerable<Teammember>>> GetTeammemberByNameWithinTeamAsync(string person_name, GG.CoreBusiness.Team team);
 		Task<StatusReport<IEnumerable<ProjectTask>>> GetTaskByNameWithinList(string task_name, IEnumerable<ProjectTask> tasks);
 		Task<StatusReport<EmptyVal>> RemovePersonCompletelyAsync(Person person);

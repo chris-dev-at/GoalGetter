@@ -99,6 +99,47 @@ namespace GG.Plugins.InMemory
 				);
 		}
 
+		//CRUD for Updates
+		public async Task<StatusReport<EmptyVal>> ChangeProjectTask(ProjectTask task, Project project)
+		{
+			await SaveProjectToFile(project);
+			return new StatusReport<EmptyVal>(
+					StatusState.Success,
+					EmptyVal.Empty,
+					"Task has been updated"
+				);
+		}
+
+		public async Task<StatusReport<EmptyVal>> ChangeProject(Project project)
+		{
+			await SaveProjectToFile(project);
+			return new StatusReport<EmptyVal>(
+					StatusState.Success,
+					EmptyVal.Empty,
+					"Project has been updated"
+				);
+		}
+
+		public async Task<StatusReport<EmptyVal>> ChangePerson(Person person)
+		{
+			await SaveContacts();
+			return new StatusReport<EmptyVal>(
+					StatusState.Success,
+					EmptyVal.Empty,
+					"Person has been updated"
+				);
+		}
+		public async Task<StatusReport<EmptyVal>> ChangeTeammember(Teammember teammember, Project project)
+		{
+			await SaveProjectToFile(project);
+			return new StatusReport<EmptyVal>(
+					StatusState.Success,
+					EmptyVal.Empty,
+					"Teammember has been updated"
+				);
+		}
+
+
 		//CRUD for People Entitys
 		public async Task<StatusReport<Person>> GetPersonById(int id)
 		{
