@@ -32,6 +32,7 @@
                         + Teammember
                     </MudButton>
                 </MudPaper>
+                <ValidationMessage For="@(() => newtask.AssignedPerson)"></ValidationMessage>
 
                 
                 <MudPopover Open="@_isOpen" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
