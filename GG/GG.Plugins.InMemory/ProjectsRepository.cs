@@ -511,41 +511,6 @@ namespace GG.Plugins.InMemory
 					task.AssignedPerson = tmp;
 				}
 
-				//Injecting TestData
-				/*current.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(current.assignedTeam), Deadline = RandomDay() });
-				current.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(current.assignedTeam), Deadline = RandomDay() });
-				current.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(current.assignedTeam), Deadline = RandomDay() });
-				current.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(current.assignedTeam), Deadline = RandomDay() });
-				current.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(current.assignedTeam), Deadline = RandomDay() });
-				current.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(current.assignedTeam), Deadline = RandomDay() });
-
-				Teammember getRandomTPerson(Team t)
-				{
-					Random randy = new Random();
-					return t.members.ToArray()[randy.Next(0, t.members.Count)];
-				}
-				DateTime RandomDay()
-				{
-					Random randy = new Random();
-					DateTime start = new DateTime(1995, 1, 1);
-					int range = (DateTime.Today - start).Days;
-					return start.AddDays(randy.Next(range));
-				}
-				string RandomString(int length = 8)
-				{
-					Random randy = new Random();
-					string ret = "";
-					const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-					ret = new string(Enumerable.Repeat(chars, length)
-							.Select(s => s[randy.Next(s.Length)]).ToArray());
-					ret = new string(Enumerable.Repeat(chars, length)
-						.Select(s => s[randy.Next(s.Length)]).ToArray());
-					return ret;
-				}*/
-
-
-
-
 				Projects.Add(current);
 			}
 
