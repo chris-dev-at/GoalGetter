@@ -1,0 +1,189 @@
+{
+  "Id": 1,
+  "Tasks": [
+    {
+      "Id": null,
+      "Deadline": "2006-01-07T00:00:00",
+      "Status": 0,
+      "PersonId": 8,
+      "Name": "Code Website",
+      "Description": "Make a website lol. xd. mega lol."
+    },
+    {
+      "Id": null,
+      "Deadline": "2000-05-21T00:00:00",
+      "Status": 0,
+      "PersonId": 8,
+      "Name": "Code Website 2",
+      "Description": "Make a website lol. xd. mega lol."
+    },
+    {
+      "Id": null,
+      "Deadline": "2003-08-17T00:00:00",
+      "Status": 0,
+      "PersonId": 4,
+      "Name": "Code Website 3",
+      "Description": "Make a website lol. xd. mega lol."
+    },
+    {
+      "Id": null,
+      "Deadline": "1999-08-29T00:00:00",
+      "Status": 0,
+      "PersonId": 13,
+      "Name": "Have FreeTime 1",
+      "Description": "Have Freetime lol. Very hard to understand"
+    },
+    {
+      "Id": null,
+      "Deadline": "2020-06-06T00:00:00",
+      "Status": 0,
+      "PersonId": 12,
+      "Name": "Create Blazor App 1",
+      "Description": ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it"
+    },
+    {
+      "Id": null,
+      "Deadline": "2018-06-11T00:00:00",
+      "Status": 0,
+      "PersonId": 12,
+      "Name": "Create Blazor App 2",
+      "Description": ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it"
+    },
+    {
+      "Id": null,
+      "Deadline": "2006-01-07T00:00:00",
+      "Status": 0,
+      "PersonId": 9,
+      "Name": "Code Website",
+      "Description": "Make a website lol. xd. mega lol."
+    },
+    {
+      "Id": null,
+      "Deadline": "2000-05-21T00:00:00",
+      "Status": 0,
+      "PersonId": 6,
+      "Name": "Code Website 2",
+      "Description": "Make a website lol. xd. mega lol."
+    },
+    {
+      "Id": null,
+      "Deadline": "2003-08-17T00:00:00",
+      "Status": 0,
+      "PersonId": 12,
+      "Name": "Code Website 3",
+      "Description": "Make a website lol. xd. mega lol."
+    },
+    {
+      "Id": null,
+      "Deadline": "1999-08-29T00:00:00",
+      "Status": 0,
+      "PersonId": 13,
+      "Name": "Have FreeTime 1",
+      "Description": "Have Freetime lol. Very hard to understand"
+    },
+    {
+      "Id": null,
+      "Deadline": "2020-06-06T00:00:00",
+      "Status": 0,
+      "PersonId": 13,
+      "Name": "Create Blazor App 1",
+      "Description": ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it"
+    },
+    {
+      "Id": null,
+      "Deadline": "2018-06-11T00:00:00",
+      "Status": 0,
+      "PersonId": 8,
+      "Name": "Create Blazor App 2",
+      "Description": ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it"
+    },
+    {
+      "Id": null,
+      "Deadline": "2006-01-07T00:00:00",
+      "Status": 0,
+      "PersonId": 9,
+      "Name": "Code Website",
+      "Description": "Make a website lol. xd. mega lol."
+    },
+    {
+      "Id": null,
+      "Deadline": "2000-05-21T00:00:00",
+      "Status": 0,
+      "PersonId": 12,
+      "Name": "Code Website 2",
+      "Description": "Make a website lol. xd. mega lol."
+    },
+    {
+      "Id": null,
+      "Deadline": "2003-08-17T00:00:00",
+      "Status": 0,
+      "PersonId": 4,
+      "Name": "Code Website 3",
+      "Description": "Make a website lol. xd. mega lol."
+    },
+    {
+      "Id": null,
+      "Deadline": "1999-08-29T00:00:00",
+      "Status": 0,
+      "PersonId": 6,
+      "Name": "Have FreeTime 1",
+      "Description": "Have Freetime lol. Very hard to understand"
+    },
+    {
+      "Id": null,
+      "Deadline": "2020-06-06T00:00:00",
+      "Status": 0,
+      "PersonId": 6,
+      "Name": "Create Blazor App 1",
+      "Description": ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it"
+    },
+    {
+      "Id": null,
+      "Deadline": "2018-06-11T00:00:00",
+      "Status": 0,
+      "PersonId": 13,
+      "Name": "Create Blazor App 2",
+      "Description": ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it"
+    }
+  ],
+  "Budget": 0.0,
+  "assignedTeam": {
+    "Id": null,
+    "members": [
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 8
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 9
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 12
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 4
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 6
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 13
+      }
+    ],
+    "Description": null
+  },
+  "status": 0,
+  "Description": "This is a sample Project provided from us for you. It contains sample data for you to try out our ProjectManagement-Software.",
+  "Name": "Hello GoalGetter!"
+}

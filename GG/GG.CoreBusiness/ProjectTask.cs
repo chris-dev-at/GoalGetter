@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace GG.CoreBusiness
 {
@@ -7,7 +8,10 @@ namespace GG.CoreBusiness
         public string Id { get; set; }
         public DateTime Deadline { get; set; }
         public ProgressStatus Status { get; set; }
+
+        [JsonIgnore]
         public Teammember AssignedPerson { get; set; }
+        public int PersonId { get; set; } //used to link memory with teammember instead of creating new one
 
 
         [Required, StringLength(100, MinimumLength = 1, ErrorMessage = "Name must be between 1 and 100 characters")]

@@ -67,7 +67,7 @@
 		foreach (Person p in options)
 		{
 			
-			addTeamUseCase.ExecuteAsync(new Teammember{person = p, Role= Teamrolle.Worker}, ProId);
+			addTeamUseCase.ExecuteAsync(new Teammember{person = p, Role= Teamrolle.Worker }, ProId);
 			OnTeammmemberAdded?.Invoke(true); // Invoke the event callback to trigger reload
 
 		}

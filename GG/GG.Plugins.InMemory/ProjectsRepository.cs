@@ -7,6 +7,9 @@ using static MudBlazor.Colors;
 using System.IO.Enumeration;
 using System.IO;
 using Newtonsoft.Json;
+using MudBlazor;
+using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace GG.Plugins.InMemory
 {
@@ -18,7 +21,7 @@ namespace GG.Plugins.InMemory
 		public ProjectsRepository()
 		{
 			//Load Data
-			LoadData();
+			var status = LoadData();
 		}
 
 		//CRUD for Project Entitys
@@ -48,8 +51,19 @@ namespace GG.Plugins.InMemory
 					"There is already a project with this name"
 				);
 
-			var maxId = Projects.Max(x => x.Id);
-			project.Id = maxId + 1;
+			if (!IsDirectoryNameAllowed(project.Name))
+				return new StatusReport<EmptyVal>(
+					StatusState.Error,
+					EmptyVal.Empty,
+					"Projectname contains invalid characters (\\/:*?\"<>|)"
+				);
+
+			int maxId = 0;
+			if(Projects.Count > 0)
+			{
+				maxId = Projects.Max(x => x.Id);
+			}
+			project.Id = maxId+1;
 
 			Projects.Add(project);
 
@@ -73,6 +87,15 @@ namespace GG.Plugins.InMemory
 		}
 
 		//CRUD for People Entitys
+		public async Task<StatusReport<Person>> GetPersonById(int id)
+		{
+			var person = Contact.Where(x => x.Id == id).FirstOrDefault();
+			return new StatusReport<Person>(
+					person == null ? StatusState.Normal : StatusState.Error,
+					person,
+					person == null ? "No person has been found" : "Person has been found"
+				);
+		}
 
 		public async Task<StatusReport<IEnumerable<Person>>> GetPeopleByNameAsync(string name)
 		{
@@ -239,12 +262,20 @@ namespace GG.Plugins.InMemory
 		//Continue Status Reporting
 		public async Task<StatusReport<EmptyVal>> AddPersonAsync(Person person, IBrowserFile image)
 		{
-			if (Contact.Any(x => x.Firstname.Equals(person.Firstname, StringComparison.OrdinalIgnoreCase)))
+			if (Contact.Any(x => x.Firstname.Equals(person.Firstname, StringComparison.OrdinalIgnoreCase))
+				& Contact.Any(x => x.Lastname.Equals(person.Lastname, StringComparison.OrdinalIgnoreCase)))
 				return new StatusReport<EmptyVal>(
 						StatusState.Error,
 						EmptyVal.Empty,
 						"Person already exists"
 					);
+
+			if(!IsDirectoryNameAllowed(person.Firstname+person.Lastname))
+				return new StatusReport<EmptyVal>(
+					StatusState.Error,
+					EmptyVal.Empty,
+					"Personname contains invalid characters (\\/:*?\"<>|)"
+				);
 
 			//Handle ID
 			var maxId = Contact.Max(x => x.Id);
@@ -309,7 +340,7 @@ namespace GG.Plugins.InMemory
 						"Person already within Team"
 					);
 
-
+			member.PersonId = member.person.Id;
 			p.assignedTeam.members.Add(member);
 
 			await SaveProjectToFile(p);
@@ -324,6 +355,14 @@ namespace GG.Plugins.InMemory
 
 		public async Task<StatusReport<EmptyVal>> AddTaskToProject(ProjectTask task, Project project)
 		{
+			if(!IsDirectoryNameAllowed(task.Name))
+				return new StatusReport<EmptyVal>(
+					StatusState.Error,
+					EmptyVal.Empty,
+					"Taskname contains invalid characters (\\/:*?\"<>|)"
+				);
+
+			task.PersonId = task.AssignedPerson.person.Id;
 			project.Tasks.Add(task);
 
 			await SaveProjectToFile(project);
@@ -449,21 +488,83 @@ namespace GG.Plugins.InMemory
 
 		public async Task<StatusReport<EmptyVal>> LoadData()
 		{
-
 			Contact = JsonConvert.DeserializeObject<List<Person>>((await ReadTextFromFile("ApplicationData", "ContactList.json")).Value);
 
 			string directory = Path.Combine(Path.Combine(Directory.GetCurrentDirectory(), "ApplicationData"), "projects");
 
 			foreach (var item in Directory.GetFiles(directory))
 			{
-				Projects.Add(JsonConvert.DeserializeObject<Project>(await File.ReadAllTextAsync(Path.Combine(directory, item))));
+				Project current = JsonConvert.DeserializeObject<Project>(await File.ReadAllTextAsync(Path.Combine(directory, item)));
+
+				//restore links to people from contacts
+				if (current == null) throw new NullReferenceException("Faulty json could not be loaded");
+				foreach (var member in current.assignedTeam.members)
+				{
+					Person tmp = GetPersonById(member.PersonId).Result.Value;
+					if (tmp == null) throw new NullReferenceException($"Faulty json could not be loaded (Person with ID: {member.PersonId} does not exist)");
+					member.person = tmp;
+				}
+				foreach (var task in current.Tasks)
+				{
+					Teammember tmp = current.assignedTeam.members.Where(x => x.person.Id == task.PersonId).FirstOrDefault();
+					if (tmp == null) throw new NullReferenceException($"Faulty json could not be loaded (Person with ID: {task.PersonId} does not exist)");
+					task.AssignedPerson = tmp;
+				}
+
+				//Injecting TestData
+				/*current.Tasks.Add(new ProjectTask() { Name = "Code Website", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(current.assignedTeam), Deadline = RandomDay() });
+				current.Tasks.Add(new ProjectTask() { Name = "Code Website 2", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(current.assignedTeam), Deadline = RandomDay() });
+				current.Tasks.Add(new ProjectTask() { Name = "Code Website 3", Description = "Make a website lol. xd. mega lol.", AssignedPerson = getRandomTPerson(current.assignedTeam), Deadline = RandomDay() });
+				current.Tasks.Add(new ProjectTask() { Name = "Have FreeTime 1", Description = "Have Freetime lol. Very hard to understand", AssignedPerson = getRandomTPerson(current.assignedTeam), Deadline = RandomDay() });
+				current.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 1", Description = ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(current.assignedTeam), Deadline = RandomDay() });
+				current.Tasks.Add(new ProjectTask() { Name = "Create Blazor App 2", Description = ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it", AssignedPerson = getRandomTPerson(current.assignedTeam), Deadline = RandomDay() });
+
+				Teammember getRandomTPerson(Team t)
+				{
+					Random randy = new Random();
+					return t.members.ToArray()[randy.Next(0, t.members.Count)];
+				}
+				DateTime RandomDay()
+				{
+					Random randy = new Random();
+					DateTime start = new DateTime(1995, 1, 1);
+					int range = (DateTime.Today - start).Days;
+					return start.AddDays(randy.Next(range));
+				}
+				string RandomString(int length = 8)
+				{
+					Random randy = new Random();
+					string ret = "";
+					const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+					ret = new string(Enumerable.Repeat(chars, length)
+							.Select(s => s[randy.Next(s.Length)]).ToArray());
+					ret = new string(Enumerable.Repeat(chars, length)
+						.Select(s => s[randy.Next(s.Length)]).ToArray());
+					return ret;
+				}*/
+
+
+
+
+				Projects.Add(current);
 			}
 
 			return new StatusReport<EmptyVal>(
-							StatusState.Success,
-							EmptyVal.Empty,
-							$"Data has been loaded"
-						);
+						StatusState.Success,
+						EmptyVal.Empty,
+						$"Data has been loaded"
+					);
+		}
+
+		public bool IsDirectoryNameAllowed(string directoryName)
+		{
+			// Define the pattern for allowed directory names
+			string pattern = @"^[a-zA-Z0-9_\-\.]+$";
+
+			// Check if the directory name matches the pattern
+			bool isMatch = Regex.IsMatch(directoryName, pattern);
+
+			return isMatch;
 		}
 	}
 }

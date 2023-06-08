@@ -16,10 +16,10 @@ namespace GG.UseCases.PluginInterfaces
 
 		Task<StatusReport<IEnumerable<Person>>> GetPeopleByNameAsync(string name);
 		Task<StatusReport<EmptyVal>> AddPersonAsync(Person person, IBrowserFile image);
+		Task<StatusReport<Person>> GetPersonById(int id);
 		Task<StatusReport<string>> SaveFileToServer(string fileDir, string fileName, IBrowserFile file);
 		Task<StatusReport<EmptyVal>> SaveTextToFile(string fileDir, string fileName, string text);
 		Task<StatusReport<string>> ReadTextFromFile(string fileDir, string fileName);
-
 		Task<StatusReport<IEnumerable<Person>>> GetPersonWithinPersonList(string person_name, IEnumerable<Person> persons);
 
 		Task<StatusReport<IEnumerable<Teammember>>> GetTeammemberByNameWithinTeamAsync(string person_name, GG.CoreBusiness.Team team);
@@ -34,7 +34,8 @@ namespace GG.UseCases.PluginInterfaces
 		Task<StatusReport<EmptyVal>> SaveProjectToFile(Project p);
 		Task<StatusReport<EmptyVal>> SaveAllProjectToFile();
 		Task<StatusReport<EmptyVal>> SaveContacts();
-			
+		bool IsDirectoryNameAllowed(string directoryName);
+
 		//Task<bool> ExistsAsync(Project project);
 		//Task UpdateProjectAsync(Project project);
 		//Task DeleteProjectAsync(Project project);

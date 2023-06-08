@@ -1,0 +1,98 @@
+{
+  "Id": 2,
+  "Tasks": [
+    {
+      "Id": null,
+      "Deadline": "1996-09-23T00:00:00",
+      "Status": 0,
+      "PersonId": 3,
+      "Name": "Code Website",
+      "Description": "Make a website lol. xd. mega lol."
+    },
+    {
+      "Id": null,
+      "Deadline": "2007-10-05T00:00:00",
+      "Status": 0,
+      "PersonId": 3,
+      "Name": "Code Website 2",
+      "Description": "Make a website lol. xd. mega lol."
+    },
+    {
+      "Id": null,
+      "Deadline": "1995-06-27T00:00:00",
+      "Status": 0,
+      "PersonId": 13,
+      "Name": "Code Website 3",
+      "Description": "Make a website lol. xd. mega lol."
+    },
+    {
+      "Id": null,
+      "Deadline": "2001-12-25T00:00:00",
+      "Status": 0,
+      "PersonId": 1,
+      "Name": "Have FreeTime 1",
+      "Description": "Have Freetime lol. Very hard to understand"
+    },
+    {
+      "Id": null,
+      "Deadline": "1996-09-17T00:00:00",
+      "Status": 0,
+      "PersonId": 8,
+      "Name": "Create Blazor App 1",
+      "Description": ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it"
+    },
+    {
+      "Id": null,
+      "Deadline": "1999-10-09T00:00:00",
+      "Status": 0,
+      "PersonId": 4,
+      "Name": "Create Blazor App 2",
+      "Description": ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it"
+    }
+  ],
+  "Budget": 0.0,
+  "assignedTeam": {
+    "Id": null,
+    "members": [
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 3
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 12
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 13
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 10
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 4
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 1
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 8
+      }
+    ],
+    "Description": null
+  },
+  "status": 0,
+  "Description": "Need more test data? We got your back!",
+  "Name": "Another Sample"
+}

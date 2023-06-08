@@ -40,6 +40,7 @@
 	private async Task SaveProject()
 	{
 		newProject.assignedTeam = new Team() { members= new List<Teammember>() };
+		newProject.Tasks = new List<ProjectTask>();
 		StatusReport<EmptyVal> status = await AddProjectUseCase.ExecuteAsync(newProject);
 		Snackbar.Add(status.Reason, status.severity);
 

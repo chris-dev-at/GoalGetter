@@ -13,7 +13,7 @@ namespace GG.CoreBusiness
 		public T Value { get; set; }
 		public string Reason { get; set; }
 
-		private Dictionary<StatusState, Severity> translateStatusState = new Dictionary<StatusState, Severity>{
+		private static Dictionary<StatusState, Severity> translateStatusState = new Dictionary<StatusState, Severity>{
 			{ StatusState.Normal, Severity.Normal },
 			{ StatusState.Failed, Severity.Warning },
 			{ StatusState.Warning, Severity.Warning },
@@ -21,7 +21,7 @@ namespace GG.CoreBusiness
 			{ StatusState.Success, Severity.Success }
 		};
 
-		public Severity severity { get { return this.translateStatusState[this.State]; } private set { } }
+		public Severity severity { get { return translateStatusState[this.State]; } private set { } }
 
 
         public StatusReport() { }

@@ -107,7 +107,7 @@
   {
     "Id": 8,
     "AvatarPath": null,
-    "AvatarColor": 9,
+    "AvatarColor": 3,
     "Firstname": "Herr",
     "Lastname": "Sandman",
     "Address": {
@@ -117,7 +117,7 @@
       "display_name": "Sandmann, Kirchberg, Kröning, Gerzen (VGem), Landkreis Landshut, Bayern, 84178, Deutschland"
     },
     "Email": "lesand@man.at",
-    "Phone": "+43 664 696969"
+    "Phone": "+43 420 696969"
   },
   {
     "Id": 9,
@@ -132,6 +132,66 @@
       "display_name": "Hammerweg, Zwettl, Gemeinde Zwettl-Niederösterreich, Bezirk Zwettl, Niederösterreich, 3910, Österreich"
     },
     "Email": "a.hauleitner@htlkrems.at",
+    "Phone": null
+  },
+  {
+    "Id": 10,
+    "AvatarPath": "profiles\\10_DrachClara.jpg",
+    "AvatarColor": 7,
+    "Firstname": "Clara",
+    "Lastname": "Drach",
+    "Address": {
+      "osm_id": 2603117547,
+      "lat": 48.4109838,
+      "lon": 15.5926604,
+      "display_name": "HTL Krems, 29, Alauntalstraße, Innenstadt, Krems an der Donau, Niederösterreich, 3500, Österreich"
+    },
+    "Email": "c.drach@htlkrems.at",
+    "Phone": null
+  },
+  {
+    "Id": 11,
+    "AvatarPath": "profiles\\11_ElsholzAlexander.jpg",
+    "AvatarColor": 3,
+    "Firstname": "Alexander",
+    "Lastname": "Elsholz",
+    "Address": {
+      "osm_id": 296245278,
+      "lat": 48.4163185,
+      "lon": 15.3035193,
+      "display_name": "Kottes, Kottes-Purk, Bezirk Zwettl, Niederösterreich, 3623, Österreich"
+    },
+    "Email": "a.elsholz@htlkrems.at",
+    "Phone": null
+  },
+  {
+    "Id": 12,
+    "AvatarPath": "profiles\\12_AllingerAnton.jpg",
+    "AvatarColor": 9,
+    "Firstname": "Anton",
+    "Lastname": "Allinger",
+    "Address": {
+      "osm_id": 1058625333,
+      "lat": 47.669267,
+      "lon": -122.09791216645404,
+      "display_name": "Christus, Redmond, King County, Washington, United States"
+    },
+    "Email": "a.allinger@htlkrems.at",
+    "Phone": null
+  },
+  {
+    "Id": 13,
+    "AvatarPath": "profiles\\13_HobelLukas.jpg",
+    "AvatarColor": 3,
+    "Firstname": "Lukas",
+    "Lastname": "Hobel",
+    "Address": {
+      "osm_id": 2209583,
+      "lat": 48.069118,
+      "lon": 14.1698608,
+      "display_name": "Krems, Bezirk Linz-Land, Österreich"
+    },
+    "Email": "l.hobel@htlkrems.at",
     "Phone": null
   }
 ]
