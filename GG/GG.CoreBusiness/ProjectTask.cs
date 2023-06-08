@@ -10,6 +10,7 @@ namespace GG.CoreBusiness
         public ProgressStatus Status { get; set; }
 
         [JsonIgnore]
+        [Required]
         public Teammember AssignedPerson { get; set; }
         public int PersonId { get; set; } //used to link memory with teammember instead of creating new one
 
