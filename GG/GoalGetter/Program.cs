@@ -23,6 +23,7 @@ builder.Services.AddSingleton<IProjectsRepository, ProjectsRepository>();
 builder.Services.AddTransient<IViewProjectsByNameUseCase, ViewProjectsByNameUseCase>();
 builder.Services.AddTransient<IAddProjectUseCase, AddProjectUseCase>();
 builder.Services.AddTransient<IViewProjectByIdUseCase, ViewProjectByIdUseCase>();
+builder.Services.AddSingleton<IUpdateProjectUseCase, UpdateProjectUseCase>();
 
 builder.Services.AddTransient<IViewPeopleByNameUseCase, ViewPeopleByNameUseCase>();
 builder.Services.AddTransient<IAddPersonUseCase, AddPersonUseCase>();
@@ -35,6 +36,7 @@ builder.Services.AddTransient<IAddTeamUseCase, AddTeamUseCase>();
 //Taks Services
 builder.Services.AddTransient<IViewTasksByProjectIdUseCase, ViewTasksByProjectIdUseCase>();
 builder.Services.AddTransient<IAddTaskUseCase, AddTaskUseCase>();
+builder.Services.AddSingleton<IUpdateTaskUseCase, UpdateTaskUseCase>();
 
 builder.Services.AddMudServices();
 

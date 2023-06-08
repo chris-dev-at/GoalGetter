@@ -1,5 +1,7 @@
-﻿<div class="mb-5" style="margin-top: 20px">
-	<MudContainer MaxWidth="MaxWidth.Small">
+﻿@inject IDialogService DialogService
+
+<div class="mb-5" style="margin-top: 20px">
+	<MudContainer MaxWidth="MaxWidth.Small" @onclick="@((e) => OpenPersonCard(maxWidth))">
 		<MudPaper Height="180px" Width="120%" Square="true">
 			<div class="bg">
 				<h2>@person.person.Firstname @person.person.Lastname</h2>
@@ -22,4 +24,13 @@
 </div>
 @code {
 	[Parameter]
-	public Teammember person { get; set; }}
+	public Teammember person { get; set; }
+
+	DialogOptions maxWidth = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true };
+
+	private void OpenPersonCard(DialogOptions options)
+	{
+		var parameter = new DialogParameters { ["person"] = person.person };
+		DialogService.Show<PersonCard>("", parameter, options);
+	}
+}
