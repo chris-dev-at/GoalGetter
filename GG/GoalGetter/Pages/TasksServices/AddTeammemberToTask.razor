@@ -15,7 +15,7 @@
 </style>
 
 <MudCard>
-	<MudTable Items="members" @bind-SelectedItem="@option" Striped="true" Hover="true" Breakpoint="Breakpoint.Sm" @ref="mudTable" RowClassFunc="@SelectedRowClassFunc" OnRowClick="RowClickEvent" T="Teammember">
+	<MudTable Items="members" @bind-SelectedItem="@option" Striped="true" Hover="true" Breakpoint="Breakpoint.Sm" @ref="mudTable" RowClassFunc="SelectedRowClassFunc" OnRowClick="RowClickEvent" T="Teammember">
 		<HeaderContent>
         <MudTh>FirstName</MudTh>
         <MudTh>LastName</MudTh>
@@ -87,7 +87,7 @@
 	public Action<Teammember> OnTeammemeberAdded { get; set; } // Update the type to
 
 	private IEnumerable<Teammember> members = new List<Teammember>();
-	private Teammember option { get; set; } = new Teammember();
+	private Teammember option { get; set; } 
 
 	protected override async Task OnInitializedAsync()
 	{
@@ -102,7 +102,8 @@
 
 	private void Save()
 	{
-		OnTeammemeberAdded?.Invoke(option); // Invoke the event callback to trigger reload
+		if(option != null)
+			OnTeammemeberAdded?.Invoke(option); // Invoke the event callback to trigger reload
 		Cancel();
 	}
 }

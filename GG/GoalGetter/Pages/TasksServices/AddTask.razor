@@ -12,24 +12,27 @@
                 <MudTextField Label="Task Description" Class="mt-3" HelperText="additional informations about the task" Lines="3" T="string" Variant="Variant.Outlined"
                                 @bind-Value="newtask.Description" For="@(() => newtask.Description)" />
                 <MudDatePicker Label="Date Format" @bind-Date="newtask.Deadline" DateFormat="dd.MM.yyyy" />
-                <MudPaper Class="d-flex pa-4">
-                   @if(newtask.AssignedPerson != null){
-                    if (newtask.AssignedPerson.person.AvatarPath != null)
-                    {
-                        <MudAvatar Image="@newtask.AssignedPerson.person.AvatarPath"></MudAvatar>
-                    }
-                    else
-                    {
-                        <MudAvatar Color="@newtask.AssignedPerson.person.AvatarColor">@newtask.AssignedPerson.person.Firstname.First()@newtask.AssignedPerson.person.Lastname.First()</MudAvatar>
 
+                <MudPaper Class="d-flex pa-4">
+                    @if (newtask.AssignedPerson != null)
+                    {
+                        if (newtask.AssignedPerson.person.AvatarPath != null)
+                        {
+                            <MudAvatar Image="@newtask.AssignedPerson.person.AvatarPath"></MudAvatar>
+                        }
+                        else
+                        {
+                            <MudAvatar Color="@newtask.AssignedPerson.person.AvatarColor">@newtask.AssignedPerson.person.Firstname.First()@newtask.AssignedPerson.person.Lastname.First()</MudAvatar>
+
+                        }
+                        <MudText>@newtask.AssignedPerson.person.Firstname @newtask.AssignedPerson.person.Lastname</MudText>
                     }
-                    <MudText>@newtask.AssignedPerson.person.Firstname @newtask.AssignedPerson.person.Lastname</MudText>
-                }
-                <MudSpacer/>
-                <MudButton Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white" Color="Color.Primary" OnClick="@((e) => OpenDialog(maxWidth))">
-				+ Teammember
-			    </MudButton>
+                    <MudSpacer />
+                    <MudButton Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white" Color="Color.Primary" OnClick="@((e) => OpenDialog(maxWidth))">
+                        + Teammember
+                    </MudButton>
                 </MudPaper>
+
                 
                 <MudPopover Open="@_isOpen" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
                     <AddTeammemberToTask />
@@ -47,7 +50,6 @@
 @code {
     [CascadingParameter] MudDialogInstance MudDialog { get; set; }
 
-
     private ProjectTask newtask = new ProjectTask();
 
     [Parameter]
@@ -55,6 +57,13 @@
 
     [Parameter]
     public int ProId { get; set; }
+
+    protected override void OnInitialized()
+    {
+        newtask.Deadline = DateTime.Now;
+        newtask.Description = "";
+    }
+
 
     private async Task SaveTask()
     {

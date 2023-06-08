@@ -1,7 +1,7 @@
 ﻿@inherits LayoutComponentBase
 @inject NavigationManager NavigationManager
 
-<MudThemeProvider />
+<MudThemeProvider @bind-IsDarkMode="@themeOn"/>
 <MudDialogProvider />
 <MudSnackbarProvider />
 
@@ -29,6 +29,7 @@
 
 @code {
     bool _drawerOpen = true;
+    bool themeOn = true;
 
     void DrawerToggle()
     {

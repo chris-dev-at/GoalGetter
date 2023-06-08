@@ -55,7 +55,7 @@
       "Status": 0,
       "PersonId": 8,
       "Name": "asdf",
-      "Description": null
+      "Description": ""
     },
     {
       "Id": null,
@@ -71,7 +71,7 @@
       "Status": 0,
       "PersonId": 8,
       "Name": "sdg",
-      "Description": null
+      "Description": ""
     },
     {
       "Id": null,
@@ -80,6 +80,14 @@
       "PersonId": 13,
       "Name": "newTask",
       "Description": "this is a Task"
+    },
+    {
+      "Id": null,
+      "Deadline": "2023-06-09T00:00:00",
+      "Status": 0,
+      "PersonId": 1,
+      "Name": "onetask",
+      "Description": ""
     }
   ],
   "Budget": 0.0,
@@ -88,76 +96,76 @@
     "members": [
       {
         "Role": 2,
-        "Description": null,
+        "Description": "",
         "PersonId": 3
       },
       {
         "Role": 2,
-        "Description": null,
+        "Description": "",
         "PersonId": 12
       },
       {
         "Role": 2,
-        "Description": null,
+        "Description": "",
         "PersonId": 13
       },
       {
         "Role": 2,
-        "Description": null,
+        "Description": "",
         "PersonId": 10
       },
       {
         "Role": 2,
-        "Description": null,
+        "Description": "",
         "PersonId": 4
       },
       {
         "Role": 2,
-        "Description": null,
+        "Description": "",
         "PersonId": 1
       },
       {
         "Role": 2,
-        "Description": null,
+        "Description": "",
         "PersonId": 8
       },
       {
         "Role": 2,
-        "Description": null,
+        "Description": "",
         "PersonId": 9
       },
       {
         "Role": 2,
-        "Description": null,
+        "Description": "",
         "PersonId": 7
       },
       {
         "Role": 2,
-        "Description": null,
+        "Description": "",
         "PersonId": 6
       },
       {
         "Role": 2,
-        "Description": null,
+        "Description": "",
         "PersonId": 5
       },
       {
         "Role": 2,
-        "Description": null,
+        "Description": "",
         "PersonId": 2
       },
       {
         "Role": 2,
-        "Description": null,
+        "Description": "",
         "PersonId": 11
       },
       {
         "Role": 2,
-        "Description": null,
+        "Description": "",
         "PersonId": 14
       }
     ],
-    "Description": null
+    "Description": ""
   },
   "status": 0,
   "Description": "Need more test data? We got your back!",
