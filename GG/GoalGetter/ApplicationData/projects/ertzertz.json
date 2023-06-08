@@ -1,0 +1,13 @@
+{
+  "Id": 7,
+  "Tasks": [],
+  "Budget": 0.0,
+  "assignedTeam": {
+    "Id": null,
+    "members": [],
+    "Description": null
+  },
+  "status": 0,
+  "Description": null,
+  "Name": "ertzertz"
+}

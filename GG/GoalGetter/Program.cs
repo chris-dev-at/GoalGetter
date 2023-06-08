@@ -34,6 +34,7 @@ builder.Services.AddTransient<IAddTeamUseCase, AddTeamUseCase>();
 
 //Taks Services
 builder.Services.AddTransient<IViewTasksByProjectIdUseCase, ViewTasksByProjectIdUseCase>();
+builder.Services.AddTransient<IAddTaskUseCase, AddTaskUseCase>();
 
 builder.Services.AddMudServices();
 

@@ -1,0 +1,46 @@
+{
+  "Id": 3,
+  "Tasks": [
+    {
+      "Id": null,
+      "Deadline": "0001-01-01T00:00:00",
+      "Status": 0,
+      "PersonId": 4,
+      "Name": "asdfasf",
+      "Description": null
+    },
+    {
+      "Id": null,
+      "Deadline": "0001-01-01T00:00:00",
+      "Status": 0,
+      "PersonId": 10,
+      "Name": "asdfasdf",
+      "Description": null
+    }
+  ],
+  "Budget": 0.0,
+  "assignedTeam": {
+    "Id": null,
+    "members": [
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 3
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 4
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 10
+      }
+    ],
+    "Description": null
+  },
+  "status": 0,
+  "Description": null,
+  "Name": "wowo"
+}

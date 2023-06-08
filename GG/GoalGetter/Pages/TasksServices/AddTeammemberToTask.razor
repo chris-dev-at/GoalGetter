@@ -1,0 +1,108 @@
+﻿@inject ISnackbar Snackbar
+@inject IViewTeamMembersByProjectIdUseCase viewTeamMembersByProjectIdUseCase
+<style>
+	.selected {
+		background-color: #1E88E5 !important;
+	}
+
+		.selected > td {
+			color: white !important;
+		}
+
+			.selected > td .mud-input {
+				color: white !important;
+			}
+</style>
+
+<MudCard>
+	<MudTable Items="members" @bind-SelectedItem="@option" Striped="true" Hover="true" Breakpoint="Breakpoint.Sm" @ref="mudTable" RowClassFunc="@SelectedRowClassFunc" OnRowClick="RowClickEvent" T="Teammember">
+		<HeaderContent>
+        <MudTh>FirstName</MudTh>
+        <MudTh>LastName</MudTh>
+        <MudTh>Address</MudTh>
+        <MudTh>Email</MudTh>
+        <MudTh>Phone</MudTh>
+		<MudTh>Avatar</MudTh>
+    </HeaderContent>
+	 <RowTemplate>
+			<MudTd DataLabel="FirstName">@context.person.Firstname</MudTd>
+			<MudTd DataLabel="LastName">@context.person.Lastname</MudTd>
+			<MudTd DataLabel="Address">@context.person.Address</MudTd>
+			<MudTd DataLabel="Email">@context.person.Email</MudTd>
+			<MudTd DataLabel="Phone">@context.person.Phone</MudTd>
+			<MudTd>
+				@if (context.person.AvatarPath != null)
+				{
+					<MudAvatar Image="@context.person.AvatarPath"></MudAvatar>
+				}
+				else
+				{
+					<MudAvatar Color="@context.person.AvatarColor">@context.person.Firstname.First()@context.person.Lastname.First()</MudAvatar>
+
+				}
+			</MudTd>
+    </RowTemplate>
+	</MudTable>
+	<MudCardActions>
+		<MudButton ButtonType="ButtonType.Submit" class="btn btn-primary" @onclick="Save">Add</MudButton>
+		<MudButton ButtonType="ButtonType.Button" class="btn btn-primary" @onclick="Cancel">Close</MudButton>
+	</MudCardActions>
+</MudCard>
+
+@code {
+	private int selectedRowNumber = -1;
+	private MudTable<Teammember> mudTable;
+	private List<string> clickedEvents = new();
+
+	private void RowClickEvent(TableRowClickEventArgs<Teammember> tableRowClickEventArgs)
+	{
+		clickedEvents.Add("Row has been clicked");
+	}
+
+	private string SelectedRowClassFunc(Teammember element, int rowNumber)
+	{
+		if (selectedRowNumber == rowNumber)
+		{
+			selectedRowNumber = -1;
+			clickedEvents.Add("Selected Row: None");
+			return string.Empty;
+		}
+		else if (mudTable.SelectedItem != null && mudTable.SelectedItem.Equals(element))
+		{
+			selectedRowNumber = rowNumber;
+			clickedEvents.Add($"Selected Row: {rowNumber}");
+			return "selected";
+		}
+		else
+		{
+			return string.Empty;
+		}
+	}
+
+	//main code
+	[Parameter]
+	public int proid { get; set; }
+
+	[Parameter]
+	public Action<Teammember> OnTeammemeberAdded { get; set; } // Update the type to
+
+	private IEnumerable<Teammember> members = new List<Teammember>();
+	private Teammember option { get; set; } = new Teammember();
+
+	protected override async Task OnInitializedAsync()
+	{
+		StatusReport<IEnumerable<Teammember>> status = viewTeamMembersByProjectIdUseCase.ExecuteAsync("", proid).Result;
+		if (status.Value != null)
+			members = status.Value;
+		else
+			Snackbar.Add(status.Reason, status.severity);
+	}
+	[CascadingParameter] MudDialogInstance MudDialog { get; set; }
+	void Cancel() => MudDialog.Cancel();
+
+	private void Save()
+	{
+		OnTeammemeberAdded?.Invoke(option); // Invoke the event callback to trigger reload
+		Cancel();
+	}
+}

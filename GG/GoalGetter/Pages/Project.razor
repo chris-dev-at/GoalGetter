@@ -7,6 +7,12 @@
 
 	<MudText Typo="Typo.h2">@project.Name</MudText>
 	<MudText>@project.Description</MudText>
+<MudSelect T="ProgressStatus" @bind-Value="@project.status" Label="Select progress status" AnchorOrigin="Origin.BottomCenter" Variant="Variant.Outlined" Clearable>
+	@foreach (ProgressStatus status in Enum.GetValues(typeof(ProgressStatus)))
+	{
+		<MudSelectItem Value="@(status)" />
+	}
+	</MudSelect>
 	<!-- Rest of your component code -->
 
 

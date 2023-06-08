@@ -27,6 +27,8 @@
 	public bool _isOpen;
 	private string searchterm = "";
 
+	private bool reloadFlag = false;
+
 
 	private void OnTermSearch(string searchterm)
 	{
@@ -37,7 +39,16 @@
 
 	private void OpenDialog(DialogOptions options)
 	{
-		DialogService.Show<AddTask>("Add Task", options);
+		var parameter = new DialogParameters { ["ProId"] = proid };
+		parameter.Add("OnTaskAdded", HandleTaskAdded);
+		DialogService.Show<AddTask>("Add Task", parameter, options);
+	}
+
+	private void HandleTaskAdded()
+	{
+		reloadFlag = !reloadFlag;
+		searchterm = ""; // Optionally, clear the search term to display all projects after adding
+		StateHasChanged();
 	}
 
 }

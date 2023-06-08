@@ -1,0 +1,33 @@
+{
+  "Id": 5,
+  "Tasks": [
+    {
+      "Id": null,
+      "Deadline": "2023-06-10T00:00:00",
+      "Status": 0,
+      "PersonId": 3,
+      "Name": "newTask",
+      "Description": "blablabla bal bal bla bla "
+    }
+  ],
+  "Budget": 0.0,
+  "assignedTeam": {
+    "Id": null,
+    "members": [
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 3
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 5
+      }
+    ],
+    "Description": null
+  },
+  "status": 0,
+  "Description": null,
+  "Name": "bababab"
+}

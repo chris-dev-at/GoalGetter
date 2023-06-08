@@ -48,6 +48,38 @@
       "PersonId": 4,
       "Name": "Create Blazor App 2",
       "Description": ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it"
+    },
+    {
+      "Id": null,
+      "Deadline": "0001-01-01T00:00:00",
+      "Status": 0,
+      "PersonId": 8,
+      "Name": "asdf",
+      "Description": null
+    },
+    {
+      "Id": null,
+      "Deadline": "0001-01-01T00:00:00",
+      "Status": 0,
+      "PersonId": 9,
+      "Name": "asdfasfd",
+      "Description": "asdfasdf asdf asdf as"
+    },
+    {
+      "Id": null,
+      "Deadline": "0001-01-01T00:00:00",
+      "Status": 0,
+      "PersonId": 8,
+      "Name": "sdg",
+      "Description": null
+    },
+    {
+      "Id": null,
+      "Deadline": "2023-06-09T00:00:00",
+      "Status": 0,
+      "PersonId": 13,
+      "Name": "newTask",
+      "Description": "this is a Task"
     }
   ],
   "Budget": 0.0,
@@ -88,6 +120,41 @@
         "Role": 2,
         "Description": null,
         "PersonId": 8
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 9
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 7
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 6
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 5
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 2
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 11
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 14
       }
     ],
     "Description": null

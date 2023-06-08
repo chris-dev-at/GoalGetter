@@ -42,7 +42,7 @@
 	[CascadingParameter] MudDialogInstance MudDialog { get; set; }
 
 	[Parameter]
-	public Action<bool> OnTeammmemberAdded { get; set; } // Update the type to
+	public Action OnTeammmemberAdded { get; set; } // Update the type to
 
 	void Cancel() => MudDialog.Cancel();
 
@@ -68,8 +68,10 @@
 		{
 			
 			addTeamUseCase.ExecuteAsync(new Teammember{person = p, Role= Teamrolle.Worker }, ProId);
-			OnTeammmemberAdded?.Invoke(true); // Invoke the event callback to trigger reload
+			OnTeammmemberAdded?.Invoke(); // Invoke the event callback to trigger reload
 
 		}
 	}
+
+
 }

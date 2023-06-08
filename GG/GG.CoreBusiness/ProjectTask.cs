@@ -6,7 +6,7 @@ namespace GG.CoreBusiness
     public class ProjectTask
     {
         public string Id { get; set; }
-        public DateTime Deadline { get; set; }
+        public DateTime? Deadline { get; set; }
         public ProgressStatus Status { get; set; }
 
         [JsonIgnore]

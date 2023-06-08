@@ -15,7 +15,7 @@
 
 		<RowTemplate>
 			<MudTd DataLabel="Task Name">@context.Name</MudTd>
-			<MudTd DataLabel="Deadline">@context.Deadline</MudTd>
+			<MudTd DataLabel="Deadline"><MudDatePicker ReadOnly="true" @bind-Date="context.Deadline" /></MudTd>
 			<MudTd DataLabel="Status">@context.Status</MudTd>
 			<MudTd DataLabel="Description" HideSmall="_hidePosition">@context.Description</MudTd>
 			<MudTd DataLabel="Assigned Teammember">
@@ -25,7 +25,7 @@
 				}
 				else
 				{
-					<MudAvatar Color="Color.Primary">@context.AssignedPerson.person.Firstname.First()@context.AssignedPerson.person.Lastname.First()</MudAvatar>
+					<MudAvatar Color="@context.AssignedPerson.person.AvatarColor">@context.AssignedPerson.person.Firstname.First()@context.AssignedPerson.person.Lastname.First()</MudAvatar>
 				}
 				</MudTd>
 		</RowTemplate>
