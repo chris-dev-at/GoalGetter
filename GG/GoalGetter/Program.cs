@@ -38,6 +38,7 @@ builder.Services.AddTransient<IViewTasksByProjectIdUseCase, ViewTasksByProjectId
 builder.Services.AddTransient<IAddTaskUseCase, AddTaskUseCase>();
 builder.Services.AddSingleton<IUpdateTaskUseCase, UpdateTaskUseCase>();
 builder.Services.AddSingleton<IRemoveTaskUseCase, RemoveTaskUseCase>();
+builder.Services.AddSingleton<IRemoveProjectUseCase, RemoveProjectUseCase>();
 
 builder.Services.AddMudServices();
 

@@ -264,6 +264,7 @@ namespace GG.Plugins.InMemory
 
 		public async Task<StatusReport<EmptyVal>> RemoveProject(Project p)
 		{
+			Projects.Remove(p);
 			var status = await DeleteFile(Path.Combine("ApplicationData", "projects"), $"{p.Name}.json");
 
 			return new StatusReport<EmptyVal>(

@@ -4,6 +4,7 @@
 @inject ISnackbar Snackbar
 @inject NavigationManager NavigationManager
 @inject IUpdateProjectUseCase updateProjectUseCase
+@inject IRemoveProjectUseCase removeProjectUseCase
 
 
 	<MudText Typo="Typo.h2">@project.Name</MudText>
@@ -14,7 +15,9 @@
 		<MudSelectItem Value="@(status)" />
 		OnChangeData();
 	}
-	</MudSelect>
+	</MudSelect>	
+	<MudButton Variant="Variant.Filled" OnClick="DeleteProject" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error">Delete</MudButton>
+
 	<!-- Rest of your component code -->
 
 
@@ -37,5 +40,18 @@
 		}
 	}
 
-	void OnChangeData() => updateProjectUseCase.ExecuteAsync(ProId);
+	private ProgressStatus tmp; //needed to not spam projectRepo (close eyes or brain damage might occur)
+	private void OnChangeData()
+	{
+		if(project.status != tmp)
+			updateProjectUseCase.ExecuteAsync(ProId);
+		tmp = project.status;
+	}
+
+	private async Task DeleteProject()
+	{
+		var status = await removeProjectUseCase.ExecuteAsync(ProId);
+		Snackbar.Add(status.Reason, status.severity);
+		NavigationManager.NavigateTo("/");
+	} 
 }
