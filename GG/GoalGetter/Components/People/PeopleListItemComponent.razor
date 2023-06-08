@@ -1,5 +1,7 @@
-﻿<div class="mb-5" style="margin-top: 20px">
-	<MudContainer MaxWidth="MaxWidth.Small">
+﻿@inject IDialogService DialogService
+
+<div class="mb-5" style="margin-top: 20px">
+	<MudContainer @onclick="@((e) => OpenPersonCard(maxWidth))" MaxWidth="MaxWidth.Small">
 		<MudPaper Height="180px" Width="120%" Square="true">
 			<div class="bg">
 				<h2>@person.Firstname @person.Lastname</h2>
@@ -27,17 +29,11 @@
 	[Parameter]
 	public Person person { get; set; }
 
-	Random random = new Random();
+	DialogOptions maxWidth = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true };
 
-	private Color GetRandomColor()
+	private void OpenPersonCard(DialogOptions options)
 	{
-
-		Type type = typeof(Color);
-		Array values = type.GetEnumValues();
-		int index = random.Next(values.Length);
-
-		return (Color)values.GetValue(index);
+		var parameter = new DialogParameters { ["person"] = person };
+		DialogService.Show<PersonCard>("", parameter, options);
 	}
-
-
 }

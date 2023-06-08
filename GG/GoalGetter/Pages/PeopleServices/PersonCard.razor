@@ -1,0 +1,31 @@
+﻿<h3>PersonCard</h3>
+
+
+<MudCard>
+	<MudCardContent>
+		@if (@person.AvatarPath != null)
+		{
+			<MudAvatar Image="@person.AvatarPath" />
+		}
+		else
+		{
+			<MudAvatar Color="@person.AvatarColor">@person.Firstname.First()@person.Lastname.First()</MudAvatar>
+		}
+		<MudText>@person.Firstname @person.Lastname</MudText>
+		<MudText>@person.Email</MudText>
+		<MudText>@person.Phone</MudText>
+		<MudText>@person.Address</MudText>
+	</MudCardContent>
+</MudCard>
+
+
+@code {
+
+	[CascadingParameter] MudDialogInstance MudDialog { get; set; }
+
+	[Parameter]
+	public Person person { get; set; }
+
+
+
+}
