@@ -1,6 +1,8 @@
 ﻿@inject IViewTasksByProjectIdUseCase viewTasksByProjectIdUseCase
 @inject ISnackbar Snackbar
 @inject NavigationManager NavigationManager
+@inject IDialogService DialogService
+@inject IUpdateTaskUseCase updateTaskUseCase
 
 @if (tasks != null)
 {
@@ -43,8 +45,9 @@
 						<MudSelect T="ProgressStatus" @bind-Value="@context.Item.Status" Variant="Variant.Text"  Margin="@Margin.Dense" Required RequiredError="You must select a Status!!!">
 						@foreach (ProgressStatus status in Enum.GetValues(typeof(ProgressStatus)))
 						{
-							<MudSelectItem Value="status" Text="@(status.ToString())" />
-						}
+								<MudSelectItem Value="status" Text="@(status.ToString())" />
+								OnChangedData(@context.Item);
+							}
 					</MudSelect>
 					</MudStack>
 				</CellTemplate>
@@ -53,10 +56,10 @@
 			<PropertyColumn Property="x => x.Description" Title="Description" Filterable="false" Sortable="false" />
 			<TemplateColumn CellClass="d-flex justify-start" Filterable="false" Sortable="true" SortBy="x => (x.AssignedPerson.person.Firstname + x.AssignedPerson.person.Lastname)" Title="Assigned Teammember">
 				<CellTemplate>
-                <MudStack Row>
+                <MudStack Row @onclick="@((e) => OpenPersonCard(maxWidth, @context.Item.AssignedPerson.person))">
 						@if (@context.Item.AssignedPerson.person.AvatarPath != null)
 						{
-							<MudAvatar Image="@context.Item.AssignedPerson.person.AvatarPath"/>
+							<MudAvatar Image="@context.Item.AssignedPerson.person.AvatarPath"  />
 						}
 						else
 						{
@@ -126,4 +129,14 @@
 
 		_loading = false;
 	}
+
+	DialogOptions maxWidth = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true };
+
+	private void OpenPersonCard(DialogOptions options, Person p)
+	{
+		var parameter = new DialogParameters { ["person"] =  p};
+		DialogService.Show<PersonCard>("", parameter, options);
+	}
+
+	void OnChangedData(ProjectTask task) => updateTaskUseCase.ExecuteAsync(task, proid);
 }

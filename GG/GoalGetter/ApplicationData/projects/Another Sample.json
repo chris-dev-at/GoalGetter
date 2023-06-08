@@ -76,7 +76,7 @@
     {
       "Id": null,
       "Deadline": "2023-06-09T00:00:00",
-      "Status": 0,
+      "Status": 2,
       "PersonId": 13,
       "Name": "newTask",
       "Description": "this is a Task"
@@ -84,7 +84,7 @@
     {
       "Id": null,
       "Deadline": "2023-06-09T00:00:00",
-      "Status": 0,
+      "Status": 1,
       "PersonId": 1,
       "Name": "onetask",
       "Description": ""
@@ -167,7 +167,7 @@
     ],
     "Description": ""
   },
-  "status": 0,
+  "status": 1,
   "Description": "Need more test data? We got your back!",
   "Name": "Another Sample"
 }
