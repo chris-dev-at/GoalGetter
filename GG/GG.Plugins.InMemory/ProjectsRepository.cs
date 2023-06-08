@@ -248,6 +248,18 @@ namespace GG.Plugins.InMemory
 						"Member was not found within Team"
 					);
 		}
+
+		public async Task<StatusReport<EmptyVal>> RemoveProject(Project p)
+		{
+			var status = await DeleteFile(Path.Combine("ApplicationData", "projects"), $"{p.Name}.json");
+
+			return new StatusReport<EmptyVal>(
+								status.State,
+								EmptyVal.Empty,
+								status.State == StatusState.Success ? "Project has been deleted" : "Project does not exist in ApplicationData"
+							);
+		}
+
 		public async Task<StatusReport<EmptyVal>> RemovePersonCompletelyAsync(Person person)
 		{
 			if (!Contact.Contains(person))
@@ -531,6 +543,28 @@ namespace GG.Plugins.InMemory
 							EmptyVal.Empty,
 							$"Contact has been saved"
 						);
+		}
+
+		public async Task<StatusReport<EmptyVal>> DeleteFile(string fileDir, string fileName)
+		{
+			string directory = Path.Combine(Directory.GetCurrentDirectory(), fileDir);
+			string filePath = Path.Combine(directory, fileName);
+
+			if (!File.Exists(filePath))
+			{
+				return new StatusReport<EmptyVal>(
+								StatusState.Error,
+								EmptyVal.Empty,
+								$"File does not exist"
+							);
+			}
+			File.Delete(filePath);
+
+			return new StatusReport<EmptyVal>(
+								StatusState.Success,
+								EmptyVal.Empty,
+								$"File has been deleted"
+							);
 		}
 
 		public async Task<StatusReport<EmptyVal>> LoadData()
