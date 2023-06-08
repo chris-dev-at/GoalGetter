@@ -86,6 +86,19 @@ namespace GG.Plugins.InMemory
 				);
 		}
 
+		public async Task<StatusReport<EmptyVal>> ChangeProjectStatus(Project project, ProgressStatus state)
+		{
+			project.status = state;
+
+			await SaveProjectToFile(project);
+
+			return new StatusReport<EmptyVal>(
+					StatusState.Success,
+					EmptyVal.Empty,
+					"ProgressState has been changed"
+				);
+		}
+
 		//CRUD for People Entitys
 		public async Task<StatusReport<Person>> GetPersonById(int id)
 		{
@@ -355,13 +368,6 @@ namespace GG.Plugins.InMemory
 
 		public async Task<StatusReport<EmptyVal>> AddTaskToProject(ProjectTask task, Project project)
 		{
-			if(!IsDirectoryNameAllowed(task.Name))
-				return new StatusReport<EmptyVal>(
-					StatusState.Error,
-					EmptyVal.Empty,
-					"Taskname contains invalid characters (\\/:*?\"<>|)"
-				);
-
 			task.PersonId = task.AssignedPerson.person.Id;
 			project.Tasks.Add(task);
 
@@ -524,7 +530,7 @@ namespace GG.Plugins.InMemory
 		public bool IsDirectoryNameAllowed(string directoryName)
 		{
 			// Define the pattern for allowed directory names
-			string pattern = @"^[a-zA-Z0-9_\-\.]+$";
+			string pattern = @"^[a-zA-Z0-9_\-\. ]+$";
 
 			// Check if the directory name matches the pattern
 			bool isMatch = Regex.IsMatch(directoryName, pattern);

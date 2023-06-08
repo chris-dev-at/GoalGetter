@@ -13,7 +13,7 @@ namespace GG.UseCases.PluginInterfaces
 		Task<StatusReport<IEnumerable<Project>>> GetProjectsByNameAsync(string name);
 		Task<StatusReport<EmptyVal>> AddProjectAsync(Project project);
 		Task<StatusReport<Project>> GetProjectByIdAsync(int ProjectId);
-
+		Task<StatusReport<EmptyVal>> ChangeProjectStatus(Project project, ProgressStatus state);
 		Task<StatusReport<IEnumerable<Person>>> GetPeopleByNameAsync(string name);
 		Task<StatusReport<EmptyVal>> AddPersonAsync(Person person, IBrowserFile image);
 		Task<StatusReport<Person>> GetPersonById(int id);
