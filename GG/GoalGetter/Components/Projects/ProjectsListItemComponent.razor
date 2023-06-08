@@ -1,8 +1,8 @@
 ﻿@inject NavigationManager NavigationManager
-<MudItem style="border-radius: 10px; box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); min-width: 500px; min-height: 150px;" @onclick="RedirectToItemPage">
-	<div class="bg">
+<MudCard  @onclick="RedirectToItemPage">
+	<MudContainer Style="background-color: #0088d3; color: white" Class="rounded">
 		<MudText Typo="Typo.h6" Class="w-50">@project.Name</MudText>
-	</div>
+	</MudContainer>
 	<hr />
 	<MudText Style="  white-space: nowrap; width: 500px;overflow: hidden;text-overflow: clip;">@project.Description</MudText>
 	<MudChip Variant="Variant.Outlined" Color="Color.Primary" Class="flex-right-down">@project.status</MudChip>
@@ -24,7 +24,7 @@
 			</MudAvatarGroup>
 		}
 	</div>
-</MudItem>
+</MudCard>
 
 
 @code {

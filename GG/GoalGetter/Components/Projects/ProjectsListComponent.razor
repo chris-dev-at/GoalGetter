@@ -3,7 +3,7 @@
 @inject NavigationManager NavigationManager
 @*Hier kommen die Karten für jeder Projekt*@
 
-<MudGrid Spacing="@spacing" Justify="Justify.FlexStart" Class="mt-12">
+<MudGrid Spacing="@spacing" Justify="Justify.Center" Class="mt-12 gap-4 d-flex flex-wrap">
 	@if (projects != null)
 	{
 		@foreach (var project in projects)

@@ -3,7 +3,7 @@
 @inject NavigationManager NavigationManager
 @inject IDialogService DialogService
 
-<div class="container-fluid">
+<MudContainer Class="justify-content-center">
     <div class="row">
         <div class="col-md-6 d-flex">
 			<MudButton OnClick="@((e) => OpenDialog(maxWidth))" Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white; max-height: 40px; margin-right: 40px; margin-top: 8px" Color="Color.Primary">
@@ -17,7 +17,7 @@
             <Searchbar OnSearchterm="OnTermSearch" />            
         </div>
     </div>
-</div>
+</MudContainer>
 
 @*Hier kommen die Karten für jeder Projekt*@
 <ProjectsListComponent searchTerm="@searchterm" reloadFlag="@reloadFlag" />
