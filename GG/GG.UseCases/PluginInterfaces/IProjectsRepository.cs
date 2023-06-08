@@ -30,6 +30,7 @@ namespace GG.UseCases.PluginInterfaces
 		Task<StatusReport<EmptyVal>> RemovePersonCompletelyAsync(Person person);
 		Task<StatusReport<EmptyVal>> RemoveTeammemberFromTeamAsync(Teammember member, Project project);
 		Task<StatusReport<EmptyVal>> RemovePersonFromProjectAsync(Person person, Project p);
+		Task<StatusReport<EmptyVal>> RemoveProject(Project p);
 		Task<StatusReport<IEnumerable<Person>>> GetAllPersonsIfnotAlreadyInTeamAsync(GG.CoreBusiness.Team team);
 		Task<StatusReport<bool>> PersonAlreadyInTeam(Person person, GG.CoreBusiness.Team team);
 		Task<StatusReport<EmptyVal>> AddTeammemberToTeam(Teammember member, Project project);
@@ -37,6 +38,7 @@ namespace GG.UseCases.PluginInterfaces
 		Task<StatusReport<EmptyVal>> SaveProjectToFile(Project p);
 		Task<StatusReport<EmptyVal>> SaveAllProjectToFile();
 		Task<StatusReport<EmptyVal>> SaveContacts();
+		Task<StatusReport<EmptyVal>> DeleteFile(string fileDir, string fileName);
 		bool IsDirectoryNameAllowed(string directoryName);
 
 		//Task<bool> ExistsAsync(Project project);
