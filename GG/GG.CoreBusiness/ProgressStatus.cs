@@ -2,7 +2,7 @@
 {
     public enum ProgressStatus
     {
-        Not_Done,
+        Upcomming,
         In_Progress,
         Done
     }
