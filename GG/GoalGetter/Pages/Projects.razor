@@ -41,7 +41,7 @@
 	{
 		var parameters = new DialogParameters();
 		parameters.Add("OnProjectAdded", HandleProjectAdded);
-		DialogService.Show<AddProject>("Add Projects", parameters, options);
+		DialogService.Show<AddProject>("Add new project", parameters, options);
 	}
 
 	private void HandleProjectAdded(bool isAdded)

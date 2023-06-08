@@ -3,7 +3,7 @@
 
 <PageTitle>GoalGetter</PageTitle>
 
-<MudThemeProvider />
+<MudThemeProvider @bind-IsDarkMode="@themeOn" />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
@@ -44,6 +44,7 @@
     }
 
     bool _drawerOpen = true;
+    bool themeOn = false;
 
     void DrawerToggle()
     {

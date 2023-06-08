@@ -10,9 +10,6 @@
 			<MudButton Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white" Color="Color.Primary" OnClick="@((e) => OpenDialog(maxWidth))">
 				+ Task
 			</MudButton>
-			<MudPopover Open="@_isOpen" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
-				<AddPerson />
-			</MudPopover>
 			<Searchbar OnSearchterm="OnTermSearch" />
 		</div>
 	</div>

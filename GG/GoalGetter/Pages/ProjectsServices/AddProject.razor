@@ -6,19 +6,11 @@
 	<DialogContent>
 		<EditForm Model="newProject" OnValidSubmit="SaveProject">
 			<DataAnnotationsValidator></DataAnnotationsValidator>
-			<ValidationSummary></ValidationSummary>
-			<div class="form-group">
-				<label for="name">Project Name</label>
-				<br />
-				<MudInput id="name" @bind-Value="newProject.Name"></MudInput>
-			</div>
+			<MudTextField @bind-Value="newProject.Name" Label="Project Name" Variant="Variant.Outlined" For="@(() => newProject.Name)" />
 
 			<br />
-
-			<div class="form-group">
-				<label for="description">Description</label>
-				<MudTextField id="description" @bind-Value="newProject.Description"></MudTextField>
-			</div>
+			<MudTextField Label="Project Description" Class="mt-3" HelperText="additional informations about the Project" Lines="3" T="string" Variant="Variant.Outlined"
+						  @bind-Value="newProject.Description" For="@(() => newProject.Description)" />
 			<br/>
 			<br/>
 		<MudButton ButtonType="ButtonType.Submit">Save</MudButton>
