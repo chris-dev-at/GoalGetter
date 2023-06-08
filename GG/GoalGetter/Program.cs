@@ -37,6 +37,7 @@ builder.Services.AddTransient<IAddTeamUseCase, AddTeamUseCase>();
 builder.Services.AddTransient<IViewTasksByProjectIdUseCase, ViewTasksByProjectIdUseCase>();
 builder.Services.AddTransient<IAddTaskUseCase, AddTaskUseCase>();
 builder.Services.AddSingleton<IUpdateTaskUseCase, UpdateTaskUseCase>();
+builder.Services.AddSingleton<IRemoveTaskUseCase, RemoveTaskUseCase>();
 
 builder.Services.AddMudServices();
 

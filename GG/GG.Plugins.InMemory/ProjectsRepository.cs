@@ -228,6 +228,19 @@ namespace GG.Plugins.InMemory
 					);
 		}
 
+		public async Task<StatusReport<EmptyVal>> RemoveTaskFromProject(ProjectTask task, Project p)
+		{
+			p.Tasks.Remove(task);
+
+			await SaveProjectToFile(p);
+
+			return new StatusReport<EmptyVal>(
+							StatusState.Success,
+							EmptyVal.Empty,
+							"Task has been removed"
+						);
+		}
+
 		public async Task<StatusReport<EmptyVal>> RemoveTeammemberFromTeamAsync(Teammember member, Project p)
 		{
 			if (p.assignedTeam.members.Contains(member))
