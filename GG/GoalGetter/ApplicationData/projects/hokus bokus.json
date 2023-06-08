@@ -1,0 +1,34 @@
+{
+  "Id": 11,
+  "Tasks": [],
+  "Budget": 0.0,
+  "assignedTeam": {
+    "Id": null,
+    "members": [
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 3
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 5
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 8
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 11
+      }
+    ],
+    "Description": null
+  },
+  "status": 0,
+  "Description": null,
+  "Name": "hokus bokus"
+}
