@@ -40,7 +40,7 @@
 			<PropertyColumn Property="x => x.Name" Title="Name" Filterable="false" />
 			<PropertyColumn Property="x => x.Deadline" Format="dd.MM.yyyy" InitialDirection="SortDirection.Descending" >
 			</PropertyColumn>
-			<TemplateColumn CellClass="d-flex justify-start" Filterable="false" Sortable="false" Title="Status">
+			<TemplateColumn CellClass="d-flex justify-start" Filterable="false" Sortable="true" Title="Status" Property="x => x.Status">
 				<CellTemplate>
 					<MudStack Row>
 						<MudSelect T="ProgressStatus" @bind-Value="@context.Item.Status" Variant="Variant.Text"  Margin="@Margin.Dense" Required RequiredError="You must select a Status!!!">
