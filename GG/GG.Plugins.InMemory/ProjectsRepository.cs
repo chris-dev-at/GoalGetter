@@ -626,5 +626,33 @@ namespace GG.Plugins.InMemory
 
 			return isMatch;
 		}
+
+		public async Task<StatusReport<float>> GetPercentFromTaskState(ProgressStatus state, Project p)
+		{
+			float state_task_count = p.Tasks.Where(x => x.Status == state).Count();
+
+			if(p.Tasks.Count == 0 || state_task_count == 0)
+			{
+				return new StatusReport<float>(
+						StatusState.Success,
+						0,
+						$"Percentage has been calculated [divide by 0 skipped]"
+					);
+			}
+
+			float percent = state_task_count / p.Tasks.Count;
+
+			return new StatusReport<float>(
+						StatusState.Success,
+						percent,
+						$"Percentage has been calculated"
+					);
+		}
+
+
+		/*
+		 Task<StatusReport<int>> GetPercentUpcommingFromProject(Project p);
+		Task<StatusReport<int>> GetPercentInProgressFromProject(Project p);
+		 * */
 	}
 }

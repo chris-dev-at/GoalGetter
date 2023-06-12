@@ -28,10 +28,12 @@ builder.Services.AddSingleton<UserAccountService>();
 
 builder.Services.AddSingleton<IProjectsRepository, ProjectsRepository>();
 
+//Project
 builder.Services.AddTransient<IViewProjectsByNameUseCase, ViewProjectsByNameUseCase>();
 builder.Services.AddTransient<IAddProjectUseCase, AddProjectUseCase>();
 builder.Services.AddTransient<IViewProjectByIdUseCase, ViewProjectByIdUseCase>();
 builder.Services.AddSingleton<IUpdateProjectUseCase, UpdateProjectUseCase>();
+builder.Services.AddSingleton<IGetProgressChartUseCase, GetProgressChartUseCase>();
 
 builder.Services.AddTransient<IViewPeopleByNameUseCase, ViewPeopleByNameUseCase>();
 builder.Services.AddTransient<IAddPersonUseCase, AddPersonUseCase>();
