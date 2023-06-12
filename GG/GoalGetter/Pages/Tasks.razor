@@ -1,22 +1,42 @@
 ﻿@page "/project/{proid:int}/tasks"
 @layout ProjectMainLayout
 @inject IDialogService DialogService
-<h3>Tasks for project @proid</h3>
+@inject NavigationManager NavigationManager
+<AuthorizeView>
+	<Authorized>
+		<h3>Tasks for project @proid</h3>
 
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-6 d-flex align-items-center">
-			<MudButton Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white" Color="Color.Primary" OnClick="@((e) => OpenDialog(maxWidth))">
-				+ Task
-			</MudButton>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6 d-flex align-items-center">
+					<MudButton Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white" Color="Color.Primary" OnClick="@((e) => OpenDialog(maxWidth))">
+						+ Task
+					</MudButton>
 
-			<Searchbar OnSearchterm="OnTermSearch" />
+					<Searchbar OnSearchterm="OnTermSearch" />
+				</div>
+			</div>
 		</div>
-	</div>
-</div>
 
-<TasksListComponent proid="@proid" searchTerm="@searchterm" />
+		<TasksListComponent proid="@proid" searchTerm="@searchterm" />
+	</Authorized>
+	<NotAuthorized>
+		<MudCard>
+			<MudCardHeader>
+				<CardHeaderContent>
+					<MudText Typo="Typo.h6">You are not allowed to access this page.</MudText>
+				</CardHeaderContent>
+			</MudCardHeader>
+			<MudCardContent>
+				<MudText Typo="Typo.body2">Please login to see the content.</MudText>
+
+			</MudCardContent>
+			<MudCardActions><MudButton OnClick="RedirectToLogin" Color="Color.Info" Variant="Variant.Filled">Login</MudButton></MudCardActions>
+		</MudCard>
+	</NotAuthorized>
+</AuthorizeView>
+
 
 @code {
     [Parameter]
@@ -44,9 +64,13 @@
 
 	private void HandleTaskAdded()
 	{
-		reloadFlag = !reloadFlag;
 		searchterm = ""; // Optionally, clear the search term to display all projects after adding
+		reloadFlag = !reloadFlag;
 		StateHasChanged();
+	}
+	void RedirectToLogin()
+	{
+		NavigationManager.NavigateTo("/login", true);
 	}
 
 }

@@ -1,7 +1,16 @@
-﻿
+﻿@inject AuthenticationStateProvider authStateProvider
+@inject NavigationManager NavigationManager
 <MudNavMenu>
-    <MudNavLink Href="/projects" Match="NavLinkMatch.All">Projects</MudNavLink>
-    <MudNavLink Href="/people" Match="NavLinkMatch.Prefix">People</MudNavLink>
+    <AuthorizeView Roles="Administrator, User">
+    <Authorized>
+        <MudNavLink Href="/projects" Match="NavLinkMatch.All">Projects</MudNavLink>
+        <MudNavLink Href="/people" Match="NavLinkMatch.Prefix">People</MudNavLink>
+        <MudNavLink OnClick="Logout" Match="NavLinkMatch.Prefix">Logout</MudNavLink>
+    </Authorized>
+    <NotAuthorized>
+        <MudNavLink Href="/login" Match="NavLinkMatch.Prefix">Login</MudNavLink>
+    </NotAuthorized>
+</AuthorizeView>
 </MudNavMenu>
 
 
@@ -13,5 +22,12 @@
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+    private async Task Logout()
+    {
+        var customAuthStateProvider = (CustomAuthenticationStateProvider)authStateProvider;
+        await customAuthStateProvider.UpdateAuthenticationState(null);
+        NavigationManager.NavigateTo("/", true);
     }
 }

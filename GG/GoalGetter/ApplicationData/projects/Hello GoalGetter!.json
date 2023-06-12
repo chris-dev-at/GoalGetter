@@ -51,14 +51,6 @@
     },
     {
       "Id": null,
-      "Deadline": "2006-01-07T00:00:00",
-      "Status": 0,
-      "PersonId": 9,
-      "Name": "Code Website",
-      "Description": "Make a website lol. xd. mega lol."
-    },
-    {
-      "Id": null,
       "Deadline": "2000-05-21T00:00:00",
       "Status": 0,
       "PersonId": 6,

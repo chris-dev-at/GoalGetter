@@ -1,4 +1,5 @@
 ﻿@inherits LayoutComponentBase
+@inject AuthenticationStateProvider authStateProvider
 @inject NavigationManager NavigationManager
 
 <MudThemeProvider @bind-IsDarkMode="@themeOn"/>
@@ -20,6 +21,16 @@
         </MudDrawerHeader>
         <NavMenu />
     </MudDrawer>
+    <div class="top-row px-4">
+            <AuthorizeView>
+                <Authorized>
+                    <a @onclick="Logout" href="javascript:void(0)">Logout</a>
+                </Authorized>
+                <NotAuthorized>
+                    <a href="/login">Login</a>
+                </NotAuthorized>
+            </AuthorizeView>
+        </div>
     <MudMainContent>
         <MudContainer MaxWidth="MaxWidth.Large" Class="my-5 pt-5">
             @Body
@@ -39,5 +50,11 @@
     void GoToRootPage()
     {
         NavigationManager.NavigateTo("/");
+    }
+    private async Task Logout()
+    {
+        var customAuthStateProvider = (CustomAuthenticationStateProvider)authStateProvider;
+        await customAuthStateProvider.UpdateAuthenticationState(null);
+        NavigationManager.NavigateTo("/", true);
     }
 }

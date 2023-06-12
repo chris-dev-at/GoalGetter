@@ -8,14 +8,6 @@
       "PersonId": 3,
       "Name": "newTask",
       "Description": "blablabla bal bal bla bla "
-    },
-    {
-      "Id": null,
-      "Deadline": "2023-06-08T17:18:29.9424932+02:00",
-      "Status": 0,
-      "PersonId": 3,
-      "Name": "ashjkldf&/($58076795678&/(%&/)(%)=/&",
-      "Description": ""
     }
   ],
   "Budget": 0.0,
@@ -35,7 +27,7 @@
     ],
     "Description": null
   },
-  "status": 0,
+  "status": 1,
   "Description": null,
   "Name": "bababab"
 }

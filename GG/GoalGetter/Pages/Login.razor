@@ -1,0 +1,74 @@
+﻿@page "/login"
+@inject UserAccountService userAccountService
+@inject IJSRuntime js
+@inject AuthenticationStateProvider authStateProvider
+@inject NavigationManager NavigationManager
+@inject ISnackbar Snackbar
+
+<EditForm Model="tmpusr">
+		<MudCard>
+		
+			<MudCardHeader>
+				<CardHeaderContent>
+					<MudText Typo="Typo.h6">Login</MudText>
+				</CardHeaderContent>
+			</MudCardHeader>
+			<MudCardContent>
+			<MudTextField @bind-Value="tmpusr.UserName" Label="User Name" Variant="Variant.Outlined"></MudTextField>
+			<MudTextField @bind-Value="tmpusr.Password" Label="Password" Variant="Variant.Outlined" InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="ButtonTestclick" AdornmentAriaLabel="Show Password"></MudTextField>
+			</MudCardContent>
+			<MudCardActions>
+				<MudButton OnClick="Authenticate" Color="Color.Info" Variant="Variant.Filled">Login</MudButton>
+			</MudCardActions>
+		</MudCard>
+</EditForm>
+
+
+@code {
+	private class TempUser
+	{
+		public string UserName { get; set; }
+		public string Password { get; set; }
+	}
+
+	bool isShow;
+	InputType PasswordInput = InputType.Password;
+	string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+
+	void ButtonTestclick()
+	{
+		@if (isShow)
+		{
+			isShow = false;
+			PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+			PasswordInput = InputType.Password;
+		}
+		else
+		{
+			isShow = true;
+			PasswordInputIcon = Icons.Material.Filled.Visibility;
+			PasswordInput = InputType.Text;
+		}
+	}
+
+	private TempUser tmpusr = new TempUser();
+
+	private async Task Authenticate()
+	{
+		var userAccount = userAccountService.GetByUserName(tmpusr.UserName);
+		if(userAccount == null || userAccount.Password != tmpusr.Password)
+		{
+			await js.InvokeVoidAsync("alert", "Invalid User Name or Password");
+			return;
+		}
+
+		var customAuthStateProvider = (CustomAuthenticationStateProvider)authStateProvider;
+		await customAuthStateProvider.UpdateAuthenticationState(new UserSession
+			{
+				UserName = userAccount.UserName,
+				Role = userAccount.Role
+			});
+			NavigationManager.NavigateTo("/", true);
+
+	}
+}

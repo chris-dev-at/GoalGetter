@@ -1,8 +1,16 @@
-﻿@inject NavigationManager NavigationManager
+﻿@inject AuthenticationStateProvider authStateProvider
+@inject NavigationManager NavigationManager
 <MudNavMenu>
-    <MudNavLink Href="@DashboardLinkHref" Match="NavLinkMatch.All">Dashboard</MudNavLink>
-    <MudNavLink Href="@TeamLinkHref" Match="NavLinkMatch.Prefix">Team</MudNavLink>
-    <MudNavLink Href="@TasksLinkHref" Match="NavLinkMatch.Prefix">Tasks</MudNavLink>
+    <AuthorizeView>
+        <Authorized>
+            <MudNavLink Href="@DashboardLinkHref" Match="NavLinkMatch.All">Dashboard</MudNavLink>
+            <MudNavLink Href="@TeamLinkHref" Match="NavLinkMatch.Prefix">Team</MudNavLink>
+            <MudNavLink Href="@TasksLinkHref" Match="NavLinkMatch.Prefix">Tasks</MudNavLink>
+        </Authorized>
+       <NotAuthorized>
+        <MudNavLink Href="/login" Match="NavLinkMatch.Prefix">Login</MudNavLink>
+    </NotAuthorized>
+    </AuthorizeView>
 </MudNavMenu>
 
 
@@ -23,5 +31,10 @@
         string[] bla = NavigationManager.Uri.Split('/');
         ProId = bla[Array.FindIndex(bla, w => w == "project") + 1];
     }
-
+    private async Task Logout()
+    {
+        var customAuthStateProvider = (CustomAuthenticationStateProvider)authStateProvider;
+        await customAuthStateProvider.UpdateAuthenticationState(null);
+        NavigationManager.NavigateTo("/", true);
+    }
 }

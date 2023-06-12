@@ -7,57 +7,28 @@
 
 @if (tasks != null)
 {
-	@*<MudTable Items="@tasks" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
-		<HeaderContent>
-			<MudTh>Task Name</MudTh>
-			<MudTh>Deadline</MudTh>
-			<MudTh>Status</MudTh>
-			<MudTh>Description</MudTh>
-			<MudTh>Assigned Teammember</MudTh>
-		</HeaderContent>
-
-		<RowTemplate>
-			<MudTd DataLabel="Task Name">@context.Name</MudTd>
-			<MudTd DataLabel="Deadline"><MudDatePicker  ReadOnly="true" @bind-Date="context.Deadline" DateFormat="dd.MM.yyyy" /></MudTd>
-			<MudTd DataLabel="Status">@context.Status</MudTd>
-			<MudTd DataLabel="Description" HideSmall="_hidePosition">@context.Description</MudTd>
-			<MudTd DataLabel="Assigned Teammember">
-				@if (@context.AssignedPerson.person.AvatarPath != null)
-				{
-				<MudAvatar Image="@context.AssignedPerson.person.AvatarPath" />
-				}
-				else
-				{
-					<MudAvatar Color="@context.AssignedPerson.person.AvatarColor">@context.AssignedPerson.person.Firstname.First()@context.AssignedPerson.person.Lastname.First()</MudAvatar>
-				}
-				</MudTd>
-		</RowTemplate>
-	</MudTable>*@
-
 	<MudDataGrid Items="@tasks" Filterable="true" FilterMode="@_filterMode" Loading="@_loading" FilterCaseSensitivity="@_caseSensitivity" EditMode="DataGridEditMode.Cell">
 		<Columns>
 				<HierarchyColumn T="ProjectTask" />
 			<PropertyColumn Property="x => x.Name" Title="Name" Filterable="false" />
 			<PropertyColumn Property="x => x.Deadline" Format="dd.MM.yyyy" InitialDirection="SortDirection.Descending" >
 			</PropertyColumn>
-			<TemplateColumn CellClass="d-flex justify-start" Filterable="false" Sortable="true" Title="Status" Property="x => x.Status">
+			<TemplateColumn CellClass="d-flex justify-start" Filterable="false" Sortable="true" Title="Status" >
 				<CellTemplate>
-					<MudStack Row>
-						<MudSelect T="ProgressStatus" @bind-Value="@context.Item.Status" Variant="Variant.Text"  Margin="@Margin.Dense" Required RequiredError="You must select a Status!!!">
+						<MudSelect  T="ProgressStatus" @bind-Value="@context.Item.Status" Variant="Variant.Text" Required RequiredError="You must select a Status!!!">
 						@foreach (ProgressStatus status in Enum.GetValues(typeof(ProgressStatus)))
 						{
 								<MudSelectItem Value="status" Text="@(status.ToString())" />
 								OnChangedData(@context.Item);
 						}
 					</MudSelect>
-					</MudStack>
 				</CellTemplate>
 			</TemplateColumn>
 
 			<PropertyColumn Property="x => x.Description" Title="Description" Filterable="false" Sortable="false" />
 			<TemplateColumn CellClass="d-flex justify-start" Filterable="false" Sortable="true" SortBy="x => (x.AssignedPerson.person.Firstname + x.AssignedPerson.person.Lastname)" Title="Assigned Teammember">
 				<CellTemplate>
-                <MudStack Row @onclick="@((e) => OpenPersonCard(maxWidth, @context.Item.AssignedPerson.person))">
+                <MudItem  @onclick="@((e) => OpenPersonCard(maxWidth, @context.Item.AssignedPerson.person))">
 						@if (@context.Item.AssignedPerson.person.AvatarPath != null)
 						{
 							<MudAvatar Image="@context.Item.AssignedPerson.person.AvatarPath"  />
@@ -66,7 +37,7 @@
 						{
 							<MudAvatar Color="@context.Item.AssignedPerson.person.AvatarColor">@context.Item.AssignedPerson.person.Firstname.First()@context.Item.AssignedPerson.person.Lastname.First()</MudAvatar>
 						}
-					</MudStack>
+					</MudItem>
             </CellTemplate>
 			</TemplateColumn>
 		</Columns>
@@ -84,7 +55,9 @@
 					<MudText>This Task is assigned to:</MudText>
 					<MudText>@context.Item.AssignedPerson.person.Firstname @context.Item.AssignedPerson.person.Lastname</MudText>
 				</MudCardContent>
+				<MudCardActions>
 					<MudButton Variant="Variant.Filled" OnClick="(() => { DeleteTask(context.Item); })" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error">Delete</MudButton>
+				</MudCardActions>
         </MudCard>
     </ChildRowContent>
 		<PagerContent>

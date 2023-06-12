@@ -20,7 +20,7 @@
     {
       "Id": null,
       "Deadline": "1995-06-27T00:00:00",
-      "Status": 0,
+      "Status": 1,
       "PersonId": 13,
       "Name": "Code Website 3",
       "Description": "Make a website lol. xd. mega lol."
@@ -72,14 +72,6 @@
       "PersonId": 8,
       "Name": "sdg",
       "Description": ""
-    },
-    {
-      "Id": null,
-      "Deadline": "2023-06-09T00:00:00",
-      "Status": 1,
-      "PersonId": 13,
-      "Name": "newTask",
-      "Description": "this is a Task"
     },
     {
       "Id": null,
@@ -167,7 +159,7 @@
     ],
     "Description": ""
   },
-  "status": 1,
+  "status": 2,
   "Description": "Need more test data? We got your back!",
   "Name": "Another Sample"
 }

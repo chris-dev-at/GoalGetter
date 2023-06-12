@@ -1,3 +1,4 @@
+using GoalGetter.Authentication;
 using GG.Plugins.InMemory;
 using GG.UseCases.People;
 using GG.UseCases.People.Interfaces;
@@ -8,15 +9,22 @@ using GG.UseCases.Tasks;
 using GG.UseCases.Tasks.Interfaces;
 using GG.UseCases.Team;
 using GG.UseCases.Team.Interfaces;
+using GoalGetter.Authentication;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using Microsoft.AspNetCore.Components.Web;
 using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddAuthenticationCore();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddScoped<ProtectedSessionStorage>();
+builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+builder.Services.AddSingleton<UserAccountService>();
 
 builder.Services.AddSingleton<IProjectsRepository, ProjectsRepository>();
 
