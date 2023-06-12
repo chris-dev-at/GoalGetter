@@ -1,10 +1,16 @@
 ﻿@inject IDialogService DialogService
+@inject IRemoveTeammemberFromTeamUseCase rtf
+@inject ISnackbar Snackbar
 
 <div class="mb-5" style="margin-top: 20px">
-	<MudContainer MaxWidth="MaxWidth.Small" @onclick="@((e) => OpenPersonCard(maxWidth))">
-		<MudPaper Height="180px" Width="120%" Square="true">
-			<div class="bg">
-				<h2>@person.person.Firstname @person.person.Lastname</h2>
+	<MudContainer MaxWidth="MaxWidth.Medium">
+		<MudCard @onclick="@((e) => OpenPersonCard(maxWidth))">
+			<MudCardHeader>
+				<CardHeaderContent>
+				<MudText>@person.person.Firstname @person.person.Lastname</MudText>
+					<MudText>@person.person.Email</MudText>
+				</CardHeaderContent>
+				<CardHeaderAvatar>
 				@if (@person.person.AvatarPath != null)
 				{
 					<MudAvatar Image="@person.person.AvatarPath" />
@@ -13,18 +19,20 @@
 				{
 					<MudAvatar Color="person.person.AvatarColor">@person.person.Firstname.First()@person.person.Lastname.First()</MudAvatar>
 				}
-			</div>
-			<hr />
-		</MudPaper>
+				</CardHeaderAvatar>
+				<CardHeaderActions>
+					<MudIconButton Icon="@Icons.Material.Filled.Delete" aria-label="delete" OnClick="() => RemoveTeammember(person, person.person.Firstname, person.person.Lastname)"></MudIconButton>
+				</CardHeaderActions>
+			</MudCardHeader>
+		</MudCard>
 	</MudContainer>
-
-
-
-
 </div>
 @code {
 	[Parameter]
 	public Teammember person { get; set; }
+
+	[Parameter]
+	public int ProId { get; set; }
 
 	DialogOptions maxWidth = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true };
 
@@ -32,5 +40,23 @@
 	{
 		var parameter = new DialogParameters { ["person"] = person.person };
 		DialogService.Show<PersonCard>("", parameter, options);
+	}
+
+	async Task RemoveTeammember(Teammember tm, string fname, string lname)
+	{
+		var parameters = new DialogParameters();
+		parameters.Add("ContentText", $"Do you really want to remove {fname} {lname}?");
+		parameters.Add("ButtonText", "Remove");
+		parameters.Add("Color", Color.Error);
+
+		var options = new DialogOptions() { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+		var dialog = await DialogService.Show<ConfirmDialog>("Delete", parameters, options).Result;
+
+		if (!dialog.Cancelled)
+		{
+			var status = await rtf.ExecuteAsync(tm,ProId);
+			Snackbar.Add(status.Reason, status.severity);
+		}
 	}
 }

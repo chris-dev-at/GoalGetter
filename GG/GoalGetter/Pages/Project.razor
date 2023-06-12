@@ -5,7 +5,11 @@
 @inject NavigationManager NavigationManager
 @inject IUpdateProjectUseCase updateProjectUseCase
 @inject IRemoveProjectUseCase removeProjectUseCase
+<<<<<<< HEAD
+@inject IDialogService DialogService
+=======
 @inject IGetProgressChartUseCase getProgressChartUseCase
+>>>>>>> 4f16cf8c54fdd354925749203b3062c6f990bf2f
 
 <AuthorizeView>
 	<Authorized>
@@ -29,18 +33,7 @@
 		<!-- Rest of your component code -->
 	</Authorized>
 	<NotAuthorized>
-		<MudCard>
-			<MudCardHeader>
-				<CardHeaderContent>
-					<MudText Typo="Typo.h6">You are not allowed to access this page.</MudText>
-				</CardHeaderContent>
-			</MudCardHeader>
-			<MudCardContent>
-				<MudText Typo="Typo.body2">Please login to see the content.</MudText>
-
-			</MudCardContent>
-			<MudCardActions><MudButton OnClick="RedirectToLogin" Color="Color.Info" Variant="Variant.Filled">Login</MudButton></MudCardActions>
-		</MudCard>
+		<NotAuthorizedMudCard/>
 	</NotAuthorized>
 </AuthorizeView>
 
@@ -93,12 +86,22 @@
 
 	private async Task DeleteProject()
 	{
-		var status = await removeProjectUseCase.ExecuteAsync(ProId);
-		Snackbar.Add(status.Reason, status.severity);
-		NavigationManager.NavigateTo("/");
+		var parameters = new DialogParameters();
+		parameters.Add("ContentText", "Do you really want to delete this Project? This process cannot be undone.");
+		parameters.Add("ButtonText", "Delete");
+		parameters.Add("Color", Color.Error);
+
+		var options = new DialogOptions() { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+		var dialog = await DialogService.Show<ConfirmDialog>("Delete", parameters, options).Result;
+
+		if (!dialog.Cancelled)
+		{
+			var status = await removeProjectUseCase.ExecuteAsync(ProId);
+			Snackbar.Add(status.Reason, status.severity);
+			NavigationManager.NavigateTo("/");
+		}
 	} 
-	void RedirectToLogin()
-	{
-		NavigationManager.NavigateTo("/login", true);
-	}
+
+
 }

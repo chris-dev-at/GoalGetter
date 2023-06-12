@@ -10,9 +10,6 @@
                     <MudButton Variant="Variant.Filled" DisableElevation="true" Style="max-height: 40px; margin-top: 7px; background-color: #0088d3; color: white; margin-right: 3vw" OnClick="@((e) => OpenDialog(maxWidth))">
                         + Person
                     </MudButton>
-                    <MudPopover Open="@_isOpen" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
-                        <AddPerson />
-                    </MudPopover>
                     <Searchbar OnSearchterm="OnTermSearch" />
                 </div>
             </div>
@@ -22,36 +19,13 @@
         <PeopleListComponent searchTerm="@searchterm" reloadFlag="@reloadFlag" />
     </Authorized>
     <NotAuthorized>
-		<MudCard>
-			<MudCardHeader>
-				<CardHeaderContent>
-					<MudText Typo="Typo.h6">You are not allowed to access this page.</MudText>
-				</CardHeaderContent>
-			</MudCardHeader>
-			<MudCardContent>
-				<MudText Typo="Typo.body2">Please login to see the content.</MudText>
-
-			</MudCardContent>
-			<MudCardActions><MudButton OnClick="RedirectToLogin" Color="Color.Info" Variant="Variant.Filled">Login</MudButton></MudCardActions>
-		</MudCard>
+		<NotAuthorizedMudCard/>
 	</NotAuthorized>
 </AuthorizeView>
 
 
 @code {
-    public bool _isOpen;
     private bool reloadFlag = false;
-
-    public void Close(bool status)
-    {
-        _isOpen = status;
-        reloadFlag = !reloadFlag; // Toggle the reload flag
-    }
-
-    public void ToggleOpen()
-    {
-        _isOpen = true;
-    }
 
     private string searchterm = "";
 

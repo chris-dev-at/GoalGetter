@@ -12,11 +12,6 @@
 					<MudButton OnClick="@((e) => OpenDialog(maxWidth))" Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white; max-height: 40px; margin-right: 40px; margin-top: 8px" Color="Color.Primary">
 						+ Project
 					</MudButton>
-					<MudPopover Open="@_isOpen" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
-						<div class="d-flex flex-column pa-10">
-							<AddProject OnProjectAdded="HandleProjectAdded" />
-						</div>
-					</MudPopover>
 					<Searchbar OnSearchterm="OnTermSearch" />
 				</div>
 			</div>
@@ -26,26 +21,13 @@
 		<ProjectsListComponent searchTerm="@searchterm" reloadFlag="@reloadFlag" />
 	</Authorized>
 	<NotAuthorized>
-		<MudCard>
-			<MudCardHeader>
-				<CardHeaderContent>
-					<MudText Typo="Typo.h6">You are not allowed to access this page.</MudText>
-				</CardHeaderContent>
-			</MudCardHeader>
-			<MudCardContent>
-				<MudText Typo="Typo.body2">Please login to see the content.</MudText>
-
-			</MudCardContent>
-			<MudCardActions><MudButton OnClick="RedirectToLogin" Color="Color.Info" Variant="Variant.Filled">Login</MudButton></MudCardActions>
-		</MudCard>
+		<NotAuthorizedMudCard />
 	</NotAuthorized>
 </AuthorizeView>
 
 
 
 @code{
-
-	public bool _isOpen;
 	private bool reloadFlag = false;
 
 	private string searchterm = "";
@@ -74,8 +56,4 @@
 		StateHasChanged();
 	}
 
-	private void RedirectToLogin()
-	{
-		NavigationManager.NavigateTo("/login");
-	}
 }

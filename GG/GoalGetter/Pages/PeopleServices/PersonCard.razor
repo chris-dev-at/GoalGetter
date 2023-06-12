@@ -1,22 +1,30 @@
 ﻿<MudCard>
+	<MudCardHeader>
+			<CardHeaderContent>
+				<h2>@person.Firstname @person.Lastname</h2>
+			</CardHeaderContent>
+			<CardHeaderAvatar>
+			@if (person.AvatarPath != null)
+			{
+							<MudAvatar Image="@person.AvatarPath"></MudAvatar>
+			}
+			else
+			{
+							<MudAvatar Color="@person.AvatarColor">@person.Firstname.First()@person.Lastname.First()</MudAvatar>
+
+			}
+			</CardHeaderAvatar>
+			</MudCardHeader>
 	<MudCardContent>
-		@if (@person.AvatarPath != null)
-		{
-			<MudAvatar Image="@person.AvatarPath" />
-		}
-		else
-		{
-			<MudAvatar Color="@person.AvatarColor">@person.Firstname.First()@person.Lastname.First()</MudAvatar>
-		}
-		<MudText>@person.Firstname @person.Lastname</MudText>
 		<MudText>@person.Email</MudText>
 		<MudText>@person.Phone</MudText>
 		<MudText>@person.Address</MudText>
 		@if(person.Address != null){
-			<iframe width="425" height="550" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="@GetPersonMapsURL()" style="border: 1px solid black"></iframe>
+			<iframe width="425" height="550" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="@GetPersonMapsURL()" style="border: 1px solid black; border-radius: 5px;"></iframe>
 		}
 	</MudCardContent>
 </MudCard>
+
 
 
 @code {
