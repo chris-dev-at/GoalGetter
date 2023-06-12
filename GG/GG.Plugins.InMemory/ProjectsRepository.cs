@@ -324,7 +324,7 @@ namespace GG.Plugins.InMemory
 					foreach (ProjectTask task in p.Tasks)
 					{
 						if (task.AssignedPerson == member)
-							task.AssignedPerson = null;
+							await RemoveTaskFromProject(task, p);
 					}
 				}
 			}
