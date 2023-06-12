@@ -5,23 +5,35 @@
 @inject NavigationManager NavigationManager
 @inject ISnackbar Snackbar
 
-<EditForm Model="tmpusr">
-		<MudCard>
+
+
+	<EditForm Model="tmpusr">
+			<MudCard>
 		
-			<MudCardHeader>
-				<CardHeaderContent>
-					<MudText Typo="Typo.h6">Login</MudText>
-				</CardHeaderContent>
-			</MudCardHeader>
-			<MudCardContent>
-			<MudTextField @bind-Value="tmpusr.UserName" Label="User Name" Variant="Variant.Outlined"></MudTextField>
-			<MudTextField @bind-Value="tmpusr.Password" Label="Password" Variant="Variant.Outlined" InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="ButtonTestclick" AdornmentAriaLabel="Show Password"></MudTextField>
-			</MudCardContent>
-			<MudCardActions>
-				<MudButton OnClick="Authenticate" Color="Color.Info" Variant="Variant.Filled">Login</MudButton>
-			</MudCardActions>
-		</MudCard>
-</EditForm>
+				<MudCardHeader>
+					<CardHeaderContent>
+						<MudText Typo="Typo.h6">Login</MudText>
+					</CardHeaderContent>
+				</MudCardHeader>
+				<MudCardContent>
+						<MudTextField @bind-Value="tmpusr.UserName" Label="User Name" Variant="Variant.Outlined"></MudTextField>
+						<MudTextField @bind-Value="tmpusr.Password" Label="Password" Variant="Variant.Outlined" InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="ButtonTestclick" AdornmentAriaLabel="Show Password"></MudTextField>
+				</MudCardContent>
+				<MudCardActions>
+				<MudButton Disabled="@_processing" OnClick="ProcessSomething" Variant="Variant.Filled" Color="Color.Info">
+					@if (_processing)
+					{
+						<MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+						<MudText Class="ms-2">Processing</MudText>
+					}
+					else
+					{
+						<MudText>Login</MudText>
+					}
+				</MudButton>
+				</MudCardActions>
+			</MudCard>
+	</EditForm>
 
 
 @code {
@@ -30,6 +42,7 @@
 		public string UserName { get; set; }
 		public string Password { get; set; }
 	}
+
 
 	bool isShow;
 	InputType PasswordInput = InputType.Password;
@@ -70,5 +83,16 @@
 			});
 			NavigationManager.NavigateTo("/", true);
 
+	}
+
+	//Processing Button
+	private bool _processing = false;
+
+	async Task ProcessSomething()
+	{
+		_processing = true;
+		await Task.Delay(500);
+		_processing = false;
+		Authenticate();
 	}
 }

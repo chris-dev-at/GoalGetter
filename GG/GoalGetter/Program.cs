@@ -40,6 +40,7 @@ builder.Services.AddTransient<IAddPersonUseCase, AddPersonUseCase>();
 builder.Services.AddTransient<IViewTeamMembersByProjectIdUseCase, ViewTeamMembersByProjectIdUseCase>();
 builder.Services.AddTransient<IViewPeopleIfNotInTeamUseCase, ViewPeopleIfNotInTeamUseCase>();
 builder.Services.AddTransient<IAddTeamUseCase, AddTeamUseCase>();
+builder.Services.AddSingleton<IRemoveTeammemberFromTeamUseCase, RemoveTeammemberFromTeamUseCase>();
 
 //Taks Services
 builder.Services.AddTransient<IViewTasksByProjectIdUseCase, ViewTasksByProjectIdUseCase>();

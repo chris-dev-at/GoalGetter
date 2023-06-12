@@ -1,26 +1,30 @@
 ﻿@inject IDialogService DialogService
 
 <div class="mb-5" style="margin-top: 20px">
-	<MudContainer @onclick="@((e) => OpenPersonCard(maxWidth))" MaxWidth="MaxWidth.Small">
-		<MudPaper Height="180px" Width="120%" Square="true">
-			<div class="bg">
-				<h2>@person.Firstname @person.Lastname</h2>
-				@if(person.AvatarPath != null)
-				{
-					<MudAvatar Image="@person.AvatarPath"></MudAvatar>
-				}
-				else
-				{
-					<MudAvatar Color="@person.AvatarColor">@person.Firstname.First()@person.Lastname.First()</MudAvatar>
+	<MudContainer MaxWidth="MaxWidth.Medium">
+		<MudCard @onclick="@((e) => OpenPersonCard(maxWidth))">
+			<MudCardHeader>
+				<CardHeaderContent>
+					<h2>@person.Firstname @person.Lastname</h2>
+				</CardHeaderContent>
+				<CardHeaderAvatar>
+					@if (person.AvatarPath != null)
+					{
+						<MudAvatar Image="@person.AvatarPath"></MudAvatar>
+					}
+					else
+					{
+						<MudAvatar Color="@person.AvatarColor">@person.Firstname.First()@person.Lastname.First()</MudAvatar>
 
-				}
-			</div>
-			<hr />
-			<p>@person.Address</p>
-			<p>@person.Email</p>
-		</MudPaper>
+					}
+				</CardHeaderAvatar>
+			</MudCardHeader>
+			<MudCardContent>
+				<MudText>@person.Address</MudText>
+				<MudText>@person.Email</MudText>
+			</MudCardContent>
+		</MudCard>
 	</MudContainer>
-
 
 </div>
 @code {

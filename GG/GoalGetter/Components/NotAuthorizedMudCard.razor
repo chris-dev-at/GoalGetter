@@ -1,0 +1,20 @@
+﻿@inject NavigationManager NavigationManager
+<MudCard>
+	<MudCardHeader>
+		<CardHeaderContent>
+			<MudText Typo="Typo.h6">You are not allowed to access this page.</MudText>
+		</CardHeaderContent>
+	</MudCardHeader>
+	<MudCardContent>
+		<MudText Typo="Typo.body2">Please login to see the content.</MudText>
+
+	</MudCardContent>
+	<MudCardActions><MudButton OnClick="RedirectToLogin" Color="Color.Info" Variant="Variant.Filled">Login</MudButton></MudCardActions>
+</MudCard>
+
+@code {
+	void RedirectToLogin()
+	{
+		NavigationManager.NavigateTo("/login", true);
+	}
+}
