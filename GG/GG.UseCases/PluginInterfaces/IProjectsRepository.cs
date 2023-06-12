@@ -40,6 +40,7 @@ namespace GG.UseCases.PluginInterfaces
 		Task<StatusReport<EmptyVal>> SaveAllProjectToFile();
 		Task<StatusReport<EmptyVal>> SaveContacts();
 		Task<StatusReport<EmptyVal>> DeleteFile(string fileDir, string fileName);
+		Task<StatusReport<float>> GetPercentFromTaskState(ProgressStatus state, Project project);
 		bool IsDirectoryNameAllowed(string directoryName);
 
 		//Task<bool> ExistsAsync(Project project);

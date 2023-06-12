@@ -28,10 +28,18 @@ builder.Services.AddSingleton<UserAccountService>();
 
 builder.Services.AddSingleton<IProjectsRepository, ProjectsRepository>();
 
+<<<<<<< HEAD
+=======
+//Project
+>>>>>>> 4f16cf8c54fdd354925749203b3062c6f990bf2f
 builder.Services.AddTransient<IViewProjectsByNameUseCase, ViewProjectsByNameUseCase>();
 builder.Services.AddTransient<IAddProjectUseCase, AddProjectUseCase>();
 builder.Services.AddTransient<IViewProjectByIdUseCase, ViewProjectByIdUseCase>();
 builder.Services.AddSingleton<IUpdateProjectUseCase, UpdateProjectUseCase>();
+<<<<<<< HEAD
+=======
+builder.Services.AddSingleton<IGetProgressChartUseCase, GetProgressChartUseCase>();
+>>>>>>> 4f16cf8c54fdd354925749203b3062c6f990bf2f
 
 builder.Services.AddTransient<IViewPeopleByNameUseCase, ViewPeopleByNameUseCase>();
 builder.Services.AddTransient<IAddPersonUseCase, AddPersonUseCase>();
@@ -40,7 +48,10 @@ builder.Services.AddTransient<IAddPersonUseCase, AddPersonUseCase>();
 builder.Services.AddTransient<IViewTeamMembersByProjectIdUseCase, ViewTeamMembersByProjectIdUseCase>();
 builder.Services.AddTransient<IViewPeopleIfNotInTeamUseCase, ViewPeopleIfNotInTeamUseCase>();
 builder.Services.AddTransient<IAddTeamUseCase, AddTeamUseCase>();
+<<<<<<< HEAD
 builder.Services.AddSingleton<IRemoveTeammemberFromTeamUseCase, RemoveTeammemberFromTeamUseCase>();
+=======
+>>>>>>> 4f16cf8c54fdd354925749203b3062c6f990bf2f
 
 //Taks Services
 builder.Services.AddTransient<IViewTasksByProjectIdUseCase, ViewTasksByProjectIdUseCase>();

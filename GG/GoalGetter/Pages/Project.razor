@@ -5,7 +5,11 @@
 @inject NavigationManager NavigationManager
 @inject IUpdateProjectUseCase updateProjectUseCase
 @inject IRemoveProjectUseCase removeProjectUseCase
+<<<<<<< HEAD
 @inject IDialogService DialogService
+=======
+@inject IGetProgressChartUseCase getProgressChartUseCase
+>>>>>>> 4f16cf8c54fdd354925749203b3062c6f990bf2f
 
 <AuthorizeView>
 	<Authorized>
@@ -19,6 +23,12 @@
 			}
 		</MudSelect>
 		<MudButton Variant="Variant.Filled" OnClick="DeleteProject" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error">Delete</MudButton>
+
+
+		<MudChart LegendPosition="Position.Bottom" ChartType="ChartType.Pie" Width="300px" Height="300px" InputData="@data" InputLabels="@labels">
+			<CustomGraphics>
+			</CustomGraphics>
+		</MudChart>
 
 		<!-- Rest of your component code -->
 	</Authorized>
@@ -34,6 +44,13 @@
 
 	private GG.CoreBusiness.Project project = new GG.CoreBusiness.Project();
 
+	/* Statistical Data here */
+	public double[] data = { 25, 25, 50 };
+	public string[] labels = { "Upcomming", "In_Progress", "Done" };
+
+
+
+
 	protected override async Task OnParametersSetAsync()
 	{
 		var result = ViewProjectByIdUseCase.ExecuteAsync(this.ProId).Result;
@@ -44,6 +61,19 @@
 			Snackbar.Add(result.Reason, result.severity);
 			NavigationManager.NavigateTo("/");
 		}
+
+		//Load Statistics Data
+		float upcomming = (await getProgressChartUseCase.ExecuteAsync(ProId, ProgressStatus.Upcomming)).Value;
+		float progress = (await getProgressChartUseCase.ExecuteAsync(ProId, ProgressStatus.In_Progress)).Value;
+		float done = (await getProgressChartUseCase.ExecuteAsync(ProId, ProgressStatus.Done)).Value;
+
+		data[0] = upcomming;
+		data[1] = progress;
+		data[2] = done;
+
+		labels[0] = $"Upcomming {(upcomming*100).ToString("F1")}%";
+		labels[1] = $"In_Progress {(progress*100).ToString("F1")}%";
+		labels[2] = $"Done {(done*100).ToString("F1")}%";
 	}
 
 	private ProgressStatus tmp; //needed to not spam projectRepo (close eyes or brain damage might occur)

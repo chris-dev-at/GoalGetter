@@ -11,7 +11,7 @@
 		<Columns>
 				<HierarchyColumn T="ProjectTask" />
 			<PropertyColumn Property="x => x.Name" Title="Name" Filterable="false" />
-			<PropertyColumn Property="x => x.Deadline" Format="dd.MM.yyyy" InitialDirection="SortDirection.Descending" >
+			<PropertyColumn Property="x => x.Deadline" Format="dd.MM.yyyy" InitialDirection="SortDirection.Descending">
 			</PropertyColumn>
 			<TemplateColumn CellClass="d-flex justify-start" Filterable="false" Sortable="true" Title="Status" >
 				<CellTemplate>
@@ -28,7 +28,7 @@
 			<PropertyColumn Property="x => x.Description" Title="Description" Filterable="false" Sortable="false" />
 			<TemplateColumn CellClass="d-flex justify-start" Filterable="false" Sortable="true" SortBy="x => (x.AssignedPerson.person.Firstname + x.AssignedPerson.person.Lastname)" Title="Assigned Teammember">
 				<CellTemplate>
-                <MudItem  @onclick="@((e) => OpenPersonCard(maxWidth, @context.Item.AssignedPerson.person))">
+					<MudItem @onclick="@((e) => OpenPersonCard(maxWidth, @context.Item.AssignedPerson.person))">
 						@if (@context.Item.AssignedPerson.person.AvatarPath != null)
 						{
 							<MudAvatar Image="@context.Item.AssignedPerson.person.AvatarPath"  />
