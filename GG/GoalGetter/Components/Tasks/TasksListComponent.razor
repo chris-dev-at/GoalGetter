@@ -24,7 +24,6 @@
 					</MudSelect>
 				</CellTemplate>
 			</TemplateColumn>
-
 			<PropertyColumn Property="x => x.Description" Title="Description" Filterable="false" Sortable="false" />
 			<TemplateColumn CellClass="d-flex justify-start" Filterable="false" Sortable="true" SortBy="x => (x.AssignedPerson.person.Firstname + x.AssignedPerson.person.Lastname)" Title="Assigned Teammember">
 				<CellTemplate>
@@ -40,6 +39,11 @@
 					</MudItem>
             </CellTemplate>
 			</TemplateColumn>
+			<TemplateColumn CellClass="d-flex justify-end">
+            <CellTemplate>
+                <MudIconButton Size="@Size.Small" Icon="@Icons.Material.Outlined.Edit" OnClick="@((e) => OpenEditDialog(maxWidth, @context.Item))" />
+            </CellTemplate>
+        </TemplateColumn>
 		</Columns>
 		<ChildRowContent>
         <MudCard>
@@ -66,7 +70,6 @@
 	</MudDataGrid>
 
 }
-
 
 @code {
 	//Grid options
@@ -113,6 +116,14 @@
 		DialogService.Show<PersonCard>("", parameter, options);
 	}
 
+	private void OpenEditDialog(DialogOptions options, ProjectTask t)
+	{
+		var parameter = new DialogParameters { ["newtask"] =  t};
+		parameter.Add("ProId", proid);
+		parameter.Add("OnTaskUpdated", HandleChange);
+		DialogService.Show<EditTask>("", parameter, options);
+	}
+
 	private async Task DeleteTask(ProjectTask task)
 	{
 		var parameters = new DialogParameters();
@@ -127,10 +138,13 @@
 		if (!dialog.Cancelled)
 		{
 			var status = await removeTaskUseCase.ExecuteAsync(task, proid);
+			HandleChange();
 			Snackbar.Add(status.Reason, status.severity);
 		}
-		
+
 	}
+
+	void HandleChange() => StateHasChanged();
 
 	void OnChangedData(ProjectTask task) => updateTaskUseCase.ExecuteAsync(task, proid);
 }
