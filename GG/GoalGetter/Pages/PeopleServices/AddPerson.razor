@@ -16,7 +16,7 @@
 				<MudTextField Label="Email" Class="mt-3"
 								@bind-Value="newPerson.Email" For="@(() => newPerson.Email)" InputType="InputType.Email" />
 				<MudTextField Label="Phone number" Class="mt-3"
-								@bind-Value="newPerson.Phone" For="@(() => newPerson.Phone)" InputType="InputType.Telephone" />
+								@bind-Value="newPerson.Phone" For="@(() => newPerson.Phone)"/>
 
 				<MudAutocomplete T="Address" Label="Address" @bind-Value="selectedAddress" SearchFunc="@SearchAddress"
 									ResetValueOnEmptyText="@resetValueOnEmptyText"

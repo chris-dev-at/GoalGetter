@@ -12,10 +12,11 @@
 			<MudTextField Label="Project Description" Class="mt-3" HelperText="additional informations about the Project" Lines="3" T="string" Variant="Variant.Outlined"
 						  @bind-Value="newProject.Description" For="@(() => newProject.Description)" />
 			<br/>
+			<MudNumericField @bind-Value="newProject.Budget" Label="Budget" Variant="Variant.Outlined" For="@(() => newProject.Budget)" />
+			<br/>
 			<br/>
 		<MudButton ButtonType="ButtonType.Submit">Save</MudButton>
 		<MudButton ButtonType="ButtonType.Button" @onclick="Cancel">Cancel</MudButton>
-
 		</EditForm>
 	</DialogContent>
 </MudDialog>
