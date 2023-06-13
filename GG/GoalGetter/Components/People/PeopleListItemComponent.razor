@@ -1,4 +1,6 @@
 ﻿@inject IDialogService DialogService
+@inject IDeletePersonUseCase deletePersonUseCase
+@inject ISnackbar Snackbar
 
 <div class="mb-5" style="margin-top: 20px">
 	<MudContainer MaxWidth="MaxWidth.Medium">
@@ -18,6 +20,9 @@
 
 					}
 				</CardHeaderAvatar>
+				<CardHeaderActions>
+					<MudIconButton Icon="@Icons.Material.Filled.Delete" aria-label="delete" OnClick="@(() => DeletePeron(person, person.Firstname, person.Lastname))"></MudIconButton>
+				</CardHeaderActions>
 			</MudCardHeader>
 			<MudCardContent>
 				<MudText>@person.Address</MudText>
@@ -31,11 +36,33 @@
 	[Parameter]
 	public Person person { get; set; }
 
+	[Parameter]
+	public Action OnPersonDeleted{ get; set; } // Update the type to
+
 	DialogOptions maxWidth = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true };
 
 	private void OpenPersonCard(DialogOptions options)
 	{
 		var parameter = new DialogParameters { ["person"] = person };
 		DialogService.Show<PersonCard>("", parameter, options);
+	}
+	async Task DeletePeron(Person p, string fname, string lname)
+	{
+		var parameters = new DialogParameters();
+		parameters.Add("ContentText", $"Do you really want to remove {fname} {lname}?");
+		parameters.Add("ButtonText", "Remove");
+		parameters.Add("Color", Color.Error);
+
+		var options = new DialogOptions() { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+		var dialog = await DialogService.Show<ConfirmDialog>("Delete", parameters, options).Result;
+
+		if (!dialog.Cancelled)
+		{
+			var status = await deletePersonUseCase.ExecuteAsync(p);
+			OnPersonDeleted?.Invoke();
+			Snackbar.Add(status.Reason, status.severity);
+		}
+
 	}
 }

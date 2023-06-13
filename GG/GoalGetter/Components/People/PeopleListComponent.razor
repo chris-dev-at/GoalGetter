@@ -8,7 +8,7 @@
 {
 	@foreach (var person in people)
 	{
-		<PeopleListItemComponent person="@person" />
+		<PeopleListItemComponent person="@person"  OnPersonDeleted="update"/>
 	}
 }
 
@@ -24,6 +24,12 @@
 
 	protected override async Task OnParametersSetAsync()
 	{
+		ChangeState();
+	}
+
+
+	async Task ChangeState(bool Update_Screen = false)
+	{
 		people = viewPeopleByNameUseCase.ExecuteAsync(this.searchTerm).Result.Value.ToList();
 
 		var result = viewPeopleByNameUseCase.ExecuteAsync(this.searchTerm).Result;
@@ -35,5 +41,9 @@
 			Snackbar.Add(result.Reason, result.severity);
 			NavigationManager.NavigateTo("/");
 		}
+
+		if (Update_Screen)
+			StateHasChanged();
 	}
+	void update() => ChangeState(true);
 }

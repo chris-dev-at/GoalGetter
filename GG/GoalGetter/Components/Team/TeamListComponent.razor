@@ -8,7 +8,7 @@
 {
 	foreach (var person in team)
 	{
-		<TeamListItemComponent person="@person" ProId="proid" />
+		<TeamListItemComponent person="@person" ProId="proid" OnTeammemberDeleted="update"/>
 	}
 }
 
@@ -26,6 +26,10 @@
 
 	protected override async Task OnParametersSetAsync()
 	{
+		ChangeState();
+	}
+	async Task ChangeState(bool Update_Screen = false)
+	{
 		var result = viewTeamMembersByProjectIdUseCase.ExecuteAsync(searchTerm, proid).Result;
 
 		if (result.Value != null)
@@ -35,5 +39,9 @@
 			Snackbar.Add(result.Reason, result.severity);
 			NavigationManager.NavigateTo("/");
 		}
+
+		if (Update_Screen)
+			StateHasChanged();
 	}
+	void update() => ChangeState(true);
 }

@@ -92,6 +92,11 @@
 
 	protected override async Task OnParametersSetAsync()
 	{
+		ChangeState();
+	}
+
+	async Task ChangeState(bool Update_Screen = false)
+	{
 		var result = viewTasksByProjectIdUseCase.ExecuteAsync(this.searchTerm, proid).Result;
 
 		if (result.Value != null)
@@ -106,6 +111,9 @@
 		await Task.Delay(TimeSpan.FromSeconds(1.5));
 
 		_loading = false;
+
+		if (Update_Screen)
+			StateHasChanged();
 	}
 
 	DialogOptions maxWidth = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true };
@@ -144,7 +152,7 @@
 
 	}
 
-	void HandleChange() => StateHasChanged();
+	void HandleChange() => ChangeState(true);
 
 	void OnChangedData(ProjectTask task) => updateTaskUseCase.ExecuteAsync(task, proid);
 }

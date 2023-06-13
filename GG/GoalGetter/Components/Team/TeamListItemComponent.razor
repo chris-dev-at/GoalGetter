@@ -34,6 +34,9 @@
 	[Parameter]
 	public int ProId { get; set; }
 
+	[Parameter]
+	public Action OnTeammemberDeleted { get; set; } // Update the type to
+
 	DialogOptions maxWidth = new DialogOptions() { MaxWidth = MaxWidth.Small, FullWidth = true };
 
 	private void OpenPersonCard(DialogOptions options)
@@ -56,6 +59,7 @@
 		if (!dialog.Cancelled)
 		{
 			var status = await rtf.ExecuteAsync(tm,ProId);
+			OnTeammemberDeleted?.Invoke();
 			Snackbar.Add(status.Reason, status.severity);
 		}
 	}

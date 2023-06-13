@@ -19,9 +19,10 @@ using MudBlazor.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddAuthenticationCore();
+builder.Services.AddAuthenticationCore(); // important
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+//Authentication
 builder.Services.AddScoped<ProtectedSessionStorage>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 builder.Services.AddSingleton<UserAccountService>();
@@ -35,8 +36,10 @@ builder.Services.AddTransient<IViewProjectByIdUseCase, ViewProjectByIdUseCase>()
 builder.Services.AddSingleton<IUpdateProjectUseCase, UpdateProjectUseCase>();
 builder.Services.AddSingleton<IGetProgressChartUseCase, GetProgressChartUseCase>();
 
+//people
 builder.Services.AddTransient<IViewPeopleByNameUseCase, ViewPeopleByNameUseCase>();
 builder.Services.AddTransient<IAddPersonUseCase, AddPersonUseCase>();
+builder.Services.AddSingleton<IDeletePersonUseCase, DeletePersonUseCase>();
 
 // Team Services
 builder.Services.AddTransient<IViewTeamMembersByProjectIdUseCase, ViewTeamMembersByProjectIdUseCase>();
