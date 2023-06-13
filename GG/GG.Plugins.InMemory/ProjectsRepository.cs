@@ -228,11 +228,12 @@ namespace GG.Plugins.InMemory
 					);
 		}
 
-		public async Task<StatusReport<EmptyVal>> RemoveTaskFromProject(ProjectTask task, Project p)
+		public async Task<StatusReport<EmptyVal>> RemoveTaskFromProject(ProjectTask task, Project p, bool update_project = true)
 		{
 			p.Tasks.Remove(task);
 
-			await SaveProjectToFile(p);
+			if(update_project)
+				await SaveProjectToFile(p);
 
 			return new StatusReport<EmptyVal>(
 							StatusState.Success,
@@ -241,6 +242,7 @@ namespace GG.Plugins.InMemory
 						);
 		}
 
+		//IMPORTANT: Does not save on its own, please use RemovePersonFromProject instead
 		public async Task<StatusReport<EmptyVal>> RemoveTeammemberFromTeamAsync(Teammember member, Project p)
 		{
 			if (p.assignedTeam.members.Contains(member))
@@ -252,8 +254,6 @@ namespace GG.Plugins.InMemory
 							"Teammember has been removed from Team"
 						);
 			}
-
-			await SaveProjectToFile(p);
 
 			return new StatusReport<EmptyVal>(
 						StatusState.Failed,
@@ -320,11 +320,11 @@ namespace GG.Plugins.InMemory
 				{
 					await RemoveTeammemberFromTeamAsync(member, p);
 
-					//Remove from all Assigned Tasks
+					//Remove all Assigned Tasks
 					foreach (ProjectTask task in p.Tasks)
 					{
 						if (task.AssignedPerson == member)
-							task.AssignedPerson = null;
+							await RemoveTaskFromProject(task, p, false);
 					}
 				}
 			}
