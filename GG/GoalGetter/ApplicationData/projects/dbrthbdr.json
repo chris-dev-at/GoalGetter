@@ -1,6 +1,15 @@
 {
   "Id": 8,
-  "Tasks": [],
+  "Tasks": [
+    {
+      "Id": null,
+      "Deadline": "2023-06-13T09:29:10.0995786+02:00",
+      "Status": 0,
+      "PersonId": 9,
+      "Name": "bla",
+      "Description": ""
+    }
+  ],
   "Budget": 0.0,
   "assignedTeam": {
     "Id": null,

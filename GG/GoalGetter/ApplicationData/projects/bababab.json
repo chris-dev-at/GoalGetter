@@ -3,11 +3,35 @@
   "Tasks": [
     {
       "Id": null,
-      "Deadline": "2023-06-10T00:00:00",
+      "Deadline": "2023-06-13T09:52:19.4700083+02:00",
       "Status": 0,
       "PersonId": 3,
       "Name": "newTask",
-      "Description": "blablabla bal bal bla bla "
+      "Description": ""
+    },
+    {
+      "Id": null,
+      "Deadline": "2023-06-13T09:33:19.0494569+02:00",
+      "Status": 0,
+      "PersonId": 5,
+      "Name": "a Task",
+      "Description": ""
+    },
+    {
+      "Id": null,
+      "Deadline": "2023-06-13T09:33:25.783236+02:00",
+      "Status": 0,
+      "PersonId": 5,
+      "Name": "fasdf",
+      "Description": ""
+    },
+    {
+      "Id": null,
+      "Deadline": "2023-06-13T09:33:15.8238834+02:00",
+      "Status": 0,
+      "PersonId": 5,
+      "Name": "asdf",
+      "Description": ""
     }
   ],
   "Budget": 0.0,
@@ -23,6 +47,11 @@
         "Role": 2,
         "Description": null,
         "PersonId": 5
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 1
       }
     ],
     "Description": null
