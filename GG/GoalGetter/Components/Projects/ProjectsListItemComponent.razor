@@ -1,29 +1,35 @@
 ﻿@inject NavigationManager NavigationManager
 <MudCard  @onclick="RedirectToItemPage">
-	<MudContainer Style="background-color: #0088d3; color: white" Class="rounded">
-		<MudText Typo="Typo.h6" Class="w-50">@project.Name</MudText>
-	</MudContainer>
-	<hr />
-	<MudText Style="  white-space: nowrap; width: 500px;overflow: hidden;text-overflow: clip;">@project.Description</MudText>
-	<MudChip Variant="Variant.Outlined" Color="Color.Primary" Class="flex-right-down">@project.status</MudChip>
-	<div class="flex-right-down">
-		@if (project.assignedTeam.members != null)
-		{
-			<MudAvatarGroup Max="3" Spacing="4" MaxColor="Color.Primary">
-			@foreach (var teamMember in project.assignedTeam.members)
+
+	<MudContainer Style="background-color: #0088d3; color: white; height: 50px" Class="d-flex rounded align-center">
+			<MudText Typo="Typo.h6" Class="w-50">@project.Name</MudText>
+		</MudContainer>
+		<hr/>
+	<MudCardContent>
+		<MudText Style="white-space: nowrap; width: 500px;overflow: hidden;text-overflow: clip;">@project.Description</MudText>
+	</MudCardContent>
+	<MudCardActions Class="d-flex justify-space-between flex-grow-1 gap-4 mt-5" Elevation="12">
+		<MudChip Variant="Variant.Outlined" Color="Color.Primary" Class="flex-right-down">@project.status</MudChip>
+		<div class="flex-right-down">
+			@if (project.assignedTeam.members != null)
 			{
-					if (@teamMember.person.AvatarPath != null)
+				<MudAvatarGroup Max="3" Spacing="4" MaxColor="Color.Primary">
+					@foreach (var teamMember in project.assignedTeam.members)
 					{
-						<MudAvatar Image="@teamMember.person.AvatarPath" />
+						if (@teamMember.person.AvatarPath != null)
+						{
+							<MudAvatar Image="@teamMember.person.AvatarPath" />
+						}
+						else
+						{
+							<MudAvatar Color="teamMember.person.AvatarColor">@teamMember.person.Firstname.First()@teamMember.person.Lastname.First()</MudAvatar>
+						}
 					}
-					else
-					{
-						<MudAvatar Color="teamMember.person.AvatarColor">@teamMember.person.Firstname.First()@teamMember.person.Lastname.First()</MudAvatar>
-					}
+				</MudAvatarGroup>
 			}
-			</MudAvatarGroup>
-		}
-	</div>
+		</div>
+	</MudCardActions>
+	
 </MudCard>
 
 

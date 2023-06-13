@@ -20,12 +20,57 @@
 			}
 		</MudSelect>
 		<MudButton Variant="Variant.Filled" OnClick="DeleteProject" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error">Delete</MudButton>
+		<MudContainer Class="d-inline-flex gap-4">
+			<MudCard>
+				<MudCardHeader>
+					<CardHeaderAvatar>
+						<MudAvatar Color="Color.Warning" Variant="Variant.Filled">
+							<MudIcon Color="Color.Dark" Icon="@Icons.Material.Outlined.Person" Size="Size.Large" />
+						</MudAvatar>
+					</CardHeaderAvatar>
+					<CardHeaderContent>
+						<MudText>Resourcess</MudText>
+						<MudText>80/80</MudText>
+					</CardHeaderContent>
+				</MudCardHeader>
+			</MudCard>
 
+			<MudCard>
+				<MudCardHeader>
+					<CardHeaderAvatar>
+						<MudAvatar Style="@($"color:{Colors.Red.Darken1}; background:{Colors.Red.Lighten3};")" Variant="Variant.Filled">
+							<MudIcon  Icon="@Icons.Material.Outlined.Task" Size="Size.Large" />
+						</MudAvatar>
+					</CardHeaderAvatar>
+					<CardHeaderContent>
+						<MudText>Tasks</MudText>
+						<MudText>80/80</MudText>
+					</CardHeaderContent>
+				</MudCardHeader>
+			</MudCard>
 
-		<MudChart LegendPosition="Position.Bottom" ChartType="ChartType.Pie" Width="300px" Height="300px" InputData="@data" InputLabels="@labels">
-			<CustomGraphics>
-			</CustomGraphics>
-		</MudChart>
+			<MudCard>
+				<MudCardHeader>
+					<CardHeaderAvatar>
+						<MudAvatar Color="Color.Warning" Variant="Variant.Filled">
+							<MudIcon Color="Color.Dark" Icon="@Icons.Material.Outlined.Person" Size="Size.Large" />
+						</MudAvatar>
+					</CardHeaderAvatar>
+					<CardHeaderContent>
+						<MudText>Resourcess</MudText>
+						<MudText>80/80</MudText>
+					</CardHeaderContent>
+				</MudCardHeader>
+			</MudCard>
+		</MudContainer>
+		
+		<MudPaper Class="rounded d-flex align-center justify-center pa-6" MaxWidth="27rem" Square="true" Elevation="3">
+			<MudChart LegendPosition="Position.Bottom" ChartType="ChartType.Pie" Width="300px" Height="300px" InputData="@data" InputLabels="@labels">
+				<CustomGraphics>
+				</CustomGraphics>
+			</MudChart>
+		</MudPaper>
+
 
 		<!-- Rest of your component code -->
 	</Authorized>

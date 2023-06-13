@@ -24,11 +24,16 @@
         "Role": 2,
         "Description": null,
         "PersonId": 13
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 8
       }
     ],
     "Description": null
   },
-  "status": 0,
+  "status": 1,
   "Description": null,
   "Name": "blabla"
 }
