@@ -7,3 +7,5 @@
 
 #ignore every .vs directory
 **/.vs/
+/GG/GoalGetter/GoalGetter.csproj.user
+/GG/GoalGetter/Properties/PublishProfiles
