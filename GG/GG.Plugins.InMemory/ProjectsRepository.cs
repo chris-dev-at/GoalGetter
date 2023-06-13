@@ -318,14 +318,23 @@ namespace GG.Plugins.InMemory
 			{
 				if (member.person == person)
 				{
-					await RemoveTeammemberFromTeamAsync(member, p);
 
-					//Remove all Assigned Tasks
+					List<ProjectTask> safePending = new List<ProjectTask>();
+
+					//Remove all Assigned Tasks :: ERROR NEEDS TO DELETE AFTER NUMERATION IS FINISHED
 					foreach (ProjectTask task in p.Tasks)
 					{
 						if (task.AssignedPerson == member)
-							await RemoveTaskFromProject(task, p, false);
+							safePending.Add(task);
 					}
+
+					foreach (var task in safePending)
+					{
+						await RemoveTaskFromProject(task, p);
+					}
+
+					await RemoveTeammemberFromTeamAsync(member, p);
+					break;
 				}
 			}
 
