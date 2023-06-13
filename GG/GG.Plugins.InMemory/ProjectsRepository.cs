@@ -228,12 +228,11 @@ namespace GG.Plugins.InMemory
 					);
 		}
 
-		public async Task<StatusReport<EmptyVal>> RemoveTaskFromProject(ProjectTask task, Project p, bool update_project = true)
+		public async Task<StatusReport<EmptyVal>> RemoveTaskFromProject(ProjectTask task, Project p)
 		{
 			p.Tasks.Remove(task);
 
-			if(update_project)
-				await SaveProjectToFile(p);
+			await SaveProjectToFile(p);
 
 			return new StatusReport<EmptyVal>(
 							StatusState.Success,
@@ -318,16 +317,10 @@ namespace GG.Plugins.InMemory
 			{
 				if (member.person == person)
 				{
-
-					List<ProjectTask> safePending = new List<ProjectTask>();
-
-					//Remove all Assigned Tasks :: ERROR NEEDS TO DELETE AFTER NUMERATION IS FINISHED
-					foreach (ProjectTask task in p.Tasks)
-					{
-						if (task.AssignedPerson == member)
-							safePending.Add(task);
-					}
-
+					//if not RemoveTask Alternative:
+					//p.Tasks.RemoveAll(x =>  x.AssignedPerson.person == person);
+					List<ProjectTask> safePending = p.Tasks.Where(x => x.AssignedPerson.person == person).ToList();
+					
 					foreach (var task in safePending)
 					{
 						await RemoveTaskFromProject(task, p);
