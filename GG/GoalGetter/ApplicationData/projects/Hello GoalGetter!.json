@@ -4,7 +4,7 @@
     {
       "Id": null,
       "Deadline": "2006-01-07T00:00:00",
-      "Status": 0,
+      "Status": 2,
       "PersonId": 8,
       "Name": "Code Website",
       "Description": "Make a website lol. xd. mega lol."
@@ -28,7 +28,7 @@
     {
       "Id": null,
       "Deadline": "2020-06-06T00:00:00",
-      "Status": 0,
+      "Status": 2,
       "PersonId": 12,
       "Name": "Create Blazor App 1",
       "Description": ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it"
@@ -36,7 +36,7 @@
     {
       "Id": null,
       "Deadline": "2018-06-11T00:00:00",
-      "Status": 0,
+      "Status": 1,
       "PersonId": 12,
       "Name": "Create Blazor App 2",
       "Description": ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it"
@@ -60,7 +60,7 @@
     {
       "Id": null,
       "Deadline": "2020-06-06T00:00:00",
-      "Status": 0,
+      "Status": 2,
       "PersonId": 13,
       "Name": "Create Blazor App 1",
       "Description": ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it"
@@ -68,7 +68,7 @@
     {
       "Id": null,
       "Deadline": "2018-06-11T00:00:00",
-      "Status": 0,
+      "Status": 1,
       "PersonId": 8,
       "Name": "Create Blazor App 2",
       "Description": ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it"
@@ -76,7 +76,7 @@
     {
       "Id": null,
       "Deadline": "2006-01-07T00:00:00",
-      "Status": 0,
+      "Status": 2,
       "PersonId": 9,
       "Name": "Code Website",
       "Description": "Make a website lol. xd. mega lol."
@@ -92,7 +92,7 @@
     {
       "Id": null,
       "Deadline": "2018-06-11T00:00:00",
-      "Status": 0,
+      "Status": 2,
       "PersonId": 13,
       "Name": "Create Blazor App 2",
       "Description": ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it"

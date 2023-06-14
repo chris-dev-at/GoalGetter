@@ -4,80 +4,26 @@
     {
       "Id": null,
       "Deadline": "2023-06-12T00:00:00",
-      "Status": 0,
+      "Status": 1,
       "PersonId": 20,
-      "Name": "Mathe SMÜ zusammenschreiben",
-      "Description": "Schreibe eine SMÜ zum Thema Integralrechnungen"
+      "Name": "Mathe SM� zusammenschreiben",
+      "Description": "Schreibe eine SM� zum Thema Integralrechnungen"
     },
     {
       "Id": null,
       "Deadline": "2023-06-16T00:00:00",
-      "Status": 0,
+      "Status": 2,
       "PersonId": 12,
       "Name": "Religionsnoten eintragen",
-      "Description": "Religionsnoten für die Klasse 3CHIT eintragen und am Freitag abschließen"
+      "Description": "Religionsnoten fuer die Klasse 3CHIT eintragen und am Freitag abschliessen"
     },
     {
       "Id": null,
       "Deadline": "2023-06-15T00:00:00",
-      "Status": 0,
-<<<<<<< HEAD
+      "Status": 1,
       "PersonId": 16,
       "Name": "Deutsch Wiederholung schaffen",
       "Description": "Schaff die Deutschwiederholung am Donnerstag"
-=======
-      "PersonId": 1,
-      "Name": "Have FreeTime 1",
-      "Description": "Have Freetime lol. Very hard to understand"
-    },
-    {
-      "Id": null,
-      "Deadline": "1996-09-17T00:00:00",
-      "Status": 0,
-      "PersonId": 8,
-      "Name": "Create Blazor App 1",
-      "Description": ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it"
-    },
-    {
-      "Id": null,
-      "Deadline": "1999-10-09T00:00:00",
-      "Status": 2,
-      "PersonId": 4,
-      "Name": "Create Blazor App 2",
-      "Description": ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it asdf"
-    },
-    {
-      "Id": null,
-      "Deadline": "0001-01-01T00:00:00",
-      "Status": 0,
-      "PersonId": 8,
-      "Name": "asdf",
-      "Description": ""
-    },
-    {
-      "Id": null,
-      "Deadline": "0001-01-01T00:00:00",
-      "Status": 0,
-      "PersonId": 9,
-      "Name": "asdfasfd",
-      "Description": "asdfasdf asdf asdf as"
-    },
-    {
-      "Id": null,
-      "Deadline": "0001-01-01T00:00:00",
-      "Status": 0,
-      "PersonId": 8,
-      "Name": "sdg",
-      "Description": ""
-    },
-    {
-      "Id": null,
-      "Deadline": "2023-06-13T19:19:54.9419573+02:00",
-      "Status": 2,
-      "PersonId": 1,
-      "Name": "onetask",
-      "Description": ""
->>>>>>> 721a1834cc9d647f030cb31a33a816fb0625b2eb
     }
   ],
   "Budget": 0.0,
@@ -111,43 +57,13 @@
       },
       {
         "Role": 2,
-<<<<<<< HEAD
         "Description": null,
         "PersonId": 20
-=======
-        "Description": "",
-        "PersonId": 7
-      },
-      {
-        "Role": 2,
-        "Description": "",
-        "PersonId": 6
-      },
-      {
-        "Role": 2,
-        "Description": "",
-        "PersonId": 5
-      },
-      {
-        "Role": 2,
-        "Description": "",
-        "PersonId": 2
-      },
-      {
-        "Role": 2,
-        "Description": "",
-        "PersonId": 11
-      },
-      {
-        "Role": 2,
-        "Description": null,
-        "PersonId": 14
->>>>>>> 721a1834cc9d647f030cb31a33a816fb0625b2eb
       }
     ],
     "Description": ""
   },
-  "status": 1,
+  "status": 0,
   "Description": "Need more test data? We got your back!",
   "Name": "Another Sample"
 }
