@@ -18,23 +18,26 @@
 
 			<MudItem xs="12">
 				<MudContainer Class="pa-0">
-					<MudStack Row="true" Spacing="4" Justify="Justify.SpaceBetween">
-						<MudCard Class="w-100">
-							<MudCardHeader>
-								<CardHeaderAvatar>
-									<MudAvatar Color="Color.Warning" Variant="Variant.Filled">
-										<MudIcon Color="Color.Dark" Icon="@Icons.Material.Outlined.Person" Size="Size.Large" />
-									</MudAvatar>
-								</CardHeaderAvatar>
-								<CardHeaderContent>
-									<MudText>Resourcess</MudText>
-									<MudText>@project.assignedTeam.members.Count</MudText>
-								</CardHeaderContent>
-							</MudCardHeader>
-						</MudCard>
+					<MudStack Row="true" Spacing="4" Class="gap-16">
 
-						<MudPaper>
-							<MudCard>
+						<MudItem xs="3">
+							<MudCard Elevation="3">
+								<MudCardHeader>
+									<CardHeaderAvatar>
+										<MudAvatar Color="Color.Warning" Variant="Variant.Filled">
+											<MudIcon Color="Color.Dark" Icon="@Icons.Material.Outlined.Person" Size="Size.Large" />
+										</MudAvatar>
+									</CardHeaderAvatar>
+									<CardHeaderContent>
+										<MudText>Resourcess</MudText>
+										<MudText>@project.assignedTeam.members.Count</MudText>
+									</CardHeaderContent>
+								</MudCardHeader>
+							</MudCard>
+						</MudItem>
+
+						<MudItem xs="3">
+							<MudCard Elevation="3">
 								<MudCardHeader>
 									<CardHeaderAvatar>
 										<MudAvatar Style="@($"color:{Colors.Red.Darken1}; background:{Colors.Red.Lighten3};")" Variant="Variant.Filled">
@@ -47,22 +50,23 @@
 									</CardHeaderContent>
 								</MudCardHeader>
 							</MudCard>
-						</MudPaper>
+						</MudItem>
 
-
-						<MudCard>
-							<MudCardHeader>
-								<CardHeaderAvatar>
-									<MudAvatar Color="Color.Warning" Variant="Variant.Filled">
-										<MudIcon Color="Color.Dark" Icon="@Icons.Material.Outlined.Person" Size="Size.Large" />
-									</MudAvatar>
-								</CardHeaderAvatar>
-								<CardHeaderContent>
-									<MudText>Budget</MudText>
-									<MudText>@project.Budget</MudText>
-								</CardHeaderContent>
-							</MudCardHeader>
-						</MudCard>
+						<MudItem xs="3">
+							<MudCard Elevation="3">
+								<MudCardHeader>
+									<CardHeaderAvatar>
+										<MudAvatar Color="Color.Warning" Variant="Variant.Filled">
+											<MudIcon Color="Color.Dark" Icon="@Icons.Material.Outlined.Person" Size="Size.Large" />
+										</MudAvatar>
+									</CardHeaderAvatar>
+									<CardHeaderContent>
+										<MudText>Budget</MudText>
+										<MudText>@project.Budget.ToString("C")</MudText>
+									</CardHeaderContent>
+								</MudCardHeader>
+							</MudCard>
+						</MudItem>
 					</MudStack>
 
 				</MudContainer>
@@ -71,7 +75,7 @@
 			<MudItem xs=6>
 				<MudStack>
 					<MudItem>
-						<MudCard>
+						<MudCard Elevation="3">
 							<MudCardHeader>
 								<CardHeaderContent>
 									<MudText Typo="Typo.h6">Project Name</MudText>
@@ -96,7 +100,7 @@
 						</MudCard>
 					</MudItem>
 					<MudItem>
-						<MudCard>
+						<MudCard Style="min-height: 13.5rem" Elevation="3">
 							<MudCardHeader>
 								<CardHeaderContent>
 									<MudText Typo="Typo.h6">Project Description</MudText>
