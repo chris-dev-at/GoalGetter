@@ -1,0 +1,39 @@
+{
+  "Id": 6,
+  "Tasks": [],
+  "Budget": 0.0,
+  "assignedTeam": {
+    "Id": null,
+    "members": [
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 19
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 20
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 21
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 8
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 9
+      }
+    ],
+    "Description": null
+  },
+  "status": 0,
+  "Description": "Dritter Integritätstest",
+  "Name": "Test3"
+}

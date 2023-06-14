@@ -1,0 +1,79 @@
+{
+  "Id": 8,
+  "Tasks": [],
+  "Budget": 0.0,
+  "assignedTeam": {
+    "Id": null,
+    "members": [
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 8
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 9
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 10
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 11
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 12
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 13
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 15
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 16
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 17
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 18
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 19
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 20
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 21
+      }
+    ],
+    "Description": null
+  },
+  "status": 0,
+  "Description": "Fünfter Integritätstest",
+  "Name": "Test 5"
+}

@@ -1,0 +1,112 @@
+{
+  "Id": 4,
+  "Tasks": [
+    {
+      "Id": null,
+      "Deadline": "2023-06-14T22:40:05.5117583+02:00",
+      "Status": 0,
+      "PersonId": 10,
+      "Name": "test 1",
+      "Description": ""
+    },
+    {
+      "Id": null,
+      "Deadline": "2023-06-03T00:00:00",
+      "Status": 0,
+      "PersonId": 20,
+      "Name": "test 2",
+      "Description": ""
+    },
+    {
+      "Id": null,
+      "Deadline": "2023-06-14T22:40:20.9145562+02:00",
+      "Status": 0,
+      "PersonId": 21,
+      "Name": "test 3",
+      "Description": ""
+    },
+    {
+      "Id": null,
+      "Deadline": "2023-06-14T22:41:20.8224181+02:00",
+      "Status": 0,
+      "PersonId": 9,
+      "Name": "test 4",
+      "Description": ""
+    }
+  ],
+  "Budget": 0.0,
+  "assignedTeam": {
+    "Id": null,
+    "members": [
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 8
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 9
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 10
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 11
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 12
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 13
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 15
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 16
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 17
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 18
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 19
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 20
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 21
+      }
+    ],
+    "Description": null
+  },
+  "status": 0,
+  "Description": "Testung der Integrität der Software",
+  "Name": "Test"
+}

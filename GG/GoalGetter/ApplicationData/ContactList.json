@@ -1,110 +1,5 @@
 [
   {
-    "Id": 1,
-    "AvatarPath": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
-    "AvatarColor": 1,
-    "Firstname": "Rainer",
-    "Lastname": "Winkler",
-    "Address": {
-      "osm_id": 1,
-      "lat": 1.0,
-      "lon": 1.0,
-      "display_name": "DE, Emskirchen 91448, Altschauerberg 8"
-    },
-    "Email": "r.winkler@htlkrems.at",
-    "Phone": null
-  },
-  {
-    "Id": 2,
-    "AvatarPath": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
-    "AvatarColor": 1,
-    "Firstname": "Ilse",
-    "Lastname": "Nigischer",
-    "Address": {
-      "osm_id": 1,
-      "lat": 1.0,
-      "lon": 1.0,
-      "display_name": "AT Waidhofen a. T. 3830, Buxdihudenstraße 1"
-    },
-    "Email": "i.nigischer@htlkrems.at",
-    "Phone": null
-  },
-  {
-    "Id": 3,
-    "AvatarPath": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
-    "AvatarColor": 1,
-    "Firstname": "Herwig",
-    "Lastname": "Macho",
-    "Address": {
-      "osm_id": 1,
-      "lat": 1.0,
-      "lon": 1.0,
-      "display_name": "AT Zwettl 3910, Propstei 8"
-    },
-    "Email": "h.macho@htlkrems.at",
-    "Phone": null
-  },
-  {
-    "Id": 4,
-    "AvatarPath": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
-    "AvatarColor": 1,
-    "Firstname": "Lukas",
-    "Lastname": "Kolinsky",
-    "Address": {
-      "osm_id": 1,
-      "lat": 1.0,
-      "lon": 1.0,
-      "display_name": "AT, Zwettl 3910, Propstei 7"
-    },
-    "Email": "lukas.kolinsky1@gmail.com",
-    "Phone": null
-  },
-  {
-    "Id": 5,
-    "AvatarPath": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
-    "AvatarColor": 1,
-    "Firstname": "Mulham",
-    "Lastname": "Taylouni",
-    "Address": {
-      "osm_id": 1,
-      "lat": 1.0,
-      "lon": 1.0,
-      "display_name": "AT, Gmünd 3950, Schremserstraße 69"
-    },
-    "Email": "contact@taylouni.me",
-    "Phone": null
-  },
-  {
-    "Id": 6,
-    "AvatarPath": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
-    "AvatarColor": 1,
-    "Firstname": "Christian",
-    "Lastname": "Wiesinger",
-    "Address": {
-      "osm_id": 1,
-      "lat": 1.0,
-      "lon": 1.0,
-      "display_name": "AT, Rappottenstein 3911, Burgunderweg 109"
-    },
-    "Email": "contact@taylouni.me",
-    "Phone": null
-  },
-  {
-    "Id": 7,
-    "AvatarPath": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__340.png",
-    "AvatarColor": 1,
-    "Firstname": "Clemens",
-    "Lastname": "Schmid",
-    "Address": {
-      "osm_id": 1,
-      "lat": 1.0,
-      "lon": 1.0,
-      "display_name": "AT, Zwettl 3910,Hammerweg 3"
-    },
-    "Email": "c.schmid@htlkrems.at",
-    "Phone": null
-  },
-  {
     "Id": 8,
     "AvatarPath": null,
     "AvatarColor": 3,
@@ -195,16 +90,6 @@
     "Phone": null
   },
   {
-    "Id": 14,
-    "AvatarPath": null,
-    "AvatarColor": 11,
-    "Firstname": "mhd",
-    "Lastname": "Mulham",
-    "Address": null,
-    "Email": "mulhamsth@gmail.com",
-    "Phone": "069010018442"
-  },
-  {
     "Id": 15,
     "AvatarPath": null,
     "AvatarColor": 7,
@@ -218,5 +103,95 @@
     },
     "Email": "l.ertl@htlkrems.at",
     "Phone": "+42 69696969"
+  },
+  {
+    "Id": 16,
+    "AvatarPath": "profiles\\16_TaylouniMulham.jpg",
+    "AvatarColor": 5,
+    "Firstname": "Mulham",
+    "Lastname": "Taylouni",
+    "Address": {
+      "osm_id": 184555941,
+      "lat": 48.7705738,
+      "lon": 14.99419,
+      "display_name": "Schremser Straße, Grillenstein, Gmünd, Gemeinde Gmünd, Bezirk Gmünd, Niederösterreich, 3950, Österreich"
+    },
+    "Email": "m.taylouni@htlkrems.at",
+    "Phone": "+43 690 10018442"
+  },
+  {
+    "Id": 17,
+    "AvatarPath": null,
+    "AvatarColor": 2,
+    "Firstname": "Clemens",
+    "Lastname": "Schmid",
+    "Address": {
+      "osm_id": 240101784,
+      "lat": 48.7689543,
+      "lon": 14.8498598,
+      "display_name": "Reinpolz, Gemeinde Großdietmanns, Bezirk Gmünd, Niederösterreich, 3962, Österreich"
+    },
+    "Email": "c.schmid@htlkrems.at",
+    "Phone": "+43 69 69696969"
+  },
+  {
+    "Id": 18,
+    "AvatarPath": "profiles\\18_WiesingerChristian.png",
+    "AvatarColor": 6,
+    "Firstname": "Christian",
+    "Lastname": "Wiesinger",
+    "Address": {
+      "osm_id": 240056135,
+      "lat": 48.5216911,
+      "lon": 15.0787343,
+      "display_name": "Rappottenstein, Gemeinde Rappottenstein, Bezirk Zwettl, Niederösterreich, 3911, Österreich"
+    },
+    "Email": "c.wiesinger@htlkrems.at",
+    "Phone": "+43 664 88908195"
+  },
+  {
+    "Id": 19,
+    "AvatarPath": "profiles\\19_MachoHerwig.jpg",
+    "AvatarColor": 9,
+    "Firstname": "Herwig",
+    "Lastname": "Macho",
+    "Address": {
+      "osm_id": 177782520,
+      "lat": 48.8647413,
+      "lon": 15.013404,
+      "display_name": "Brand, Gemeinde Brand-Nagelberg, Bezirk Gmünd, Niederösterreich, 3873, Österreich"
+    },
+    "Email": "h.macho@htlkrems.at",
+    "Phone": " 0650 80 14 211"
+  },
+  {
+    "Id": 20,
+    "AvatarPath": "profiles\\20_NigischerIlse.jpg",
+    "AvatarColor": 5,
+    "Firstname": "Ilse",
+    "Lastname": "Nigischer",
+    "Address": {
+      "osm_id": 89495726,
+      "lat": 48.831081,
+      "lon": 15.2925637,
+      "display_name": "Bahnradweg Waidhofen/Th. - Slavonice, Sixmühle, Vestenötting, Gemeinde Waidhofen an der Thaya, Bezirk Waidhofen an der Thaya, Niederösterreich, 3830, Österreich"
+    },
+    "Email": "i.nigischer@htlkrems.at",
+    "Phone": "+43 660 2422954"
+  },
+  {
+    "Id": 21,
+    "AvatarPath": null,
+    "AvatarColor": 9,
+    "Firstname": "Lukas",
+    "Lastname": "Kolinsky",
+    "Address": {
+      "osm_id": 633377695,
+      "lat": 48.5991517,
+      "lon": 15.1636485,
+      "display_name": "Propstei, Zwettl, Gemeinde Zwettl-Niederösterreich, Bezirk Zwettl, Niederösterreich, 3910, Österreich"
+    },
+    "Email": "l.kolinsky@htlkrems.at",
+    "Phone": "+43 885465564894"
   }
 ]

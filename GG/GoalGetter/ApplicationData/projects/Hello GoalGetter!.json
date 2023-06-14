@@ -19,14 +19,6 @@
     },
     {
       "Id": null,
-      "Deadline": "2003-08-17T00:00:00",
-      "Status": 0,
-      "PersonId": 4,
-      "Name": "Code Website 3",
-      "Description": "Make a website lol. xd. mega lol."
-    },
-    {
-      "Id": null,
       "Deadline": "1999-08-29T00:00:00",
       "Status": 0,
       "PersonId": 13,
@@ -48,14 +40,6 @@
       "PersonId": 12,
       "Name": "Create Blazor App 2",
       "Description": ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it"
-    },
-    {
-      "Id": null,
-      "Deadline": "2000-05-21T00:00:00",
-      "Status": 0,
-      "PersonId": 6,
-      "Name": "Code Website 2",
-      "Description": "Make a website lol. xd. mega lol."
     },
     {
       "Id": null,
@@ -107,30 +91,6 @@
     },
     {
       "Id": null,
-      "Deadline": "2003-08-17T00:00:00",
-      "Status": 0,
-      "PersonId": 4,
-      "Name": "Code Website 3",
-      "Description": "Make a website lol. xd. mega lol."
-    },
-    {
-      "Id": null,
-      "Deadline": "1999-08-29T00:00:00",
-      "Status": 0,
-      "PersonId": 6,
-      "Name": "Have FreeTime 1",
-      "Description": "Have Freetime lol. Very hard to understand"
-    },
-    {
-      "Id": null,
-      "Deadline": "2020-06-06T00:00:00",
-      "Status": 0,
-      "PersonId": 6,
-      "Name": "Create Blazor App 1",
-      "Description": ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it"
-    },
-    {
-      "Id": null,
       "Deadline": "2018-06-11T00:00:00",
       "Status": 0,
       "PersonId": 13,
@@ -160,17 +120,17 @@
       {
         "Role": 2,
         "Description": null,
-        "PersonId": 4
-      },
-      {
-        "Role": 2,
-        "Description": null,
-        "PersonId": 6
-      },
-      {
-        "Role": 2,
-        "Description": null,
         "PersonId": 13
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 19
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 17
       }
     ],
     "Description": null

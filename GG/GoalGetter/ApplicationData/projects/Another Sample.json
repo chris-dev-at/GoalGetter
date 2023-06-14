@@ -3,83 +3,27 @@
   "Tasks": [
     {
       "Id": null,
-      "Deadline": "1996-09-23T00:00:00",
+      "Deadline": "2023-06-12T00:00:00",
       "Status": 0,
-      "PersonId": 3,
-      "Name": "Code Website",
-      "Description": "Make a website lol. xd. mega lol."
+      "PersonId": 20,
+      "Name": "Mathe SMÜ zusammenschreiben",
+      "Description": "Schreibe eine SMÜ zum Thema Integralrechnungen"
     },
     {
       "Id": null,
-      "Deadline": "2023-06-14T07:53:11.4768796+02:00",
+      "Deadline": "2023-06-16T00:00:00",
       "Status": 0,
-      "PersonId": 3,
-      "Name": "Code Website 2",
-      "Description": ""
+      "PersonId": 12,
+      "Name": "Religionsnoten eintragen",
+      "Description": "Religionsnoten für die Klasse 3CHIT eintragen und am Freitag abschließen"
     },
     {
       "Id": null,
-      "Deadline": "1995-06-27T00:00:00",
-      "Status": 1,
-      "PersonId": 13,
-      "Name": "Code Website 3",
-      "Description": "Make a website lol. xd. mega lol."
-    },
-    {
-      "Id": null,
-      "Deadline": "2001-12-25T00:00:00",
+      "Deadline": "2023-06-15T00:00:00",
       "Status": 0,
-      "PersonId": 1,
-      "Name": "Have FreeTime 1",
-      "Description": "Have Freetime lol. Very hard to understand"
-    },
-    {
-      "Id": null,
-      "Deadline": "1996-09-17T00:00:00",
-      "Status": 0,
-      "PersonId": 8,
-      "Name": "Create Blazor App 1",
-      "Description": ".NET 7.0 CORE Framework needed. please install it and create blazorproject with it"
-    },
-    {
-      "Id": null,
-      "Deadline": "1999-10-09T00:00:00",
-      "Status": 2,
-      "PersonId": 4,
-      "Name": "Create Blazor App 2",
-      "Description": ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it"
-    },
-    {
-      "Id": null,
-      "Deadline": "0001-01-01T00:00:00",
-      "Status": 0,
-      "PersonId": 8,
-      "Name": "asdf",
-      "Description": ""
-    },
-    {
-      "Id": null,
-      "Deadline": "0001-01-01T00:00:00",
-      "Status": 0,
-      "PersonId": 9,
-      "Name": "asdfasfd",
-      "Description": "asdfasdf asdf asdf as"
-    },
-    {
-      "Id": null,
-      "Deadline": "0001-01-01T00:00:00",
-      "Status": 0,
-      "PersonId": 8,
-      "Name": "sdg",
-      "Description": ""
-    },
-    {
-      "Id": null,
-      "Deadline": "2023-06-13T19:19:54.9419573+02:00",
-      "Status": 2,
-      "PersonId": 1,
-      "Name": "onetask",
-      "Description": ""
+      "PersonId": 16,
+      "Name": "Deutsch Wiederholung schaffen",
+      "Description": "Schaff die Deutschwiederholung am Donnerstag"
     }
   ],
   "Budget": 0.0,
@@ -88,68 +32,33 @@
     "members": [
       {
         "Role": 2,
-        "Description": "",
-        "PersonId": 3
-      },
-      {
-        "Role": 2,
-        "Description": "",
-        "PersonId": 12
-      },
-      {
-        "Role": 2,
-        "Description": "",
-        "PersonId": 13
-      },
-      {
-        "Role": 2,
-        "Description": "",
+        "Description": null,
         "PersonId": 10
       },
       {
         "Role": 2,
-        "Description": "",
-        "PersonId": 4
+        "Description": null,
+        "PersonId": 12
       },
       {
         "Role": 2,
-        "Description": "",
-        "PersonId": 1
+        "Description": null,
+        "PersonId": 16
       },
       {
         "Role": 2,
-        "Description": "",
-        "PersonId": 8
+        "Description": null,
+        "PersonId": 17
       },
       {
         "Role": 2,
-        "Description": "",
-        "PersonId": 9
+        "Description": null,
+        "PersonId": 15
       },
       {
         "Role": 2,
-        "Description": "",
-        "PersonId": 7
-      },
-      {
-        "Role": 2,
-        "Description": "",
-        "PersonId": 6
-      },
-      {
-        "Role": 2,
-        "Description": "",
-        "PersonId": 5
-      },
-      {
-        "Role": 2,
-        "Description": "",
-        "PersonId": 2
-      },
-      {
-        "Role": 2,
-        "Description": "",
-        "PersonId": 11
+        "Description": null,
+        "PersonId": 20
       }
     ],
     "Description": ""

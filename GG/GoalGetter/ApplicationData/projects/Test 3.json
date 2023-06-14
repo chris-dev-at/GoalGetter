@@ -1,0 +1,13 @@
+{
+  "Id": 6,
+  "Tasks": [],
+  "Budget": 0.0,
+  "assignedTeam": {
+    "Id": null,
+    "members": [],
+    "Description": null
+  },
+  "status": 0,
+  "Description": "Dritter Integritätstest",
+  "Name": "Test3"
+}

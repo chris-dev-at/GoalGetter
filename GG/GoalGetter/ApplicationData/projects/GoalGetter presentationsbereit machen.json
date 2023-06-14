@@ -1,0 +1,94 @@
+{
+  "Id": 3,
+  "Tasks": [
+    {
+      "Id": null,
+      "Deadline": "2023-06-14T22:33:41.6635644+02:00",
+      "Status": 1,
+      "PersonId": 17,
+      "Name": "Website Designen",
+      "Description": "Verbessere Dashboardansicht"
+    },
+    {
+      "Id": null,
+      "Deadline": "2023-06-15T00:00:00",
+      "Status": 1,
+      "PersonId": 16,
+      "Name": "Darkmode",
+      "Description": "Füge eine Darkmode Option im Navmenü hinzu"
+    },
+    {
+      "Id": null,
+      "Deadline": "2023-06-16T00:00:00",
+      "Status": 2,
+      "PersonId": 18,
+      "Name": "Programmiere Modify Funktionen",
+      "Description": "Programmiere Modify Funktionen fürs Repository"
+    },
+    {
+      "Id": null,
+      "Deadline": "2023-06-15T00:00:00",
+      "Status": 2,
+      "PersonId": 18,
+      "Name": "Statistik einbauen auf Dashboard",
+      "Description": "Füge Funktionen für Statistik hinzu und zeige sie in form eines Picharts auf jedem Projekt-Dashboard an"
+    },
+    {
+      "Id": null,
+      "Deadline": "2023-06-16T00:00:00",
+      "Status": 0,
+      "PersonId": 17,
+      "Name": "Presentation machen",
+      "Description": "Erstelle die Presentation für unsere ITP Vorstellung des Projektes"
+    },
+    {
+      "Id": null,
+      "Deadline": "2023-06-09T00:00:00",
+      "Status": 2,
+      "PersonId": 16,
+      "Name": "Designe TaskComponents",
+      "Description": "Mache die anzeige von Tasks schöner"
+    },
+    {
+      "Id": null,
+      "Deadline": "2023-06-11T00:00:00",
+      "Status": 2,
+      "PersonId": 18,
+      "Name": "Füge eine PersonCard hinzu",
+      "Description": "Die Personcard sollte eine Minimap von der Adresse enthalten und grobe informationen über den Benutzer geben"
+    },
+    {
+      "Id": null,
+      "Deadline": "2023-06-13T00:00:00",
+      "Status": 2,
+      "PersonId": 16,
+      "Name": "Füge PersonCard auf alle Profilbilder hinzu",
+      "Description": ""
+    }
+  ],
+  "Budget": 450.0,
+  "assignedTeam": {
+    "Id": null,
+    "members": [
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 16
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 17
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 18
+      }
+    ],
+    "Description": null
+  },
+  "status": 1,
+  "Description": "GoalGetter presentationsbereit machen. Für ITP Presentation",
+  "Name": "GoalGetter presentationsbereit machen"
+}

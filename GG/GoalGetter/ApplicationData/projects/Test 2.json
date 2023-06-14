@@ -1,0 +1,34 @@
+{
+  "Id": 5,
+  "Tasks": [],
+  "Budget": 0.0,
+  "assignedTeam": {
+    "Id": null,
+    "members": [
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 8
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 10
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 12
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 16
+      }
+    ],
+    "Description": null
+  },
+  "status": 0,
+  "Description": "Zweiter Integritätstest",
+  "Name": "Test 2"
+}
