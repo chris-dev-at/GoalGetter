@@ -47,7 +47,7 @@
       "Status": 2,
       "PersonId": 4,
       "Name": "Create Blazor App 2",
-      "Description": ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it"
+      "Description": ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it asdf"
     },
     {
       "Id": null,
@@ -150,11 +150,16 @@
         "Role": 2,
         "Description": "",
         "PersonId": 11
+      },
+      {
+        "Role": 2,
+        "Description": null,
+        "PersonId": 14
       }
     ],
     "Description": ""
   },
-  "status": 0,
+  "status": 1,
   "Description": "Need more test data? We got your back!",
   "Name": "Another Sample"
 }

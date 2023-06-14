@@ -69,13 +69,6 @@
     [Parameter]
     public int ProId { get; set; }
 
-    protected override void OnInitialized()
-    {
-        newtask.Deadline = DateTime.Now;
-        newtask.Description = "";
-    }
-
-
     private async Task UpdateTask()
     {
         StatusReport<EmptyVal> status = await updateTaskUseCase.ExecuteAsync(newtask, ProId);

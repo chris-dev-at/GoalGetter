@@ -3,17 +3,17 @@
 @inject IDialogService DialogService
 <AuthorizeView>
 	<Authorized>
-		<div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6 d-flex align-items-center">
-                    <MudButton Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white" Color="Color.Primary" OnClick="@((e) => OpenDialog(maxWidth))">
+		<MudContainer Class="justify-content-center">
+			<div class="row">
+				<div class="col-md-6 d-flex">
+					<MudButton OnClick="@((e) => OpenDialog(maxWidth))" Variant="Variant.Filled" DisableElevation="true" Style="background-color: #0088d3; color: white; max-height: 40px; margin-right: 40px; margin-top: 8px" Color="Color.Primary">
 						+ Task
 					</MudButton>
 					<Searchbar OnSearchterm="OnTermSearch" />
-                </div>
-            </div>
-        </div>
-
+				</div>
+			</div>
+		</MudContainer>
+		<br />
 		<TasksListComponent proid="@proid" searchTerm="@searchterm" reloadFlag="reloadFlag"/>
 	</Authorized>
 	<NotAuthorized>
