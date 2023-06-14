@@ -11,7 +11,7 @@
     },
     {
       "Id": null,
-      "Deadline": "2023-06-13T19:19:56.7172149+02:00",
+      "Deadline": "2023-06-14T07:53:11.4768796+02:00",
       "Status": 0,
       "PersonId": 3,
       "Name": "Code Website 2",
@@ -44,7 +44,7 @@
     {
       "Id": null,
       "Deadline": "1999-10-09T00:00:00",
-      "Status": 0,
+      "Status": 2,
       "PersonId": 4,
       "Name": "Create Blazor App 2",
       "Description": ".NET 6.0 CORE Framework needed. please install it and create blazorproject with it"
@@ -154,7 +154,7 @@
     ],
     "Description": ""
   },
-  "status": 1,
+  "status": 0,
   "Description": "Need more test data? We got your back!",
   "Name": "Another Sample"
 }

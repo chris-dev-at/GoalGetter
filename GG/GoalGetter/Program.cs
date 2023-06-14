@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage;
 using Microsoft.AspNetCore.Components.Web;
 using MudBlazor.Services;
+using GG.UseCases;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -55,6 +56,8 @@ builder.Services.AddSingleton<IRemoveTaskUseCase, RemoveTaskUseCase>();
 builder.Services.AddSingleton<IRemoveProjectUseCase, RemoveProjectUseCase>();
 
 builder.Services.AddMudServices();
+
+builder.Services.AddSingleton<IThemeService, ThemeService>();
 
 
 var app = builder.Build();

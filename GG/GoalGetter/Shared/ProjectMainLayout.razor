@@ -1,9 +1,10 @@
 ﻿@inherits LayoutComponentBase
 @inject NavigationManager NavigationManager
+@inject IThemeService themeService
 
 <PageTitle>GoalGetter</PageTitle>
 
-<MudThemeProvider @bind-IsDarkMode="@themeOn" />
+<MudThemeProvider @bind-IsDarkMode="@themeService.IsDarkMode" />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
@@ -11,6 +12,10 @@
     <!-- Leiste oben - Background: #0088d3 -->
     <MudAppBar Elevation="0" Style="background-color: #0088d3">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        <MudToggleIconButton @bind-Toggled="@themeService.IsDarkMode"
+                             Icon="@Icons.Material.Filled.DarkMode" Color="@Color.Dark"
+                             ToggledIcon="@Icons.Material.Filled.WbSunny" ToggledColor="@Color.Surface" ToggledTitle="On" />
+
         <div style="display: flex; justify-content: flex-end; align-items: center; flex-grow: 1;">
             <MudImage Src="images/logo-goalgetter.png" Width="50" Height="50" Alt="GG-Logo" Style="border: none;" />
         </div>
@@ -44,7 +49,6 @@
     }
 
     bool _drawerOpen = true;
-    bool themeOn = true;
 
     void DrawerToggle()
     {
