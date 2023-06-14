@@ -203,5 +203,20 @@
     "Address": null,
     "Email": "mulhamsth@gmail.com",
     "Phone": "069010018442"
+  },
+  {
+    "Id": 15,
+    "AvatarPath": null,
+    "AvatarColor": 7,
+    "Firstname": "Lukas",
+    "Lastname": "Ertl",
+    "Address": {
+      "osm_id": 37874013,
+      "lat": 48.7927262,
+      "lon": 15.0599658,
+      "display_name": "Dr.-Alfred-Besenböck-Straße, Niederschrems, Schrems, Bezirk Gmünd, Niederösterreich, 3943, Österreich"
+    },
+    "Email": "l.ertl@htlkrems.at",
+    "Phone": "+42 69696969"
   }
 ]
