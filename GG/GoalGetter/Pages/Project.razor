@@ -158,7 +158,7 @@
 		}
 
 		//Load Statistics Data
-		float upcomming = (await getProgressChartUseCase.ExecuteAsync(ProId, ProgressStatus.Upcomming)).Value;
+		float upcomming = (await getProgressChartUseCase.ExecuteAsync(ProId, ProgressStatus.Upcoming)).Value;
 		float progress = (await getProgressChartUseCase.ExecuteAsync(ProId, ProgressStatus.In_Progress)).Value;
 		float done = (await getProgressChartUseCase.ExecuteAsync(ProId, ProgressStatus.Done)).Value;
 
